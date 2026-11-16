@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar TT Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Sofia+Sans+Condensed:wght@700;800&display=swap">
+<style>
+/* VOICE work: ferramenta de pesquisa, densa e exata, padrão de editoria de gráficos
+   IDEA um arquivo de jornal: você procura um termo e recebe a ficha dele, com cada aparição datada
+   PICTURE a coluna de barras semanais em vermelhão, grande, logo abaixo da busca
+   COLOUR branco, tinta preta, vermelhão #ff4a1c como a massa do gráfico; noite #120d0b
+   TYPE Sofia Sans Condensed 800 nos títulos e números + Instrument Sans no texto
+   LAYOUT busca larga no topo; achado + números + gráfico no primeiro ecrã; episódios em tabela abaixo; no celular tudo empilha */
+:root{color-scheme:light dark;--hb:light-dark(#111111,#2a1f1b);--hf:#f3eeea;--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f3eeea);--muted:light-dark(#5b5550,#b9b0a8);--rule:light-dark(#e4dfda,#2e2522);--panel:light-dark(#f6f3f0,#1c1512);--acc:#ff4a1c;--acc-ink:light-dark(#c2310b,#ff7a52)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(20px,3vw,40px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+header.band{background:var(--hb);color:var(--hf);padding-bottom:28px}
+h1,h2,.num{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:clamp(32px,5vw,48px);margin:0 0 4px}
+.sub{margin:0 0 20px;color:color-mix(in srgb,var(--hf) 72%,var(--hb))}
+form{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:10px;align-items:center}
+input[type=search],select{font:inherit;font-size:17px;height:52px;padding:0 14px;border:2px solid color-mix(in srgb,var(--hf) 25%,var(--hb));border-radius:6px;background:var(--bg);color:var(--ink)}
+input[type=search]:focus,select:focus,button:focus-visible,.chip:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button{font:inherit;font-weight:600;height:52px;padding:0 22px;border:0;border-radius:6px;background:var(--acc);color:#fff;cursor:pointer}
+button:hover{filter:brightness(1.08)}
+.chk{display:flex;gap:8px;align-items:center;white-space:nowrap;color:color-mix(in srgb,var(--hf) 85%,var(--hb))}
+.chk input{width:20px;height:20px;accent-color:var(--acc)}
+.now{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px;font-size:14px}
+.now span{color:color-mix(in srgb,var(--hf) 70%,var(--hb))}
+.chip{font:inherit;font-size:14px;height:auto;min-height:36px;padding:4px 12px;border-radius:18px;border:1px solid color-mix(in srgb,var(--hf) 40%,var(--hb));background:transparent;color:var(--hf)}
+.demo{margin:14px 0 0;font-size:14px;color:color-mix(in srgb,var(--hf) 75%,var(--hb))}
+.demo b{color:var(--acc)}
+h2{font-size:clamp(28px,3.6vw,40px);margin:0 0 6px;text-wrap:balance}
+.lead{margin:0 0 18px;color:var(--muted);max-width:70ch}
+.vars{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.var{display:flex;gap:8px;align-items:center;min-height:40px;padding:4px 12px;border:1px solid var(--rule);border-radius:20px;font-size:15px;cursor:pointer}
+.var input{accent-color:var(--acc);width:18px;height:18px}
+.var small{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);margin-bottom:24px}
+.stat{padding:12px 16px 14px 0}
+.stat .num{font-size:clamp(30px,4vw,42px);display:block;white-space:nowrap}
+.stat .lbl{font-size:14px;color:var(--muted)}
+.chead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px}
+.chead h3{margin:0;font-size:18px}
+.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border-radius:0;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.fig{position:relative;height:320px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+svg text{font:13px "Instrument Sans",sans-serif;fill:var(--muted)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:14px;padding:8px 10px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%)}
+.tip b{display:block}
+.note{font-size:14px;color:var(--muted);margin:8px 0 0;max-width:80ch}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-weight:600;font-size:14px;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px 8px 0}
+td{border-bottom:1px solid var(--rule);padding:12px 10px 12px 0;vertical-align:top}
+td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+th.n{text-align:right}
+td.when{white-space:nowrap}
+.ctx{max-width:60ch}
+.ctx .co{color:var(--muted)}
+.ctx a{color:var(--acc-ink);font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px;white-space:nowrap}
+.tag{display:inline-block;font-size:13px;padding:0 6px;border-radius:4px;background:var(--panel);color:var(--muted);margin-right:4px}
+details{margin-top:28px;border-top:1px solid var(--rule);padding-top:12px}
+summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px}
+.empty{padding:28px 0;border-top:2px solid var(--ink)}
+.empty p{color:var(--muted);max-width:70ch}
+.how{background:var(--panel)}
+.how h3{margin:0 0 8px;font-size:18px}
+.how ul{margin:0;padding-left:20px;color:var(--muted);max-width:90ch}
+.how li{margin:4px 0}
+@media(max-width:720px){form{grid-template-columns:minmax(0,1fr) auto}form .chk{grid-column:1}form button{grid-column:2;grid-row:2}}
+@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}.stack td::before{content:attr(data-l);color:var(--muted);text-align:left}.stack td.ctx{display:block;text-align:left}.stack td.ctx::before{display:block}.fig{height:260px}}
+@media(prefers-reduced-motion:no-preference){.bar{transition:opacity .15s}}
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="wrap">
+    <h1>Radar TT Brasil</h1>
+    <p class="sub" id="sub">Histórico dos trending topics do X no Brasil, hora a hora.</p>
+    <form id="f" role="search">
+      <input type="search" id="q" placeholder="Pesquise um termo, ex.: shampoo" aria-label="Termo" autocomplete="off">
+      <select id="win" aria-label="Janela">
+        <option value="30">30 dias</option>
+        <option value="90">90 dias</option>
+        <option value="180" selected>6 meses</option>
+        <option value="365">12 meses</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="exact"> Termo exato</label>
+      <button type="submit">Buscar</button>
+    </form>
+    <div class="now" id="now"></div>
+    <p class="demo" id="demo" hidden><b>Dados simulados.</b> Esta é uma demonstração com 6 meses de tendências geradas por computador e episódios de exemplo; nada aqui aconteceu de verdade. Ao rodar o coletor, a página passa a mostrar o histórico real.</p>
+  </div>
+</header>
+
+<main class="band">
+  <div class="wrap" id="out"><p class="lead">Carregando o histórico…</p></div>
+</main>
+
+<section class="band how">
+  <div class="wrap">
+    <h3>Como ler os números</h3>
+    <ul>
+      <li><b>Horas em trend</b>: quantas horas o termo esteve entre os 50 assuntos do momento no Brasil (uma leitura por hora).</li>
+      <li><b>Pontos</b>: cada hora vale pela posição. 1º lugar = 50 pontos, 50º = 1. Somam tempo e força num número só.</li>
+      <li><b>Força relativa</b>: a porcentagem de termos que entraram nos TTs na mesma janela e somaram menos pontos que este.</li>
+      <li><b>Episódio</b>: aparições seguidas; mais de 3 horas fora da lista abre um episódio novo.</li>
+      <li><b>Contexto</b>: a frase “Porque…” vem dos posts mais engajados no momento do episódio, resumidos por IA quando o coletor está configurado para isso. Sem ela, mostramos os termos que subiram e caíram junto, que costumam ser a pista do assunto, e o link para os posts daquela data no X.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+{
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => s.normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[#_]/g,' ').replace(/\s+/g,' ').trim();
+const slug = s => norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const fmt = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const fmtD = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'short'});
+const fmtM = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',month:'short'});
+const nf = new Intl.NumberFormat('pt-BR');
+const GAP = 3, PER_PAGE = 15;
+
+let D, N, T0, H, ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
+
+const dateOf = h => new Date(T0 + h*3600e3);
+const ymd = d => d.toISOString().slice(0,10);
+const points = r => 51 - r;
+
+function windowRange(days){ const end = H-1; return [Math.max(0, end - days*24 + 1), end]; }
+
+function termPoints(days){
+  if (ptsCache[days]) return ptsCache[days];
+  const [a,b] = windowRange(days), p = new Map();
+  for (let h=a; h<=b; h++) D.h[h].forEach((id,i) => p.set(id, (p.get(id)||0) + points(i+1)));
+  return ptsCache[days] = {map:p, sorted:[...p.values()].sort((x,y)=>x-y)};
+}
+
+function coTrends(hours, exclude){
+  const own = new Set(hours), lo = Math.max(0, hours[0]-12), hi = Math.min(H-1, hours[hours.length-1]+12);
+  const sets = new Map(), pts = new Map();
+  for (let h=lo; h<=hi; h++) D.h[h].forEach((id,i) => {
+    if (exclude.has(id)) return;
+    if (!sets.has(id)) sets.set(id, new Set());
+    sets.get(id).add(h);
+    if (own.has(h)) pts.set(id, (pts.get(id)||0) + points(i+1));
+  });
+  const sc = [];
+  sets.forEach((s,id) => { let inter=0; s.forEach(h => own.has(h) && inter++); if (inter) { const uni = s.size + own.size - inter; sc.push([inter/uni*Math.log(1+(pts.get(id)||0)), id]); }});
+  return sc.sort((x,y)=>y[0]-x[0]).slice(0,5).map(x => D.terms[x[1]]);
+}
+
+function xLink(term, a, b){
+  const s = ymd(dateOf(a)), e = ymd(new Date(dateOf(b).getTime()+864e5));
+  return 'https://x.com/search?f=top&q=' + encodeURIComponent(`"${term}" since:${s} until:${e}`);
+}
+
+function search(q, days, exact){
+  const qn = norm(q);
+  const ids = []; N.forEach((n,i) => { if (exact ? n===qn : n.includes(qn)) ids.push(i); });
+  const [a,b] = windowRange(days);
+  const occ = new Map(ids.map(id => [id, []]));
+  for (let h=a; h<=b; h++) D.h[h].forEach((id,i) => occ.has(id) && occ.get(id).push([h, i+1]));
+  const variants = ids.map(id => ({id, term:D.terms[id], occ:occ.get(id)})).filter(v => v.occ.length)
+    .sort((x,y) => y.occ.length - x.occ.length);
+  return {qn, days, a, b, variants};
+}
+
+function episodes(v){
+  const eps = [];
+  v.occ.forEach(([h,r]) => {
+    const e = eps[eps.length-1];
+    if (e && h - e.end <= GAP){ e.end = h; e.hrs.push(h); e.best = Math.min(e.best,r); e.pts += points(r); }
+    else eps.push({id:v.id, term:v.term, start:h, end:h, hrs:[h], best:r, pts:points(r)});
+  });
+  const ctx = D.ctx[v.id] || [];
+  eps.forEach(e => { const c = ctx.find(c => c[0] >= e.start-1 && c[0] <= e.end); e.summary = c && c[1]; e.urls = c ? c[2] : []; });
+  return eps;
+}
+
+function render(){
+  const q = $('#q').value.trim(), days = +$('#win').value, exact = $('#exact').checked;
+  if (!q){ $('#out').innerHTML = '<p class="lead">Digite um termo para ver se ele já foi tendência no Brasil, quando, com que força e por quê.</p>'; return; }
+  try { history.replaceState(null,'','#'+slug(q)); } catch(e) {}
+  const R = search(q, days, exact);
+  state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE;
+  draw();
+}
+
+function draw(){
+  const R = state.R, q = $('#q').value.trim(), win = $('#win').selectedOptions[0].text;
+  if (!R.variants.length){
+    const pre = R.qn.slice(0,4), near = pre.length >= 3 ? D.terms.filter((t,i) => N[i].startsWith(pre)).slice(0,6) : [];
+    $('#out').innerHTML = `<div class="empty"><h2>“${esc(q)}” não foi tendência no Brasil nos últimos ${esc(win)}</h2>
+      <p>Nenhuma das ${nf.format(termPoints(R.days).sorted.length)} expressões que passaram pelos TTs nesse período contém esse termo. Tente uma janela maior, outra grafia ou só parte da palavra.</p>
+      ${near.length ? `<p>Parecidos no histórico: ${near.map(t => `<button class="chip" style="color:var(--ink);border-color:var(--rule)" data-q="${esc(t)}">${esc(t)}</button>`).join(' ')}</p>` : ''}</div>`;
+    return;
+  }
+  const vs = R.variants.filter(v => state.sel.has(v.id));
+  const allOcc = vs.flatMap(v => v.occ);
+  const hours = allOcc.length, daysSet = new Set(allOcc.map(([h]) => ymd(dateOf(h))));
+  const best = allOcc.length ? Math.min(...allOcc.map(o => o[1])) : null;
+  const pts = allOcc.reduce((s,[,r]) => s + points(r), 0);
+  const tp = termPoints(R.days), below = tp.sorted.filter(p => p < pts).length;
+  const pct = Math.round(100 * below / tp.sorted.length);
+  const eps = vs.flatMap(episodes).sort((x,y) => y.start - x.start);
+  const last = allOcc.length ? Math.max(...allOcc.map(o => o[0])) : null;
+  const strongest = [...eps].sort((x,y) => y.pts - x.pts)[0];
+
+  const title = hours
+    ? `“${esc(q)}” foi tendência em ${eps.length} ${eps.length===1?'momento':'momentos'} nos últimos ${esc(win)}`
+    : `Nenhuma variante selecionada`;
+  const lead = strongest ? `O pico foi em ${fmtD.format(dateOf(strongest.start))}, quando “${esc(strongest.term)}” chegou à ${strongest.best}ª posição e ficou ${strongest.hrs.length}h na lista.` : '';
+
+  $('#out').innerHTML = `
+    <h2>${title}</h2><p class="lead">${lead}</p>
+    ${R.variants.length > 1 ? `<div class="vars" aria-label="Variantes encontradas">${R.variants.map(v => `<label class="var"><input type="checkbox" data-v="${v.id}" ${state.sel.has(v.id)?'checked':''}> ${esc(v.term)} <small>${v.occ.length}h</small></label>`).join('')}</div>` : ''}
+    <div class="stats">
+      <div class="stat"><span class="num">${nf.format(hours)}h</span><span class="lbl">em trend, em ${daysSet.size} ${daysSet.size===1?'dia':'dias'}</span></div>
+      <div class="stat"><span class="num">${best ? best+'º' : '–'}</span><span class="lbl">melhor posição</span></div>
+      <div class="stat"><span class="num">${hours ? pct+'%' : '–'}</span><span class="lbl">mais forte que esse percentual dos termos do período</span></div>
+      <div class="stat"><span class="num">${nf.format(pts)}</span><span class="lbl">pontos de atenção</span></div>
+      <div class="stat"><span class="num">${last!==null ? fmtD.format(dateOf(last)) : '–'}</span><span class="lbl">última aparição</span></div>
+    </div>
+    <div class="chead"><h3 id="ctitle"></h3>
+      <div class="seg" role="group" aria-label="Medida do gráfico">
+        <button type="button" data-m="pts" aria-pressed="${state.mode==='pts'}">Pontos</button>
+        <button type="button" data-m="hrs" aria-pressed="${state.mode==='hrs'}">Horas</button>
+      </div></div>
+    <div class="fig" id="fig"><svg id="chart" role="img"></svg><div class="tip" id="tip"></div></div>
+    <h3 style="margin:32px 0 8px;font-size:18px">Cada vez que apareceu</h3>
+    <div class="scroll"><table class="stack"><thead><tr><th>Quando (Brasília)</th><th class="n">Duração</th><th class="n">Melhor</th><th>Termo</th><th>Contexto</th></tr></thead>
+    <tbody>${eps.slice(0, state.shown).map(e => `<tr>
+      <td class="when" data-l="Quando">${fmt.format(dateOf(e.start))}</td>
+      <td class="n" data-l="Duração">${e.hrs.length}h</td>
+      <td class="n" data-l="Melhor">${e.best}º</td>
+      <td data-l="Termo">${esc(e.term)}</td>
+      <td class="ctx" data-l="Contexto">${e.summary ? esc(e.summary) : `<span class="co">Subiu junto com: ${coTrends(e.hrs, state.sel).map(esc).join(', ') || '—'}</span>`}
+        <br><a href="${xLink(e.term, e.start, e.end)}" target="_blank" rel="noopener">Posts da época no X ↗</a>${(e.urls||[]).map((u,i) => ` · <a href="${esc(u)}" target="_blank" rel="noopener">post ${i+1} ↗</a>`).join('')}</td></tr>`).join('')}</tbody></table></div>
+    ${eps.length > state.shown ? `<button type="button" class="more" id="more">Mostrar mais ${Math.min(PER_PAGE, eps.length - state.shown)} de ${eps.length - state.shown} restantes</button>` : ''}
+    <details><summary>Tabela do gráfico</summary><div class="scroll" id="tbl"></div></details>`;
+  state.series = series(vs, R);
+  drawChart();
+}
+
+function series(vs, R){
+  const days = R.b - R.a + 1, step = R.days <= 30 ? 24 : 168, n = Math.ceil(days/step);
+  const bins = Array.from({length:n}, (_,i) => ({a: R.a + i*step, pts:0, hrs:0, best:null}));
+  vs.forEach(v => v.occ.forEach(([h,r]) => { const b = bins[Math.floor((h-R.a)/step)]; b.pts += points(r); b.hrs++; b.best = b.best ? Math.min(b.best,r) : r; }));
+  return {bins, step};
+}
+
+function drawChart(){
+  const s = $('#chart'); if (!s) return;
+  const {bins, step} = state.series, key = state.mode, unit = key==='pts' ? 'pontos' : 'horas em trend';
+  $('#ctitle').textContent = `${key==='pts'?'Pontos':'Horas em trend'} por ${step===24?'dia':'semana'}`;
+  s.setAttribute('aria-label', `Gráfico de colunas: ${unit} por ${step===24?'dia':'semana'}`);
+  const W = s.clientWidth, Hh = s.clientHeight, m = {l:44, r:8, t:12, b:28};
+  const max = Math.max(1, ...bins.map(b => b[key]));
+  const nice = (()=>{ const p = 10**Math.floor(Math.log10(max)), f = max/p; return (f<=1?1:f<=2?2:f<=5?5:10)*p; })();
+  const iw = W - m.l - m.r, ih = Hh - m.t - m.b, slot = iw / bins.length, bw = Math.min(24, Math.max(2, slot - 2));
+  const y = v => m.t + ih - v/nice*ih;
+  let g = '';
+  for (let i=0;i<=4;i++){ const v = nice*i/4, yy = y(v);
+    g += `<line x1="${m.l}" x2="${W-m.r}" y1="${yy}" y2="${yy}" stroke="var(--rule)" stroke-width="1"/>`;
+    if (W >= 520 || i%2===0) g += `<text x="${m.l-8}" y="${yy+4}" text-anchor="end">${nf.format(v)}</text>`; }
+  let lastM = '', nM = 0;
+  bins.forEach((b,i) => {
+    const x = m.l + i*slot + (slot-bw)/2, v = b[key], top = y(v), hgt = m.t+ih-top, r = Math.min(4, bw/2, hgt);
+    const mo = fmtM.format(dateOf(b.a));
+    if (mo !== lastM){ if (W >= 520 || nM % 2 === 0) g += `<text x="${m.l + i*slot}" y="${Hh-8}">${mo.replace('.','')}</text>`; lastM = mo; nM++; }
+    if (v > 0) g += `<path class="bar" d="M${x},${m.t+ih}V${top+r}Q${x},${top} ${x+r},${top}H${x+bw-r}Q${x+bw},${top} ${x+bw},${top+r}V${m.t+ih}Z" fill="var(--acc)"/>`;
+    g += `<rect data-i="${i}" x="${m.l+i*slot}" y="${m.t}" width="${slot}" height="${ih}" fill="transparent"/>`;
+  });
+  g += `<line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ih}" y2="${m.t+ih}" stroke="var(--ink)" stroke-width="1"/>`;
+  s.innerHTML = g;
+  const tip = $('#tip');
+  s.onpointermove = ev => { const i = ev.target.dataset && ev.target.dataset.i; if (i===undefined){ tip.style.opacity=0; return; }
+    const b = bins[+i], end = dateOf(b.a + step - 1);
+    tip.innerHTML = `<b>${step===24 ? fmtD.format(dateOf(b.a)) : fmtD.format(dateOf(b.a))+' – '+fmtD.format(end)}</b>${nf.format(b.hrs)}h em trend · ${nf.format(b.pts)} pts${b.best?` · melhor ${b.best}º`:''}`;
+    const bx = m.l + (+i+.5)*slot; tip.style.left = Math.min(Math.max(bx, 90), W-90)+'px'; tip.style.top = Math.max(y(b[key]), m.t+40)+'px'; tip.style.opacity = 1; };
+  s.onpointerleave = () => tip.style.opacity = 0;
+  $('#tbl').innerHTML = `<table><thead><tr><th>${step===24?'Dia':'Semana de'}</th><th class="n">Horas</th><th class="n">Pontos</th><th class="n">Melhor</th></tr></thead><tbody>${bins.map(b => `<tr><td>${fmtD.format(dateOf(b.a))}</td><td class="n">${b.hrs}</td><td class="n">${nf.format(b.pts)}</td><td class="n">${b.best ? b.best+'º' : '–'}</td></tr>`).join('')}</tbody></table>`;
+}
+
+function boot(data){
+  D = data; N = D.terms.map(norm); T0 = Date.parse(D.start.replace('Z',':00Z')); H = D.h.length;
+  const lastH = H - 1;
+  $('#sub').textContent = `Histórico dos trending topics do X no Brasil, hora a hora · ${nf.format(D.terms.length)} termos desde ${fmtD.format(dateOf(0))} · última leitura ${fmt.format(dateOf(lastH))}`;
+  $('#demo').hidden = !D.demo;
+  const ex = D.demo ? ['shampoo','Enem','Apagão','Flamengo'] : D.h[lastH].slice(0,6).map(id => D.terms[id]);
+  $('#now').innerHTML = `<span>${D.demo ? 'Exemplos:' : 'Em alta agora:'}</span>` + ex.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('');
+  const hq = decodeURIComponent(location.hash.slice(1)).replace(/-/g,' ');
+  $('#q').value = hq || (D.demo ? 'shampoo' : '');
+  render();
+}
+
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('[data-q],[data-m],#more'); if (!t) return;
+  if (t.dataset.q){ $('#q').value = t.dataset.q; $('#exact').checked = false; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+  else if (t.dataset.m){ state.mode = t.dataset.m; document.querySelectorAll('[data-m]').forEach(b => b.setAttribute('aria-pressed', b.dataset.m===state.mode)); drawChart(); }
+  else if (t.id==='more'){ state.shown += PER_PAGE; draw(); }
+});
+document.addEventListener('change', ev => {
+  if (ev.target.dataset.v){ const id = +ev.target.dataset.v; ev.target.checked ? state.sel.add(id) : state.sel.delete(id); draw(); }
+  else if (ev.target.id==='win' || ev.target.id==='exact') render();
+});
+$('#f').addEventListener('submit', ev => { ev.preventDefault(); render(); });
+new ResizeObserver(() => state.series && drawChart()).observe($('#out'));
+
+fetch('data/index.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(boot)
+  .catch(e => { $('#out').innerHTML = `<div class="empty"><h2>Ainda não há histórico</h2><p>Não encontrei data/index.json (${esc(e.message)}). Rode a coleta (ou o backfill) e depois <code>python radar.py export</code>.</p></div>`; });
+}
+</script>
+</body>
+</html>

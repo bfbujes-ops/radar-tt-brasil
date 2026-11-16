@@ -1,0 +1,64 @@
+name: Coleta horária
+
+on:
+  schedule:
+    - cron: "7 * * * *"        # todo minuto 7 de cada hora (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      RADAR_SOURCE: ${{ vars.RADAR_SOURCE || 'getdaytrends' }}
+      X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+      TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Coletar tendências da hora
+        run: python radar.py collect
+
+      - name: Reconstruir banco
+        run: python radar.py build-db
+
+      - name: Buscar o porquê dos episódios novos
+        if: env.X_BEARER_TOKEN != ''
+        run: python radar.py enrich --max 15
+        continue-on-error: true
+
+      - name: Gerar dados da página
+        run: python radar.py export --out web/data/index.json
+
+      - name: Salvar histórico no repositório
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add data/snapshots data/contexts.jsonl 2>/dev/null || git add data/snapshots
+          git diff --cached --quiet && exit 0
+          git commit -m "coleta $(date -u +%Y-%m-%dT%H:00Z)"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deployment
+        uses: actions/deploy-pages@v4
