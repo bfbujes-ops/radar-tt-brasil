@@ -69,6 +69,20 @@ td.when{white-space:nowrap}
 .ctx .co{color:var(--muted)}
 .ctx a{color:var(--acc-ink);font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px;white-space:nowrap}
 .tag{display:inline-block;font-size:13px;padding:0 6px;border-radius:4px;background:var(--panel);color:var(--muted);margin-right:4px}
+.panels{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;margin-top:32px;align-items:start}
+.panel h3{margin:0 0 4px;font-size:18px}
+.panel .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
+.hm{display:grid;grid-template-columns:2.6em repeat(24,minmax(0,1fr));gap:2px}
+.hm .hlab{font-size:11px;color:var(--muted);text-align:center;align-self:end;padding-bottom:2px}
+.hm .dlab{font-size:12px;color:var(--muted);align-self:center;padding-right:6px;text-align:right}
+.hm .c{aspect-ratio:1;border-radius:2px;background:var(--panel);min-width:0}
+.cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
+.cloud .chip{color:var(--acc-ink);border-color:color-mix(in srgb,var(--acc) 35%,var(--rule));background:transparent;font-weight:600;line-height:1.2}
+.cloud .chip small{color:var(--muted);font-weight:400;font-size:.72em;margin-left:4px}
+.home h3{margin:28px 0 4px;font-size:18px}
+.home .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
+.home .cloud .chip{min-height:0}
+@media(max-width:860px){.panels{grid-template-columns:minmax(0,1fr)}}
 details{margin-top:28px;border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 .more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px}
@@ -192,7 +206,12 @@ function episodes(v){
 
 function render(){
   const q = $('#q').value.trim(), days = +$('#win').value, exact = $('#exact').checked;
-  if (!q){ $('#out').innerHTML = '<p class="lead">Digite um termo para ver se ele já foi tendência no Brasil, quando, com que força e por quê.</p>'; return; }
+  if (!q){
+    const top = weekTop(), hi = top.length ? top[0][1] : 1;
+    $('#out').innerHTML = `<div class="home"><p class="lead">Digite um termo para ver se ele já foi tendência no Brasil, quando, com que força e por quê.</p>
+      <h3>Mais fortes dos últimos 7 dias</h3><p class="pnote">Clique para abrir a ficha do termo</p>
+      <div class="cloud">${top.map(([id,v]) => `<button type="button" class="chip" data-q="${esc(D.terms[id])}" style="font-size:${(14 + 10*Math.sqrt(v/hi)).toFixed(1)}px">${esc(D.terms[id])}<small>${nf.format(v)}</small></button>`).join('')}</div></div>`;
+    return; }
   try { history.replaceState(null,'','#'+slug(q)); } catch(e) {}
   const R = search(q, days, exact);
   state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE;
@@ -240,6 +259,14 @@ function draw(){
         <button type="button" data-m="hrs" aria-pressed="${state.mode==='hrs'}">Horas</button>
       </div></div>
     <div class="fig" id="fig"><svg id="chart" role="img"></svg><div class="tip" id="tip"></div></div>
+    <div class="panels">
+      <div class="panel"><h3>Quando costuma bombar</h3>
+        <p class="pnote">Pontos de atenção por dia da semana e hora (horário de Brasília)${daysSet.size < 14 ? ' · ainda acumulando dados' : ''}</p>
+        ${heatmap(allOcc)}</div>
+      <div class="panel"><h3>Sobe junto com</h3>
+        <p class="pnote">Assuntos que estiveram em alta nas mesmas horas, em todos os episódios</p>
+        ${cloud(eps)}</div>
+    </div>
     <h3 style="margin:32px 0 8px;font-size:18px">Cada vez que apareceu</h3>
     <div class="scroll"><table class="stack"><thead><tr><th>Quando (Brasília)</th><th class="n">Duração</th><th class="n">Melhor</th><th>Termo</th><th>Contexto</th></tr></thead>
     <tbody>${eps.slice(0, state.shown).map(e => `<tr>
@@ -293,6 +320,45 @@ function drawChart(){
     const bx = m.l + (+i+.5)*slot; tip.style.left = Math.min(Math.max(bx, 90), W-90)+'px'; tip.style.top = Math.max(y(b[key]), m.t+40)+'px'; tip.style.opacity = 1; };
   s.onpointerleave = () => tip.style.opacity = 0;
   $('#tbl').innerHTML = `<table><thead><tr><th>${step===24?'Dia':'Semana de'}</th><th class="n">Horas</th><th class="n">Pontos</th><th class="n">Melhor</th></tr></thead><tbody>${bins.map(b => `<tr><td>${fmtD.format(dateOf(b.a))}</td><td class="n">${b.hrs}</td><td class="n">${nf.format(b.pts)}</td><td class="n">${b.best ? b.best+'º' : '–'}</td></tr>`).join('')}</tbody></table>`;
+}
+
+const DIAS = ['dom','seg','ter','qua','qui','sex','sáb'];
+
+function heatmap(occ){
+  const m = Array.from({length:7}, () => Array(24).fill(0));
+  let max = 0;
+  occ.forEach(([h,r]) => {
+    const d = new Date(T0 + h*3600e3 - 3*3600e3);   // Brasília = UTC-3 (sem horário de verão)
+    const v = m[d.getUTCDay()][d.getUTCHours()] += points(r);
+    if (v > max) max = v;
+  });
+  if (!max) return '<p class="pnote">Sem dados na janela.</p>';
+  let g = '<div class="hm" role="img" aria-label="Mapa de calor por dia da semana e hora"><span></span>';
+  for (let h=0; h<24; h++) g += `<span class="hlab">${h%6===0 ? h : ''}</span>`;
+  for (let d=0; d<7; d++){
+    g += `<span class="dlab">${DIAS[d]}</span>`;
+    for (let h=0; h<24; h++){
+      const v = m[d][h], pc = v ? 12 + Math.round(88 * Math.sqrt(v/max)) : 0;
+      g += v ? `<span class="c" style="background:color-mix(in srgb,var(--acc) ${pc}%,var(--panel))" title="${DIAS[d]} ${h}h · ${nf.format(v)} pts"></span>` : '<span class="c"></span>';
+    }
+  }
+  return g + '</div>';
+}
+
+function cloud(eps){
+  const score = new Map();
+  eps.forEach(e => coTrends(e.hrs, state.sel).forEach((t,i) => score.set(t, (score.get(t)||0) + e.pts * (5-i))));
+  const top = [...score.entries()].sort((a,b) => b[1]-a[1]).slice(0,18);
+  if (!top.length) return '<p class="pnote">Nada recorrente ainda.</p>';
+  const hi = top[0][1];
+  return '<div class="cloud">' + top.map(([t,v]) =>
+    `<button type="button" class="chip" data-q="${esc(t)}" style="font-size:${(13 + 9*Math.sqrt(v/hi)).toFixed(1)}px">${esc(t)}</button>`).join('') + '</div>';
+}
+
+function weekTop(){
+  const a = Math.max(0, H - 168), pts = new Map();
+  for (let h=a; h<H; h++) D.h[h].forEach((id,i) => pts.set(id, (pts.get(id)||0) + points(i+1)));
+  return [...pts.entries()].sort((x,y) => y[1]-x[1]).slice(0,12);
 }
 
 function boot(data){
