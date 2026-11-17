@@ -739,3 +739,403 @@ ts,rank,term,tweet_count,source
 2026-11-17T06:00Z,48,Haymitch,,getdaytrends-catchup
 2026-11-17T06:00Z,49,Macron,,getdaytrends-catchup
 2026-11-17T06:00Z,50,Senadora,,getdaytrends-catchup
+2026-11-17T22:00Z,1,#AvenidaBrasil,,getdaytrends
+2026-11-17T22:00Z,2,goty,,getdaytrends
+2026-11-17T22:00Z,3,#TheGameAwards,,getdaytrends
+2026-11-17T22:00Z,4,GTA 6,,getdaytrends
+2026-11-17T22:00Z,5,#CollaborativeStudio,,getdaytrends
+2026-11-17T22:00Z,6,#VoleiNaGETV,,getdaytrends
+2026-11-17T22:00Z,7,Maicon,,getdaytrends
+2026-11-17T22:00Z,8,Noruega,,getdaytrends
+2026-11-17T22:00Z,9,SPEED,,getdaytrends
+2026-11-17T22:00Z,10,Séries A e B,,getdaytrends
+2026-11-17T22:00Z,11,Gloob,,getdaytrends
+2026-11-17T22:00Z,12,GTA VI,,getdaytrends
+2026-11-17T22:00Z,13,Crimson Desert,,getdaytrends
+2026-11-17T22:00Z,14,Anubis,,getdaytrends
+2026-11-17T22:00Z,15,muricy,,getdaytrends
+2026-11-17T22:00Z,16,Palmeiras x Flamengo,,getdaytrends
+2026-11-17T22:00Z,17,Onimusha,,getdaytrends
+2026-11-17T22:00Z,18,Julieta,,getdaytrends
+2026-11-17T22:00Z,19,Dua Lipa,,getdaytrends
+2026-11-17T22:00Z,20,Cobble,,getdaytrends
+2026-11-17T22:00Z,21,Requiem,,getdaytrends
+2026-11-17T22:00Z,22,Gears,,getdaytrends
+2026-11-17T22:00Z,23,#ToComLulaEContraOMercado,,getdaytrends
+2026-11-17T22:00Z,24,Lei da Dosimetria,,getdaytrends
+2026-11-17T22:00Z,25,Geoff,,getdaytrends
+2026-11-17T22:00Z,26,Haaland,,getdaytrends
+2026-11-17T22:00Z,27,Dinamarca,,getdaytrends
+2026-11-17T22:00Z,28,Namjoon,,getdaytrends
+2026-11-17T22:00Z,29,Renner,,getdaytrends
+2026-11-17T22:00Z,30,Alice in Chains,,getdaytrends
+2026-11-17T22:00Z,31,Phantom Blade,,getdaytrends
+2026-11-17T22:00Z,32,Maura,,getdaytrends
+2026-11-17T22:00Z,33,Lucia,,getdaytrends
+2026-11-17T22:00Z,34,remake,,getdaytrends
+2026-11-17T22:00Z,35,iCloud,,getdaytrends
+2026-11-17T22:00Z,36,Nami,,getdaytrends
+2026-11-17T22:00Z,37,Game of the Year,,getdaytrends
+2026-11-17T22:00Z,38,Astra,,getdaytrends
+2026-11-17T22:00Z,39,Apple Pay,,getdaytrends
+2026-11-17T22:00Z,40,PrEP,,getdaytrends
+2026-11-17T22:00Z,41,NASA,,getdaytrends
+2026-11-17T22:00Z,42,Fire Emblem,,getdaytrends
+2026-11-17T22:00Z,43,Pragmata,,getdaytrends
+2026-11-17T22:00Z,44,Rakin,,getdaytrends
+2026-11-17T22:00Z,45,Capcom,,getdaytrends
+2026-11-17T22:00Z,46,Mariah Carey,,getdaytrends
+2026-11-17T22:00Z,47,Doctor Who,,getdaytrends
+2026-11-17T22:00Z,48,Luiz Philippe,,getdaytrends
+2026-11-17T22:00Z,49,Nubank Parque,,getdaytrends
+2026-11-17T22:00Z,50,Davy Jones,,getdaytrends
+2026-11-17T21:00Z,1,goty,,getdaytrends-catchup
+2026-11-17T21:00Z,2,#AvenidaBrasil,,getdaytrends-catchup
+2026-11-17T21:00Z,3,#TheGameAwards,,getdaytrends-catchup
+2026-11-17T21:00Z,4,GTA 6,,getdaytrends-catchup
+2026-11-17T21:00Z,5,Crimson Desert,,getdaytrends-catchup
+2026-11-17T21:00Z,6,Onimusha,,getdaytrends-catchup
+2026-11-17T21:00Z,7,Maicon,,getdaytrends-catchup
+2026-11-17T21:00Z,8,GTA VI,,getdaytrends-catchup
+2026-11-17T21:00Z,9,SPEED,,getdaytrends-catchup
+2026-11-17T21:00Z,10,Anubis,,getdaytrends-catchup
+2026-11-17T21:00Z,11,Requiem,,getdaytrends-catchup
+2026-11-17T21:00Z,12,Cobble,,getdaytrends-catchup
+2026-11-17T21:00Z,13,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T21:00Z,14,Nami,,getdaytrends-catchup
+2026-11-17T21:00Z,15,Gears,,getdaytrends-catchup
+2026-11-17T21:00Z,16,Phantom Blade,,getdaytrends-catchup
+2026-11-17T21:00Z,17,Namjoon,,getdaytrends-catchup
+2026-11-17T21:00Z,18,Geoff,,getdaytrends-catchup
+2026-11-17T21:00Z,19,Maura,,getdaytrends-catchup
+2026-11-17T21:00Z,20,Alice in Chains,,getdaytrends-catchup
+2026-11-17T21:00Z,21,Lucia,,getdaytrends-catchup
+2026-11-17T21:00Z,22,Capcom,,getdaytrends-catchup
+2026-11-17T21:00Z,23,Apple Pay,,getdaytrends-catchup
+2026-11-17T21:00Z,24,Astra,,getdaytrends-catchup
+2026-11-17T21:00Z,25,#RestoreTheSnyderVerse,,getdaytrends-catchup
+2026-11-17T21:00Z,26,iCloud,,getdaytrends-catchup
+2026-11-17T21:00Z,27,Game of the Year,,getdaytrends-catchup
+2026-11-17T21:00Z,28,App Store,,getdaytrends-catchup
+2026-11-17T21:00Z,29,NASA,,getdaytrends-catchup
+2026-11-17T21:00Z,30,Fire Emblem,,getdaytrends-catchup
+2026-11-17T21:00Z,31,Control Resonant,,getdaytrends-catchup
+2026-11-17T21:00Z,32,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T21:00Z,33,PrEP,,getdaytrends-catchup
+2026-11-17T21:00Z,34,remake,,getdaytrends-catchup
+2026-11-17T21:00Z,35,Rakin,,getdaytrends-catchup
+2026-11-17T21:00Z,36,Pragmata,,getdaytrends-catchup
+2026-11-17T21:00Z,37,#NationsLeagueNaESPN,,getdaytrends-catchup
+2026-11-17T21:00Z,38,muricy,,getdaytrends-catchup
+2026-11-17T21:00Z,39,Pokopia,,getdaytrends-catchup
+2026-11-17T21:00Z,40,Doctor Who,,getdaytrends-catchup
+2026-11-17T21:00Z,41,Faith No More,,getdaytrends-catchup
+2026-11-17T21:00Z,42,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T21:00Z,43,OpenAI,,getdaytrends-catchup
+2026-11-17T21:00Z,44,Mariah Carey,,getdaytrends-catchup
+2026-11-17T21:00Z,45,Davy Jones,,getdaytrends-catchup
+2026-11-17T21:00Z,46,Thaíde,,getdaytrends-catchup
+2026-11-17T21:00Z,47,Valorant,,getdaytrends-catchup
+2026-11-17T21:00Z,48,Xi Jinping,,getdaytrends-catchup
+2026-11-17T21:00Z,49,Ultimate,,getdaytrends-catchup
+2026-11-17T21:00Z,50,Wendel,,getdaytrends-catchup
+2026-11-17T20:00Z,1,goty,,getdaytrends-catchup
+2026-11-17T20:00Z,2,#TheGameAwards,,getdaytrends-catchup
+2026-11-17T20:00Z,3,GTA 6,,getdaytrends-catchup
+2026-11-17T20:00Z,4,Crimson Desert,,getdaytrends-catchup
+2026-11-17T20:00Z,5,Onimusha,,getdaytrends-catchup
+2026-11-17T20:00Z,6,GTA VI,,getdaytrends-catchup
+2026-11-17T20:00Z,7,Requiem,,getdaytrends-catchup
+2026-11-17T20:00Z,8,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T20:00Z,9,Nami,,getdaytrends-catchup
+2026-11-17T20:00Z,10,Maura,,getdaytrends-catchup
+2026-11-17T20:00Z,11,SPEED,,getdaytrends-catchup
+2026-11-17T20:00Z,12,#EmbraceObedience,,getdaytrends-catchup
+2026-11-17T20:00Z,13,Namjoon,,getdaytrends-catchup
+2026-11-17T20:00Z,14,Control Resonant,,getdaytrends-catchup
+2026-11-17T20:00Z,15,Geoff,,getdaytrends-catchup
+2026-11-17T20:00Z,16,Phantom Blade,,getdaytrends-catchup
+2026-11-17T20:00Z,17,Apple Pay,,getdaytrends-catchup
+2026-11-17T20:00Z,18,iCloud,,getdaytrends-catchup
+2026-11-17T20:00Z,19,#RestoreTheSnyderVerse,,getdaytrends-catchup
+2026-11-17T20:00Z,20,Alice in Chains,,getdaytrends-catchup
+2026-11-17T20:00Z,21,Pragmata,,getdaytrends-catchup
+2026-11-17T20:00Z,22,Game of the Year,,getdaytrends-catchup
+2026-11-17T20:00Z,23,Lucia,,getdaytrends-catchup
+2026-11-17T20:00Z,24,App Store,,getdaytrends-catchup
+2026-11-17T20:00Z,25,Gears,,getdaytrends-catchup
+2026-11-17T20:00Z,26,Capcom,,getdaytrends-catchup
+2026-11-17T20:00Z,27,Fire Emblem,,getdaytrends-catchup
+2026-11-17T20:00Z,28,Pokopia,,getdaytrends-catchup
+2026-11-17T20:00Z,29,PrEP,,getdaytrends-catchup
+2026-11-17T20:00Z,30,Doctor Who,,getdaytrends-catchup
+2026-11-17T20:00Z,31,Rakin,,getdaytrends-catchup
+2026-11-17T20:00Z,32,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T20:00Z,33,Faith No More,,getdaytrends-catchup
+2026-11-17T20:00Z,34,#I_N_No_Return,,getdaytrends-catchup
+2026-11-17T20:00Z,35,OpenAI,,getdaytrends-catchup
+2026-11-17T20:00Z,36,Ultimate,,getdaytrends-catchup
+2026-11-17T20:00Z,37,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T20:00Z,38,The Town,,getdaytrends-catchup
+2026-11-17T20:00Z,39,Wendel,,getdaytrends-catchup
+2026-11-17T20:00Z,40,NASA,,getdaytrends-catchup
+2026-11-17T20:00Z,41,Big Walk,,getdaytrends-catchup
+2026-11-17T20:00Z,42,007 First Light,,getdaytrends-catchup
+2026-11-17T20:00Z,43,Mariah,,getdaytrends-catchup
+2026-11-17T20:00Z,44,Joaquim,,getdaytrends-catchup
+2026-11-17T20:00Z,45,Davy Jones,,getdaytrends-catchup
+2026-11-17T20:00Z,46,Xi Jinping,,getdaytrends-catchup
+2026-11-17T20:00Z,47,Cellbit,,getdaytrends-catchup
+2026-11-17T20:00Z,48,Bogum,,getdaytrends-catchup
+2026-11-17T20:00Z,49,Júlia Zanatta,,getdaytrends-catchup
+2026-11-17T20:00Z,50,ProUni,,getdaytrends-catchup
+2026-11-17T19:00Z,1,goty,,getdaytrends-catchup
+2026-11-17T19:00Z,2,#TheGameAwards,,getdaytrends-catchup
+2026-11-17T19:00Z,3,Onimusha,,getdaytrends-catchup
+2026-11-17T19:00Z,4,Crimson Desert,,getdaytrends-catchup
+2026-11-17T19:00Z,5,GTA 6,,getdaytrends-catchup
+2026-11-17T19:00Z,6,Namjoon,,getdaytrends-catchup
+2026-11-17T19:00Z,7,GTA VI,,getdaytrends-catchup
+2026-11-17T19:00Z,8,Phantom Blade,,getdaytrends-catchup
+2026-11-17T19:00Z,9,Control Resonant,,getdaytrends-catchup
+2026-11-17T19:00Z,10,#EmbraceObedience,,getdaytrends-catchup
+2026-11-17T19:00Z,11,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T19:00Z,12,Requiem,,getdaytrends-catchup
+2026-11-17T19:00Z,13,#SheinbaumLíderMundial,,getdaytrends-catchup
+2026-11-17T19:00Z,14,Geoff,,getdaytrends-catchup
+2026-11-17T19:00Z,15,Singapura,,getdaytrends-catchup
+2026-11-17T19:00Z,16,Pragmata,,getdaytrends-catchup
+2026-11-17T19:00Z,17,Capcom,,getdaytrends-catchup
+2026-11-17T19:00Z,18,#RestoreTheSnyderVerse,,getdaytrends-catchup
+2026-11-17T19:00Z,19,Apple Pay,,getdaytrends-catchup
+2026-11-17T19:00Z,20,Lucia,,getdaytrends-catchup
+2026-11-17T19:00Z,21,Nami,,getdaytrends-catchup
+2026-11-17T19:00Z,22,Alice in Chains,,getdaytrends-catchup
+2026-11-17T19:00Z,23,Rakin,,getdaytrends-catchup
+2026-11-17T19:00Z,24,iCloud,,getdaytrends-catchup
+2026-11-17T19:00Z,25,Gears,,getdaytrends-catchup
+2026-11-17T19:00Z,26,SPEED,,getdaytrends-catchup
+2026-11-17T19:00Z,27,Fire Emblem,,getdaytrends-catchup
+2026-11-17T19:00Z,28,Doctor Who,,getdaytrends-catchup
+2026-11-17T19:00Z,29,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T19:00Z,30,Faith No More,,getdaytrends-catchup
+2026-11-17T19:00Z,31,Ultimate,,getdaytrends-catchup
+2026-11-17T19:00Z,32,Pokopia,,getdaytrends-catchup
+2026-11-17T19:00Z,33,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T19:00Z,34,The Town,,getdaytrends-catchup
+2026-11-17T19:00Z,35,007 First Light,,getdaytrends-catchup
+2026-11-17T19:00Z,36,PrEP,,getdaytrends-catchup
+2026-11-17T19:00Z,37,Bogum,,getdaytrends-catchup
+2026-11-17T19:00Z,38,Big Walk,,getdaytrends-catchup
+2026-11-17T19:00Z,39,Cellbit,,getdaytrends-catchup
+2026-11-17T19:00Z,40,Davy Jones,,getdaytrends-catchup
+2026-11-17T19:00Z,41,ProUni,,getdaytrends-catchup
+2026-11-17T19:00Z,42,Wendel,,getdaytrends-catchup
+2026-11-17T19:00Z,43,Amelie,,getdaytrends-catchup
+2026-11-17T19:00Z,44,Mariah,,getdaytrends-catchup
+2026-11-17T19:00Z,45,NASA,,getdaytrends-catchup
+2026-11-17T19:00Z,46,Guizo,,getdaytrends-catchup
+2026-11-17T19:00Z,47,Thiago,,getdaytrends-catchup
+2026-11-17T19:00Z,48,Xande,,getdaytrends-catchup
+2026-11-17T19:00Z,49,Zanatta,,getdaytrends-catchup
+2026-11-17T19:00Z,50,Endrick,,getdaytrends-catchup
+2026-11-17T18:00Z,1,#TheGameAwards,,getdaytrends-catchup
+2026-11-17T18:00Z,2,goty,,getdaytrends-catchup
+2026-11-17T18:00Z,3,Namjoon,,getdaytrends-catchup
+2026-11-17T18:00Z,4,Onimusha,,getdaytrends-catchup
+2026-11-17T18:00Z,5,Crimson Desert,,getdaytrends-catchup
+2026-11-17T18:00Z,6,#EmbraceObedience,,getdaytrends-catchup
+2026-11-17T18:00Z,7,GTA 6,,getdaytrends-catchup
+2026-11-17T18:00Z,8,Control Resonant,,getdaytrends-catchup
+2026-11-17T18:00Z,9,#SheinbaumLíderMundial,,getdaytrends-catchup
+2026-11-17T18:00Z,10,Singapura,,getdaytrends-catchup
+2026-11-17T18:00Z,11,Alice in Chains,,getdaytrends-catchup
+2026-11-17T18:00Z,12,Pragmata,,getdaytrends-catchup
+2026-11-17T18:00Z,13,#I_N_No_Return,,getdaytrends-catchup
+2026-11-17T18:00Z,14,Requiem,,getdaytrends-catchup
+2026-11-17T18:00Z,15,Ultimate,,getdaytrends-catchup
+2026-11-17T18:00Z,16,Rakin,,getdaytrends-catchup
+2026-11-17T18:00Z,17,Geoff,,getdaytrends-catchup
+2026-11-17T18:00Z,18,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T18:00Z,19,Lucia,,getdaytrends-catchup
+2026-11-17T18:00Z,20,Phantom Blade,,getdaytrends-catchup
+2026-11-17T18:00Z,21,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T18:00Z,22,Faith No More,,getdaytrends-catchup
+2026-11-17T18:00Z,23,Capcom,,getdaytrends-catchup
+2026-11-17T18:00Z,24,Nami,,getdaytrends-catchup
+2026-11-17T18:00Z,25,Doctor Who,,getdaytrends-catchup
+2026-11-17T18:00Z,26,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T18:00Z,27,Fire Emblem,,getdaytrends-catchup
+2026-11-17T18:00Z,28,Pokopia,,getdaytrends-catchup
+2026-11-17T18:00Z,29,Bogum,,getdaytrends-catchup
+2026-11-17T18:00Z,30,ProUni,,getdaytrends-catchup
+2026-11-17T18:00Z,31,The Town,,getdaytrends-catchup
+2026-11-17T18:00Z,32,007 First Light,,getdaytrends-catchup
+2026-11-17T18:00Z,33,Big Walk,,getdaytrends-catchup
+2026-11-17T18:00Z,34,Amelie,,getdaytrends-catchup
+2026-11-17T18:00Z,35,Mariah Carey,,getdaytrends-catchup
+2026-11-17T18:00Z,36,The Economist,,getdaytrends-catchup
+2026-11-17T18:00Z,37,Guizo,,getdaytrends-catchup
+2026-11-17T18:00Z,38,Intervenção,,getdaytrends-catchup
+2026-11-17T18:00Z,39,Xande,,getdaytrends-catchup
+2026-11-17T18:00Z,40,Thiago,,getdaytrends-catchup
+2026-11-17T18:00Z,41,Davy Jones,,getdaytrends-catchup
+2026-11-17T18:00Z,42,Zanatta,,getdaytrends-catchup
+2026-11-17T18:00Z,43,Endrick,,getdaytrends-catchup
+2026-11-17T18:00Z,44,Noruega,,getdaytrends-catchup
+2026-11-17T18:00Z,45,SDOL,,getdaytrends-catchup
+2026-11-17T18:00Z,46,El Nine,,getdaytrends-catchup
+2026-11-17T18:00Z,47,Simpsons,,getdaytrends-catchup
+2026-11-17T18:00Z,48,Roberto Carlos,,getdaytrends-catchup
+2026-11-17T18:00Z,49,Wendel,,getdaytrends-catchup
+2026-11-17T18:00Z,50,Cesar,,getdaytrends-catchup
+2026-11-17T17:00Z,1,Namjoon,,getdaytrends-catchup
+2026-11-17T17:00Z,2,Singapura,,getdaytrends-catchup
+2026-11-17T17:00Z,3,#I_N_No_Return,,getdaytrends-catchup
+2026-11-17T17:00Z,4,#EmbraceObedience,,getdaytrends-catchup
+2026-11-17T17:00Z,5,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T17:00Z,6,Alice in Chains,,getdaytrends-catchup
+2026-11-17T17:00Z,7,#OperaçãoWF,,getdaytrends-catchup
+2026-11-17T17:00Z,8,#OperaçãoGDA,,getdaytrends-catchup
+2026-11-17T17:00Z,9,Bogum,,getdaytrends-catchup
+2026-11-17T17:00Z,10,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T17:00Z,11,Rakin,,getdaytrends-catchup
+2026-11-17T17:00Z,12,Ultimate,,getdaytrends-catchup
+2026-11-17T17:00Z,13,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T17:00Z,14,The Town,,getdaytrends-catchup
+2026-11-17T17:00Z,15,Faith No More,,getdaytrends-catchup
+2026-11-17T17:00Z,16,OFFHOJEMELI,,getdaytrends-catchup
+2026-11-17T17:00Z,17,Amelie,,getdaytrends-catchup
+2026-11-17T17:00Z,18,OFFHOJENOML,,getdaytrends-catchup
+2026-11-17T17:00Z,19,ProUni,,getdaytrends-catchup
+2026-11-17T17:00Z,20,LenaMiu,,getdaytrends-catchup
+2026-11-17T17:00Z,21,O CABELO,,getdaytrends-catchup
+2026-11-17T17:00Z,22,Xande,,getdaytrends-catchup
+2026-11-17T17:00Z,23,Endrick,,getdaytrends-catchup
+2026-11-17T17:00Z,24,Mariah Carey,,getdaytrends-catchup
+2026-11-17T17:00Z,25,Zanatta,,getdaytrends-catchup
+2026-11-17T17:00Z,26,Intervenção,,getdaytrends-catchup
+2026-11-17T17:00Z,27,The Economist,,getdaytrends-catchup
+2026-11-17T17:00Z,28,Noruega,,getdaytrends-catchup
+2026-11-17T17:00Z,29,El Nine,,getdaytrends-catchup
+2026-11-17T17:00Z,30,apagao,,getdaytrends-catchup
+2026-11-17T17:00Z,31,lover of mine,,getdaytrends-catchup
+2026-11-17T17:00Z,32,Vini,,getdaytrends-catchup
+2026-11-17T17:00Z,33,Rayan,,getdaytrends-catchup
+2026-11-17T17:00Z,34,Seleção,,getdaytrends-catchup
+2026-11-17T17:00Z,35,Guizo,,getdaytrends-catchup
+2026-11-17T17:00Z,36,Duolingo,,getdaytrends-catchup
+2026-11-17T17:00Z,37,ESTAMOS COM LULA,,getdaytrends-catchup
+2026-11-17T17:00Z,38,Cesar,,getdaytrends-catchup
+2026-11-17T17:00Z,39,Cheetos,,getdaytrends-catchup
+2026-11-17T17:00Z,40,SDOL,,getdaytrends-catchup
+2026-11-17T17:00Z,41,Flávia Oliveira,,getdaytrends-catchup
+2026-11-17T17:00Z,42,finnick,,getdaytrends-catchup
+2026-11-17T17:00Z,43,Osorio,,getdaytrends-catchup
+2026-11-17T17:00Z,44,Bianquinha,,getdaytrends-catchup
+2026-11-17T17:00Z,45,Simpsons,,getdaytrends-catchup
+2026-11-17T17:00Z,46,Jasper,,getdaytrends-catchup
+2026-11-17T17:00Z,47,Guga,,getdaytrends-catchup
+2026-11-17T17:00Z,48,Bontempo,,getdaytrends-catchup
+2026-11-17T17:00Z,49,goty,,getdaytrends-catchup
+2026-11-17T17:00Z,50,Wendel,,getdaytrends-catchup
+2026-11-17T16:00Z,1,Singapura,,getdaytrends-catchup
+2026-11-17T16:00Z,2,#I_N_No_Return,,getdaytrends-catchup
+2026-11-17T16:00Z,3,#OperaçãoWF,,getdaytrends-catchup
+2026-11-17T16:00Z,4,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T16:00Z,5,Bogum,,getdaytrends-catchup
+2026-11-17T16:00Z,6,#OperaçãoGDA,,getdaytrends-catchup
+2026-11-17T16:00Z,7,#ToComLulaEContraOMercado,,getdaytrends-catchup
+2026-11-17T16:00Z,8,Kim Namjoon,,getdaytrends-catchup
+2026-11-17T16:00Z,9,Alice in Chains,,getdaytrends-catchup
+2026-11-17T16:00Z,10,#justicapormiguel,,getdaytrends-catchup
+2026-11-17T16:00Z,11,The Town,,getdaytrends-catchup
+2026-11-17T16:00Z,12,OFFHOJEMELI,,getdaytrends-catchup
+2026-11-17T16:00Z,13,Amelie,,getdaytrends-catchup
+2026-11-17T16:00Z,14,Endrick,,getdaytrends-catchup
+2026-11-17T16:00Z,15,OFFHOJENOML,,getdaytrends-catchup
+2026-11-17T16:00Z,16,El Nine,,getdaytrends-catchup
+2026-11-17T16:00Z,17,lover of mine,,getdaytrends-catchup
+2026-11-17T16:00Z,18,Luiz Philippe,,getdaytrends-catchup
+2026-11-17T16:00Z,19,ProUni,,getdaytrends-catchup
+2026-11-17T16:00Z,20,O CABELO,,getdaytrends-catchup
+2026-11-17T16:00Z,21,Zanatta,,getdaytrends-catchup
+2026-11-17T16:00Z,22,The Economist,,getdaytrends-catchup
+2026-11-17T16:00Z,23,lena,,getdaytrends-catchup
+2026-11-17T16:00Z,24,Rayan,,getdaytrends-catchup
+2026-11-17T16:00Z,25,Xande,,getdaytrends-catchup
+2026-11-17T16:00Z,26,Mariah Carey,,getdaytrends-catchup
+2026-11-17T16:00Z,27,Ultimate,,getdaytrends-catchup
+2026-11-17T16:00Z,28,Vini,,getdaytrends-catchup
+2026-11-17T16:00Z,29,SDOL,,getdaytrends-catchup
+2026-11-17T16:00Z,30,Guizo,,getdaytrends-catchup
+2026-11-17T16:00Z,31,Seleção,,getdaytrends-catchup
+2026-11-17T16:00Z,32,ESTAMOS COM LULA,,getdaytrends-catchup
+2026-11-17T16:00Z,33,Cheetos,,getdaytrends-catchup
+2026-11-17T16:00Z,34,Simpsons,,getdaytrends-catchup
+2026-11-17T16:00Z,35,Bianquinha,,getdaytrends-catchup
+2026-11-17T16:00Z,36,Bontempo,,getdaytrends-catchup
+2026-11-17T16:00Z,37,finnick,,getdaytrends-catchup
+2026-11-17T16:00Z,38,olivier,,getdaytrends-catchup
+2026-11-17T16:00Z,39,apagao,,getdaytrends-catchup
+2026-11-17T16:00Z,40,Guga Chacra,,getdaytrends-catchup
+2026-11-17T16:00Z,41,Miau,,getdaytrends-catchup
+2026-11-17T16:00Z,42,Joui,,getdaytrends-catchup
+2026-11-17T16:00Z,43,Flavia,,getdaytrends-catchup
+2026-11-17T16:00Z,44,Resident Evil Requiem,,getdaytrends-catchup
+2026-11-17T16:00Z,45,Ancelotti,,getdaytrends-catchup
+2026-11-17T16:00Z,46,Code,,getdaytrends-catchup
+2026-11-17T16:00Z,47,Ling,,getdaytrends-catchup
+2026-11-17T16:00Z,48,Cesar,,getdaytrends-catchup
+2026-11-17T16:00Z,49,Putin,,getdaytrends-catchup
+2026-11-17T16:00Z,50,Estevão,,getdaytrends-catchup
+2026-11-17T15:00Z,1,Singapura,,getdaytrends-catchup
+2026-11-17T15:00Z,2,#I_N_No_Return,,getdaytrends-catchup
+2026-11-17T15:00Z,3,Bogum,,getdaytrends-catchup
+2026-11-17T15:00Z,4,I.N NO RETURN OUT NOW,,getdaytrends-catchup
+2026-11-17T15:00Z,5,#OperaçãoWF,,getdaytrends-catchup
+2026-11-17T15:00Z,6,#OperaçãoGDA,,getdaytrends-catchup
+2026-11-17T15:00Z,7,Endrick,,getdaytrends-catchup
+2026-11-17T15:00Z,8,The Town,,getdaytrends-catchup
+2026-11-17T15:00Z,9,#SINxBRA,,getdaytrends-catchup
+2026-11-17T15:00Z,10,OFFHOJEMELI,,getdaytrends-catchup
+2026-11-17T15:00Z,11,OFFHOJENOML,,getdaytrends-catchup
+2026-11-17T15:00Z,12,Amelie,,getdaytrends-catchup
+2026-11-17T15:00Z,13,El Nine,,getdaytrends-catchup
+2026-11-17T15:00Z,14,Kim Namjoon,,getdaytrends-catchup
+2026-11-17T15:00Z,15,Rayan,,getdaytrends-catchup
+2026-11-17T15:00Z,16,O CABELO,,getdaytrends-catchup
+2026-11-17T15:00Z,17,lover of mine,,getdaytrends-catchup
+2026-11-17T15:00Z,18,Vini Jr,,getdaytrends-catchup
+2026-11-17T15:00Z,19,Seleção,,getdaytrends-catchup
+2026-11-17T15:00Z,20,#MeNotaItaú,,getdaytrends-catchup
+2026-11-17T15:00Z,21,lena,,getdaytrends-catchup
+2026-11-17T15:00Z,22,Zanatta,,getdaytrends-catchup
+2026-11-17T15:00Z,23,The Economist,,getdaytrends-catchup
+2026-11-17T15:00Z,24,Flavia,,getdaytrends-catchup
+2026-11-17T15:00Z,25,Allan,,getdaytrends-catchup
+2026-11-17T15:00Z,26,Xande,,getdaytrends-catchup
+2026-11-17T15:00Z,27,Guga Chacra,,getdaytrends-catchup
+2026-11-17T15:00Z,28,Hexa,,getdaytrends-catchup
+2026-11-17T15:00Z,29,Bontempo,,getdaytrends-catchup
+2026-11-17T15:00Z,30,olivier,,getdaytrends-catchup
+2026-11-17T15:00Z,31,ESTAMOS COM LULA,,getdaytrends-catchup
+2026-11-17T15:00Z,32,apagao,,getdaytrends-catchup
+2026-11-17T15:00Z,33,Resident Evil Requiem,,getdaytrends-catchup
+2026-11-17T15:00Z,34,finnick,,getdaytrends-catchup
+2026-11-17T15:00Z,35,Guizo,,getdaytrends-catchup
+2026-11-17T15:00Z,36,Osorio,,getdaytrends-catchup
+2026-11-17T15:00Z,37,Mariah Carey,,getdaytrends-catchup
+2026-11-17T15:00Z,38,Joui,,getdaytrends-catchup
+2026-11-17T15:00Z,39,SDOL,,getdaytrends-catchup
+2026-11-17T15:00Z,40,Ancelotti,,getdaytrends-catchup
+2026-11-17T15:00Z,41,Estevão,,getdaytrends-catchup
+2026-11-17T15:00Z,42,Simpsons,,getdaytrends-catchup
+2026-11-17T15:00Z,43,Code,,getdaytrends-catchup
+2026-11-17T15:00Z,44,Ling,,getdaytrends-catchup
+2026-11-17T15:00Z,45,Macron,,getdaytrends-catchup
+2026-11-17T15:00Z,46,Wendel,,getdaytrends-catchup
+2026-11-17T15:00Z,47,Morumbi,,getdaytrends-catchup
+2026-11-17T15:00Z,48,UFRJ,,getdaytrends-catchup
+2026-11-17T15:00Z,49,Jeongin,,getdaytrends-catchup
+2026-11-17T15:00Z,50,Rogério Marinho,,getdaytrends-catchup
