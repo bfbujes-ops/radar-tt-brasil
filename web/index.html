@@ -263,6 +263,40 @@ function gTime(days){
   const e = new Date(), b = new Date(e.getTime() - days*864e5);
   return `${ymd(b)} ${ymd(e)}`;
 }
+// O quadro com erro do Google manda só a altura padrão (392 no gráfico, 221 nos demais) e não muda mais.
+// Quem carrega dados manda outra altura. Assim dá para recarregar só o que falhou.
+const G_ERR_H = {TIMESERIES:392, RELATED_QUERIES:221, GEO_MAP:221};
+const gHeights = new WeakMap();
+window.addEventListener('message', e => {
+  if (!/^https:\/\/trends\.google\.com$/.test(e.origin)) return;
+  let d; try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch(_) { return; }
+  if (!d || !d.height) return;
+  const f = [...document.querySelectorAll('.gbox iframe')].find(f => f.contentWindow === e.source);
+  if (f) { const a = gHeights.get(f) || []; a.push(d.height); gHeights.set(f, a); }
+});
+function watchWidget(el, type, key, url, tries = 0){
+  setTimeout(() => {
+    if (gKey !== key) return;
+    const f = el.querySelector('iframe'); if (!f) return;
+    const hs = gHeights.get(f) || [];
+    const failed = !hs.length || hs.every(h => h === G_ERR_H[type]);
+    if (!failed) return;
+    if (tries < 4){
+      gHeights.set(f, []);
+      const src = f.src; f.src = 'about:blank';
+      setTimeout(() => { f.src = src; watchWidget(el, type, key, url, tries + 1); }, 400 + tries * 1200);
+    } else if (!el.querySelector('.gretry')){
+      el.insertAdjacentHTML('beforeend', `<p class="gwait gretry">O Google limitou os acessos agora. <a href="#" data-retry="1">Tentar de novo</a> ou <a href="${url}" target="_blank" rel="noopener">ver no Google Trends ↗</a></p>`);
+    }
+  }, 6000 + tries * 1500);
+}
+document.addEventListener('click', ev => {
+  const a = ev.target.closest('[data-retry]'); if (!a) return;
+  ev.preventDefault();
+  const el = a.closest('.gbox'), f = el.querySelector('iframe');
+  a.parentElement.remove();
+  if (f){ const type = Object.keys(G_ERR_H).find(t => f.src.includes('/'+t+'?')); gHeights.set(f, []); const src = f.src; f.src = 'about:blank'; setTimeout(() => { f.src = src; watchWidget(el, type, gKey, ''); }, 300); }
+});
 function google(q, days){
   const key = q + '|' + days; if (key === gKey) return; gKey = key;
   const time = gTime(days), url = 'https://trends.google.com/trends/explore?' +
@@ -272,17 +306,19 @@ function google(q, days){
   $('#glead').innerHTML = `Interesse de busca (0 a 100, onde 100 é o pico do período), o que as pessoas buscam junto e onde buscam mais. <a href="${url}" target="_blank" rel="noopener">Abrir no Google Trends ↗</a>`;
   const boxes = [['g-ts','TIMESERIES'],['g-rq','RELATED_QUERIES'],['g-geo','GEO_MAP']];
   boxes.forEach(([id]) => $('#'+id).innerHTML = '<p class="gwait">Carregando dados do Google…</p>');
-  loadTrends().then(() => {
-    if (gKey !== key) return;
-    boxes.forEach(([id, type], i) => setTimeout(() => {
+  loadTrends().then(async () => {
+    // Um quadro por vez: o Google recusa ("Ops, ocorreu um erro") quando vários pedem dados juntos.
+    for (const [id, type] of boxes){
       if (gKey !== key) return;
       const el = $('#'+id); el.innerHTML = '';
       try {
         trends.embed.renderExploreWidgetTo(el, type,
           {comparisonItem:[{keyword:q, geo:'BR', time}], category:0, property:''},
           {exploreQuery:`geo=BR&q=${encodeURIComponent(q)}&date=${encodeURIComponent(time)}&hl=pt-BR`, guestPath:'https://trends.google.com:443/trends/embed/'});
+        watchWidget(el, type, key, url);
       } catch(e) { el.innerHTML = `<p class="gwait">Não carregou. <a href="${url}" target="_blank" rel="noopener">Ver no Google Trends ↗</a></p>`; }
-    }, i * 400));
+      await new Promise(r => setTimeout(r, 1500));
+    }
   }).catch(() => {
     $('#g-ts').innerHTML = `<p class="gwait">O Google Trends não respondeu agora (às vezes ele limita acessos). <a href="${url}" target="_blank" rel="noopener">Ver no Google Trends ↗</a></p>`;
     ['g-rq','g-geo'].forEach(id => $('#'+id).innerHTML = '');
