@@ -286,7 +286,7 @@ function watchWidget(el, type, key, url, tries = 0){
       const src = f.src; f.src = 'about:blank';
       setTimeout(() => { f.src = src; watchWidget(el, type, key, url, tries + 1); }, 400 + tries * 1200);
     } else if (!el.querySelector('.gretry')){
-      el.insertAdjacentHTML('beforeend', `<p class="gwait gretry">O Google limitou os acessos agora. <a href="#" data-retry="1">Tentar de novo</a> ou <a href="${url}" target="_blank" rel="noopener">ver no Google Trends ↗</a></p>`);
+      el.insertAdjacentHTML('beforeend', `<p class="gwait gretry">O Google não devolveu dados para este quadro (limite de acessos ou pouca busca pelo termo). <a href="#" data-retry="1">Tentar de novo</a> ou <a href="${url}" target="_blank" rel="noopener">ver no Google Trends ↗</a></p>`);
     }
   }, 6000 + tries * 1500);
 }
