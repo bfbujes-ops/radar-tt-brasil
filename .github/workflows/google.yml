@@ -1,0 +1,80 @@
+name: Google Trends
+
+on:
+  workflow_dispatch:
+    inputs:
+      termos:
+        description: "Termos separados por vírgula (vazio = top 10 do X)"
+        default: ""
+  issues:
+    types: [opened]
+  schedule:
+    - cron: "37 */3 * * *"     # a cada 3 horas: top 10 do momento
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: google
+  cancel-in-progress: false
+
+jobs:
+  google:
+    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'google:')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Montar lista de termos
+        env:
+          INPUT_TERMOS: ${{ github.event.inputs.termos }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          : > pedidos.txt
+          if [ -n "$ISSUE_TITLE" ]; then echo "${ISSUE_TITLE#google:}" | tr ',' '\n' >> pedidos.txt; fi
+          if [ -n "$INPUT_TERMOS" ]; then echo "$INPUT_TERMOS" | tr ',' '\n' >> pedidos.txt; fi
+          cat pedidos.txt
+
+      - name: Baixar dados do Google Trends
+        run: |
+          if [ -s pedidos.txt ]; then python gtrends.py --from-file pedidos.txt
+          else python gtrends.py --top10; fi
+
+      - name: Salvar no repositório
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add web/google
+          git diff --cached --quiet && exit 0
+          git commit -m "google trends $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
+
+      - run: python radar.py build-db && python radar.py export --out web/data/index.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Responder o pedido
+        if: github.event_name == 'issues' && always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          N: ${{ github.event.issue.number }}
+          OK: ${{ job.status }}
+        run: |
+          if [ "$OK" = "success" ]; then MSG="Pronto: os dados do Google já estão no site. Recarregue a página."; else MSG="O Google recusou o acesso agora. Tente de novo mais tarde."; fi
+          gh issue comment "$N" --repo "$GITHUB_REPOSITORY" --body "$MSG"
+          gh issue close "$N" --repo "$GITHUB_REPOSITORY"
