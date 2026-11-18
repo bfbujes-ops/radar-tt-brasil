@@ -139,8 +139,7 @@ summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:
     <div class="ggrid">
       <div class="gbox wide" id="g-ts"></div>
       <div class="gbox" id="g-rq"></div>
-      <div class="gbox" id="g-rt"></div>
-      <div class="gbox wide" id="g-geo"></div>
+      <div class="gbox" id="g-geo"></div>
     </div>
   </div>
 </section>
@@ -271,7 +270,7 @@ function google(q, days){
   $('#gsec').hidden = false;
   $('#gtitle').innerHTML = `“${esc(q)}” no Google <span class="gtag">Brasil · ${esc($('#win').selectedOptions[0].text)}</span>`;
   $('#glead').innerHTML = `Interesse de busca (0 a 100, onde 100 é o pico do período), o que as pessoas buscam junto e onde buscam mais. <a href="${url}" target="_blank" rel="noopener">Abrir no Google Trends ↗</a>`;
-  const boxes = [['g-ts','TIMESERIES'],['g-rq','RELATED_QUERIES'],['g-rt','RELATED_TOPICS'],['g-geo','GEO_MAP']];
+  const boxes = [['g-ts','TIMESERIES'],['g-rq','RELATED_QUERIES'],['g-geo','GEO_MAP']];
   boxes.forEach(([id]) => $('#'+id).innerHTML = '<p class="gwait">Carregando dados do Google…</p>');
   loadTrends().then(() => {
     if (gKey !== key) return;
@@ -286,7 +285,7 @@ function google(q, days){
     }, i * 400));
   }).catch(() => {
     $('#g-ts').innerHTML = `<p class="gwait">O Google Trends não respondeu agora (às vezes ele limita acessos). <a href="${url}" target="_blank" rel="noopener">Ver no Google Trends ↗</a></p>`;
-    ['g-rq','g-rt','g-geo'].forEach(id => $('#'+id).innerHTML = '');
+    ['g-rq','g-geo'].forEach(id => $('#'+id).innerHTML = '');
   });
 }
 
