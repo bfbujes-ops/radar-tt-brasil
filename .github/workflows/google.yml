@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   google:
-    if: github.event_name != 'issues' || startsWith(github.event.issue.title, 'google:')
+    if: github.event_name != 'issues' || (startsWith(github.event.issue.title, 'google:') && github.event.issue.user.login == github.repository_owner)
     runs-on: ubuntu-latest
     environment:
       name: github-pages

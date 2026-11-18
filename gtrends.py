@@ -33,7 +33,12 @@ BASE = "https://trends.google.com/trends"
 HL, TZ, GEO = "pt-BR", 180, "BR"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
-WINDOWS = {"12m": "today 12-m", "3m": "today 3-m", "7d": "now 7-d"}
+def _six_months() -> str:
+    e = dt.date.today(); b = e - dt.timedelta(days=180)
+    return f"{b:%Y-%m-%d} {e:%Y-%m-%d}"   # até ~9 meses o Google devolve um ponto por dia
+
+
+WINDOWS = {"3m": lambda: "today 3-m", "6m": _six_months, "12m": lambda: "today 12-m"}
 
 
 def slug(term: str) -> str:
@@ -83,11 +88,9 @@ class Trends:
             time.sleep(1.2)
             d = self._get("widgetdata/multiline",
                           {"hl": HL, "tz": TZ, "req": json.dumps(w["request"]), "token": w["token"]})
-            out["timeline"] = [[int(p["time"]), p["value"][0]]
-                               for p in d["default"]["timelineData"] if not p.get("isPartial")]
-            part = [p for p in d["default"]["timelineData"] if p.get("isPartial")]
-            if part:
-                out["partial"] = [int(part[-1]["time"]), part[-1]["value"][0]]
+            # terceiro campo = 1 quando o Google marca o ponto como parcial (período ainda em curso)
+            out["timeline"] = [[int(p["time"]), p["value"][0], 1 if p.get("isPartial") else 0]
+                               for p in d["default"]["timelineData"]]
 
         w = widgets.get("RELATED_QUERIES")
         if w:
@@ -133,7 +136,7 @@ def top10_terms() -> list[str]:
     return []
 
 
-def run(terms: list[str], windows=("12m", "3m")) -> int:
+def run(terms: list[str], windows=("3m", "6m", "12m")) -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     tr = Trends()
     ok = 0
@@ -146,7 +149,7 @@ def run(terms: list[str], windows=("12m", "3m")) -> int:
         print(f"[google] {term}")
         for key in windows:
             try:
-                rec["windows"][key] = tr.fetch(term, WINDOWS[key])
+                rec["windows"][key] = tr.fetch(term, WINDOWS[key]())
             except Exception as exc:  # noqa: BLE001
                 print(f"  {key}: {exc}", file=sys.stderr)
             time.sleep(2 + random.uniform(0, 2))
