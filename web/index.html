@@ -83,6 +83,16 @@ td.when{white-space:nowrap}
 .home .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
 .home .cloud .chip{min-height:0}
 @media(max-width:860px){.panels{grid-template-columns:minmax(0,1fr)}}
+.gsec{border-top:6px solid var(--ink);padding-top:22px}
+.gsec h2 .gtag{font-family:"Instrument Sans",sans-serif;font-size:15px;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:10px;vertical-align:middle}
+.gsec .lead a{color:var(--acc-ink);font-weight:600;white-space:nowrap}
+.ggrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 28px}
+.gbox{min-height:120px;background:#fff;border-radius:6px;overflow:hidden}
+.gbox.wide{grid-column:1/-1}
+.gbox iframe{display:block;width:100%!important;border:0}
+.gwait{padding:16px;color:#5b5550;font-size:14px}
+.xhead{font-size:15px;font-weight:600;color:var(--muted);margin:0 0 6px}
+@media(max-width:760px){.ggrid{grid-template-columns:minmax(0,1fr)}}
 details{margin-top:28px;border-top:1px solid var(--rule);padding-top:12px}
 summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
 .more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px}
@@ -103,7 +113,7 @@ summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:
     <h1>Radar TT Brasil</h1>
     <p class="sub" id="sub">Histórico dos trending topics do X no Brasil, hora a hora.</p>
     <form id="f" role="search">
-      <input type="search" id="q" placeholder="Pesquise um termo, ex.: shampoo" aria-label="Termo" autocomplete="off">
+      <input type="search" id="q" placeholder="Pesquise qualquer palavra, ex.: shampoo" aria-label="Termo" autocomplete="off">
       <select id="win" aria-label="Janela">
         <option value="30">30 dias</option>
         <option value="90">90 dias</option>
@@ -122,6 +132,19 @@ summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:
   <div class="wrap" id="out"><p class="lead">Carregando o histórico…</p></div>
 </main>
 
+<section class="band" id="gsec" hidden>
+  <div class="wrap gsec">
+    <h2 id="gtitle">No Google</h2>
+    <p class="lead" id="glead"></p>
+    <div class="ggrid">
+      <div class="gbox wide" id="g-ts"></div>
+      <div class="gbox" id="g-rq"></div>
+      <div class="gbox" id="g-rt"></div>
+      <div class="gbox wide" id="g-geo"></div>
+    </div>
+  </div>
+</section>
+
 <section class="band how">
   <div class="wrap">
     <h3>Como ler os números</h3>
@@ -130,6 +153,7 @@ summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:
       <li><b>Pontos</b>: cada hora vale pela posição. 1º lugar = 50 pontos, 50º = 1. Somam tempo e força num número só.</li>
       <li><b>Força relativa</b>: a porcentagem de termos que entraram nos TTs na mesma janela e somaram menos pontos que este.</li>
       <li><b>Episódio</b>: aparições seguidas; mais de 3 horas fora da lista abre um episódio novo.</li>
+      <li><b>No Google</b>: dados do Google Trends para o Brasil. O índice vai de 0 a 100, onde 100 é o pico de buscas do termo no período; não é contagem de buscas. Funciona para qualquer palavra, mesmo as que nunca foram trend no X.</li>
       <li><b>Contexto</b>: a frase “Porque…” vem dos posts mais engajados no momento do episódio, resumidos por IA quando o coletor está configurado para isso. Sem ela, mostramos os termos que subiram e caíram junto, que costumam ser a pista do assunto, e o link para os posts daquela data no X.</li>
     </ul>
   </div>
@@ -145,6 +169,7 @@ const fmt = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2
 const fmtD = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'short'});
 const fmtM = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',month:'short'});
 const nf = new Intl.NumberFormat('pt-BR');
+const fmtH = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit'});
 const GAP = 3, PER_PAGE = 15;
 
 let D, N, T0, H, ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
@@ -207,23 +232,70 @@ function episodes(v){
 function render(){
   const q = $('#q').value.trim(), days = +$('#win').value, exact = $('#exact').checked;
   if (!q){
+    $('#gsec').hidden = true; gKey = '';
     const top = weekTop(), hi = top.length ? top[0][1] : 1;
-    $('#out').innerHTML = `<div class="home"><p class="lead">Digite um termo para ver se ele já foi tendência no Brasil, quando, com que força e por quê.</p>
-      <h3>Mais fortes dos últimos 7 dias</h3><p class="pnote">Clique para abrir a ficha do termo</p>
+    $('#out').innerHTML = `<div class="home"><p class="lead">Digite qualquer palavra. Mostramos se ela já foi trend no X no Brasil (quando, com que força e por quê) e o interesse de busca dela no Google, com os termos relacionados.</p>
+      <h3>Top 10 dos últimos 7 dias</h3><p class="pnote">Clique para abrir a ficha do termo</p>
       <div class="cloud">${top.map(([id,v]) => `<button type="button" class="chip" data-q="${esc(D.terms[id])}" style="font-size:${(14 + 10*Math.sqrt(v/hi)).toFixed(1)}px">${esc(D.terms[id])}<small>${nf.format(v)}</small></button>`).join('')}</div></div>`;
     return; }
   try { history.replaceState(null,'','#'+slug(q)); } catch(e) {}
   const R = search(q, days, exact);
   state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE;
   draw();
+  google(q, days);
+}
+
+// ---------- Google Trends (widgets oficiais, sem chave) ----------
+const GT_VER = '4640_RC01';
+let gKey = '', gLoader = null;
+function loadTrends(){
+  return gLoader ||= new Promise((ok, fail) => {
+    const sc = document.createElement('script');
+    sc.src = `https://ssl.gstatic.com/trends_nrtr/${GT_VER}/embed_loader.js`;
+    sc.onload = () => window.trends ? ok() : fail(new Error('loader'));
+    sc.onerror = () => fail(new Error('loader'));
+    document.head.appendChild(sc);
+  });
+}
+function gTime(days){
+  if (days <= 30) return 'today 1-m';
+  if (days <= 90) return 'today 3-m';
+  if (days >= 365) return 'today 12-m';
+  const e = new Date(), b = new Date(e.getTime() - days*864e5);
+  return `${ymd(b)} ${ymd(e)}`;
+}
+function google(q, days){
+  const key = q + '|' + days; if (key === gKey) return; gKey = key;
+  const time = gTime(days), url = 'https://trends.google.com/trends/explore?' +
+    new URLSearchParams({geo:'BR', q, date:time, hl:'pt-BR'}).toString();
+  $('#gsec').hidden = false;
+  $('#gtitle').innerHTML = `“${esc(q)}” no Google <span class="gtag">Brasil · ${esc($('#win').selectedOptions[0].text)}</span>`;
+  $('#glead').innerHTML = `Interesse de busca (0 a 100, onde 100 é o pico do período), o que as pessoas buscam junto e onde buscam mais. <a href="${url}" target="_blank" rel="noopener">Abrir no Google Trends ↗</a>`;
+  const boxes = [['g-ts','TIMESERIES'],['g-rq','RELATED_QUERIES'],['g-rt','RELATED_TOPICS'],['g-geo','GEO_MAP']];
+  boxes.forEach(([id]) => $('#'+id).innerHTML = '<p class="gwait">Carregando dados do Google…</p>');
+  loadTrends().then(() => {
+    if (gKey !== key) return;
+    boxes.forEach(([id, type], i) => setTimeout(() => {
+      if (gKey !== key) return;
+      const el = $('#'+id); el.innerHTML = '';
+      try {
+        trends.embed.renderExploreWidgetTo(el, type,
+          {comparisonItem:[{keyword:q, geo:'BR', time}], category:0, property:''},
+          {exploreQuery:`geo=BR&q=${encodeURIComponent(q)}&date=${encodeURIComponent(time)}&hl=pt-BR`, guestPath:'https://trends.google.com:443/trends/embed/'});
+      } catch(e) { el.innerHTML = `<p class="gwait">Não carregou. <a href="${url}" target="_blank" rel="noopener">Ver no Google Trends ↗</a></p>`; }
+    }, i * 400));
+  }).catch(() => {
+    $('#g-ts').innerHTML = `<p class="gwait">O Google Trends não respondeu agora (às vezes ele limita acessos). <a href="${url}" target="_blank" rel="noopener">Ver no Google Trends ↗</a></p>`;
+    ['g-rq','g-rt','g-geo'].forEach(id => $('#'+id).innerHTML = '');
+  });
 }
 
 function draw(){
   const R = state.R, q = $('#q').value.trim(), win = $('#win').selectedOptions[0].text;
   if (!R.variants.length){
     const pre = R.qn.slice(0,4), near = pre.length >= 3 ? D.terms.filter((t,i) => N[i].startsWith(pre)).slice(0,6) : [];
-    $('#out').innerHTML = `<div class="empty"><h2>“${esc(q)}” não foi tendência no Brasil nos últimos ${esc(win)}</h2>
-      <p>Nenhuma das ${nf.format(termPoints(R.days).sorted.length)} expressões que passaram pelos TTs nesse período contém esse termo. Tente uma janela maior, outra grafia ou só parte da palavra.</p>
+    $('#out').innerHTML = `<div class="empty"><p class="xhead">No X</p><h2>“${esc(q)}” não entrou nos trending topics do Brasil nos últimos ${esc(win)}</h2>
+      <p>Nenhuma das ${nf.format(termPoints(R.days).sorted.length)} expressões que passaram pelos TTs nesse período contém esse termo. O interesse dele no Google aparece logo abaixo.</p>
       ${near.length ? `<p>Parecidos no histórico: ${near.map(t => `<button class="chip" style="color:var(--ink);border-color:var(--rule)" data-q="${esc(t)}">${esc(t)}</button>`).join(' ')}</p>` : ''}</div>`;
     return;
   }
@@ -244,7 +316,7 @@ function draw(){
   const lead = strongest ? `O pico foi em ${fmtD.format(dateOf(strongest.start))}, quando “${esc(strongest.term)}” chegou à ${strongest.best}ª posição e ficou ${strongest.hrs.length}h na lista.` : '';
 
   $('#out').innerHTML = `
-    <h2>${title}</h2><p class="lead">${lead}</p>
+    <p class="xhead">No X</p><h2>${title}</h2><p class="lead">${lead}</p>
     ${R.variants.length > 1 ? `<div class="vars" aria-label="Variantes encontradas">${R.variants.map(v => `<label class="var"><input type="checkbox" data-v="${v.id}" ${state.sel.has(v.id)?'checked':''}> ${esc(v.term)} <small>${v.occ.length}h</small></label>`).join('')}</div>` : ''}
     <div class="stats">
       <div class="stat"><span class="num">${nf.format(hours)}h</span><span class="lbl">em trend, em ${daysSet.size} ${daysSet.size===1?'dia':'dias'}</span></div>
@@ -358,7 +430,7 @@ function cloud(eps){
 function weekTop(){
   const a = Math.max(0, H - 168), pts = new Map();
   for (let h=a; h<H; h++) D.h[h].forEach((id,i) => pts.set(id, (pts.get(id)||0) + points(i+1)));
-  return [...pts.entries()].sort((x,y) => y[1]-x[1]).slice(0,12);
+  return [...pts.entries()].sort((x,y) => y[1]-x[1]).slice(0,10);
 }
 
 function boot(data){
@@ -366,8 +438,9 @@ function boot(data){
   const lastH = H - 1;
   $('#sub').textContent = `Histórico dos trending topics do X no Brasil, hora a hora · ${nf.format(D.terms.length)} termos desde ${fmtD.format(dateOf(0))} · última leitura ${fmt.format(dateOf(lastH))}`;
   $('#demo').hidden = !D.demo;
-  const ex = D.demo ? ['shampoo','Enem','Apagão','Flamengo'] : D.h[lastH].slice(0,6).map(id => D.terms[id]);
-  $('#now').innerHTML = `<span>${D.demo ? 'Exemplos:' : 'Em alta agora:'}</span>` + ex.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('');
+  let hh = lastH; while (hh > 0 && D.h[hh].length < 10) hh--;   // última hora com a lista completa
+  const ex = D.demo ? ['shampoo','Enem','Apagão','Flamengo'] : D.h[hh].slice(0,10).map(id => D.terms[id]);
+  $('#now').innerHTML = `<span>${D.demo ? 'Exemplos:' : `Top 10 em alta (${fmtH.format(dateOf(hh))}h):`}</span>` + ex.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('');
   const hq = decodeURIComponent(location.hash.slice(1)).replace(/-/g,' ');
   $('#q').value = hq || (D.demo ? 'shampoo' : '');
   render();
