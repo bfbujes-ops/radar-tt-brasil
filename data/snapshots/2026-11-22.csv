@@ -199,3 +199,383 @@ ts,rank,term,tweet_count,source
 2026-11-22T00:00Z,48,Pacheco,11400,getdaytrends-catchup
 2026-11-22T00:00Z,49,Ayrton Lucas,,getdaytrends-catchup
 2026-11-22T00:00Z,50,Lodi,,getdaytrends-catchup
+2026-11-22T11:00Z,1,Flamengo,350800,getdaytrends
+2026-11-22T11:00Z,2,#LENAMIUBDParty,200700,getdaytrends
+2026-11-22T11:00Z,3,Russell,127800,getdaytrends
+2026-11-22T11:00Z,4,Samuel Lino,36000,getdaytrends
+2026-11-22T11:00Z,5,Arrascaeta,24700,getdaytrends
+2026-11-22T11:00Z,6,Leclerc,91600,getdaytrends
+2026-11-22T11:00Z,7,#PALXFLA,12200,getdaytrends
+2026-11-22T11:00Z,8,atletico,80300,getdaytrends
+2026-11-22T11:00Z,9,#LulaAoVivoAgora,46000,getdaytrends
+2026-11-22T11:00Z,10,Plata,50100,getdaytrends
+2026-11-22T11:00Z,11,Jason,400200,getdaytrends
+2026-11-22T11:00Z,12,Verstappen,107200,getdaytrends
+2026-11-22T11:00Z,13,Malévola,55700,getdaytrends
+2026-11-22T11:00Z,14,Lucia,333200,getdaytrends
+2026-11-22T11:00Z,15,carrascal,15400,getdaytrends
+2026-11-22T11:00Z,16,Boca Juniors,56700,getdaytrends
+2026-11-22T11:00Z,17,Ana Carolina,,getdaytrends
+2026-11-22T11:00Z,18,Haymitch,69300,getdaytrends
+2026-11-22T11:00Z,19,Deca,39200,getdaytrends
+2026-11-22T11:00Z,20,Barba,12400,getdaytrends
+2026-11-22T11:00Z,21,#AltasHoras,,getdaytrends
+2026-11-22T11:00Z,22,Natanael,,getdaytrends
+2026-11-22T11:00Z,23,#LiveDoExercito,17100,getdaytrends
+2026-11-22T11:00Z,24,Paquetá,15700,getdaytrends
+2026-11-22T11:00Z,25,Ferrari,85600,getdaytrends
+2026-11-22T11:00Z,26,Cisse,,getdaytrends
+2026-11-22T11:00Z,27,Las Vegas,143600,getdaytrends
+2026-11-22T11:00Z,28,Bruno Henrique,15800,getdaytrends
+2026-11-22T11:00Z,29,Arias,25300,getdaytrends
+2026-11-22T11:00Z,30,hadjar,11700,getdaytrends
+2026-11-22T11:00Z,31,Gabriel,182500,getdaytrends
+2026-11-22T11:00Z,32,Pascini,,getdaytrends
+2026-11-22T11:00Z,33,GTA 6,818500,getdaytrends
+2026-11-22T11:00Z,34,O Galo,15800,getdaytrends
+2026-11-22T11:00Z,35,Merentiel,41100,getdaytrends
+2026-11-22T11:00Z,36,Sula,,getdaytrends
+2026-11-22T11:00Z,37,Bernard,22800,getdaytrends
+2026-11-22T11:00Z,38,Paulo Bracks,,getdaytrends
+2026-11-22T11:00Z,39,Sul-Americana,,getdaytrends
+2026-11-22T11:00Z,40,Alex Sandro,,getdaytrends
+2026-11-22T11:00Z,41,Jota,23600,getdaytrends
+2026-11-22T11:00Z,42,Rossi,18800,getdaytrends
+2026-11-22T11:00Z,43,Éverson,,getdaytrends
+2026-11-22T11:00Z,44,Antonelli,17100,getdaytrends
+2026-11-22T11:00Z,45,Leonardo Jardim,,getdaytrends
+2026-11-22T11:00Z,46,Paris 6,,getdaytrends
+2026-11-22T11:00Z,47,Menin,,getdaytrends
+2026-11-22T11:00Z,48,Paredes,102500,getdaytrends
+2026-11-22T11:00Z,49,Piastri,34200,getdaytrends
+2026-11-22T11:00Z,50,Bahía,22400,getdaytrends
+2026-11-22T10:00Z,1,Flamengo,347600,getdaytrends-catchup
+2026-11-22T10:00Z,2,#LENAMIUBDParty,127600,getdaytrends-catchup
+2026-11-22T10:00Z,3,Samuel Lino,35800,getdaytrends-catchup
+2026-11-22T10:00Z,4,#PALXFLA,12100,getdaytrends-catchup
+2026-11-22T10:00Z,5,Russell,125200,getdaytrends-catchup
+2026-11-22T10:00Z,6,Leclerc,87200,getdaytrends-catchup
+2026-11-22T10:00Z,7,Arrascaeta,24400,getdaytrends-catchup
+2026-11-22T10:00Z,8,Verstappen,103700,getdaytrends-catchup
+2026-11-22T10:00Z,9,atletico,79700,getdaytrends-catchup
+2026-11-22T10:00Z,10,#LulaAoVivoAgora,46000,getdaytrends-catchup
+2026-11-22T10:00Z,11,Plata,50300,getdaytrends-catchup
+2026-11-22T10:00Z,12,Jason,401400,getdaytrends-catchup
+2026-11-22T10:00Z,13,Lucia,334800,getdaytrends-catchup
+2026-11-22T10:00Z,14,Malévola,54600,getdaytrends-catchup
+2026-11-22T10:00Z,15,carrascal,15400,getdaytrends-catchup
+2026-11-22T10:00Z,16,Boca Juniors,56000,getdaytrends-catchup
+2026-11-22T10:00Z,17,Antonelli,17400,getdaytrends-catchup
+2026-11-22T10:00Z,18,Ana Carolina,,getdaytrends-catchup
+2026-11-22T10:00Z,19,Haymitch,69400,getdaytrends-catchup
+2026-11-22T10:00Z,20,Deca,38700,getdaytrends-catchup
+2026-11-22T10:00Z,21,#AltasHoras,,getdaytrends-catchup
+2026-11-22T10:00Z,22,Barba,12300,getdaytrends-catchup
+2026-11-22T10:00Z,23,Natanael,,getdaytrends-catchup
+2026-11-22T10:00Z,24,Norris,26800,getdaytrends-catchup
+2026-11-22T10:00Z,25,#LiveDoExercito,17000,getdaytrends-catchup
+2026-11-22T10:00Z,26,Ferrari,83200,getdaytrends-catchup
+2026-11-22T10:00Z,27,Paquetá,15600,getdaytrends-catchup
+2026-11-22T10:00Z,28,Pascini,,getdaytrends-catchup
+2026-11-22T10:00Z,29,Cisse,,getdaytrends-catchup
+2026-11-22T10:00Z,30,Las Vegas,138100,getdaytrends-catchup
+2026-11-22T10:00Z,31,Arias,25200,getdaytrends-catchup
+2026-11-22T10:00Z,32,Bruno Henrique,15700,getdaytrends-catchup
+2026-11-22T10:00Z,33,Gabriel,183400,getdaytrends-catchup
+2026-11-22T10:00Z,34,hadjar,11300,getdaytrends-catchup
+2026-11-22T10:00Z,35,GTA 6,826200,getdaytrends-catchup
+2026-11-22T10:00Z,36,Óscar,169200,getdaytrends-catchup
+2026-11-22T10:00Z,37,O Galo,15800,getdaytrends-catchup
+2026-11-22T10:00Z,38,Leonardo Jardim,,getdaytrends-catchup
+2026-11-22T10:00Z,39,Rossi,18700,getdaytrends-catchup
+2026-11-22T10:00Z,40,Éverson,,getdaytrends-catchup
+2026-11-22T10:00Z,41,Jota,23800,getdaytrends-catchup
+2026-11-22T10:00Z,42,Merentiel,40900,getdaytrends-catchup
+2026-11-22T10:00Z,43,Sula,,getdaytrends-catchup
+2026-11-22T10:00Z,44,Bernard,22900,getdaytrends-catchup
+2026-11-22T10:00Z,45,Sul-Americana,,getdaytrends-catchup
+2026-11-22T10:00Z,46,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T10:00Z,47,Paredes,101000,getdaytrends-catchup
+2026-11-22T10:00Z,48,Alex Sandro,,getdaytrends-catchup
+2026-11-22T10:00Z,49,Paris 6,,getdaytrends-catchup
+2026-11-22T10:00Z,50,Bahía,22300,getdaytrends-catchup
+2026-11-22T09:00Z,1,Leclerc,82100,getdaytrends-catchup
+2026-11-22T09:00Z,2,Russell,123000,getdaytrends-catchup
+2026-11-22T09:00Z,3,#LENAMIUBDParty,58700,getdaytrends-catchup
+2026-11-22T09:00Z,4,LENAMIU BIRTHDAY PARTY,62100,getdaytrends-catchup
+2026-11-22T09:00Z,5,Verstappen,99500,getdaytrends-catchup
+2026-11-22T09:00Z,6,Hamilton,91300,getdaytrends-catchup
+2026-11-22T09:00Z,7,Ferrari,80200,getdaytrends-catchup
+2026-11-22T09:00Z,8,Las Vegas,132000,getdaytrends-catchup
+2026-11-22T09:00Z,9,Antonelli,17700,getdaytrends-catchup
+2026-11-22T09:00Z,10,Óscar,166100,getdaytrends-catchup
+2026-11-22T09:00Z,11,Norris,26000,getdaytrends-catchup
+2026-11-22T09:00Z,12,hadjar,11000,getdaytrends-catchup
+2026-11-22T09:00Z,13,#ลีน่าหมิว,80700,getdaytrends-catchup
+2026-11-22T09:00Z,14,McLaren,27100,getdaytrends-catchup
+2026-11-22T09:00Z,15,Perez,168700,getdaytrends-catchup
+2026-11-22T09:00Z,16,Sainz,10600,getdaytrends-catchup
+2026-11-22T09:00Z,17,Gasly,,getdaytrends-catchup
+2026-11-22T09:00Z,18,Kimi,49200,getdaytrends-catchup
+2026-11-22T09:00Z,19,#Formula1,,getdaytrends-catchup
+2026-11-22T09:00Z,20,Ana Carolina,,getdaytrends-catchup
+2026-11-22T09:00Z,21,FELIZ ANIVERSARIO ANA,,getdaytrends-catchup
+2026-11-22T09:00Z,22,Lindblad,,getdaytrends-catchup
+2026-11-22T09:00Z,23,Red Bull,12500,getdaytrends-catchup
+2026-11-22T09:00Z,24,O Max,14200,getdaytrends-catchup
+2026-11-22T09:00Z,25,Bortoleto,,getdaytrends-catchup
+2026-11-22T09:00Z,26,Twenty One Pilots,17400,getdaytrends-catchup
+2026-11-22T09:00Z,27,Alpine,,getdaytrends-catchup
+2026-11-22T09:00Z,28,carol biazin,,getdaytrends-catchup
+2026-11-22T09:00Z,29,Malévola,53800,getdaytrends-catchup
+2026-11-22T09:00Z,30,Guarani,,getdaytrends-catchup
+2026-11-22T09:00Z,31,Bracks,,getdaytrends-catchup
+2026-11-22T09:00Z,32,Kombi,,getdaytrends-catchup
+2026-11-22T09:00Z,33,Éverson,,getdaytrends-catchup
+2026-11-22T09:00Z,34,Menin,,getdaytrends-catchup
+2026-11-22T08:00Z,1,Leclerc,76600,getdaytrends-catchup
+2026-11-22T08:00Z,2,Russell,119300,getdaytrends-catchup
+2026-11-22T08:00Z,3,Verstappen,95400,getdaytrends-catchup
+2026-11-22T08:00Z,4,Ferrari,77200,getdaytrends-catchup
+2026-11-22T08:00Z,5,Las Vegas,125500,getdaytrends-catchup
+2026-11-22T08:00Z,6,Norris,25500,getdaytrends-catchup
+2026-11-22T08:00Z,7,Antonelli,18000,getdaytrends-catchup
+2026-11-22T08:00Z,8,Óscar,161800,getdaytrends-catchup
+2026-11-22T08:00Z,9,#F1naGlobo,,getdaytrends-catchup
+2026-11-22T08:00Z,10,hadjar,10600,getdaytrends-catchup
+2026-11-22T08:00Z,11,McLaren,25900,getdaytrends-catchup
+2026-11-22T08:00Z,12,Perez,168200,getdaytrends-catchup
+2026-11-22T08:00Z,13,Sainz,10300,getdaytrends-catchup
+2026-11-22T08:00Z,14,Ana Carolina,,getdaytrends-catchup
+2026-11-22T08:00Z,15,Gasly,,getdaytrends-catchup
+2026-11-22T08:00Z,16,#LenaMiuBirthdayParty,57300,getdaytrends-catchup
+2026-11-22T08:00Z,17,Kimi,49600,getdaytrends-catchup
+2026-11-22T08:00Z,18,#Formula1,,getdaytrends-catchup
+2026-11-22T08:00Z,19,#AltasHoras,,getdaytrends-catchup
+2026-11-22T08:00Z,20,Keanu Reeves,,getdaytrends-catchup
+2026-11-22T08:00Z,21,Kelly Piquet,,getdaytrends-catchup
+2026-11-22T08:00Z,22,FELIZ ANIVERSARIO ANA,,getdaytrends-catchup
+2026-11-22T08:00Z,23,Lindblad,,getdaytrends-catchup
+2026-11-22T08:00Z,24,Red Bull,12200,getdaytrends-catchup
+2026-11-22T08:00Z,25,#F1noSporTV,,getdaytrends-catchup
+2026-11-22T08:00Z,26,O Max,14200,getdaytrends-catchup
+2026-11-22T08:00Z,27,Twenty One Pilots,17100,getdaytrends-catchup
+2026-11-22T08:00Z,28,Arvid,,getdaytrends-catchup
+2026-11-22T08:00Z,29,Bortoleto,,getdaytrends-catchup
+2026-11-22T08:00Z,30,Alpine,,getdaytrends-catchup
+2026-11-22T08:00Z,31,atletico,78600,getdaytrends-catchup
+2026-11-22T08:00Z,32,rafa camara,,getdaytrends-catchup
+2026-11-22T08:00Z,33,carol biazin,,getdaytrends-catchup
+2026-11-22T08:00Z,34,Barba,12300,getdaytrends-catchup
+2026-11-22T08:00Z,35,Malévola,53200,getdaytrends-catchup
+2026-11-22T08:00Z,36,Boca Juniors,54700,getdaytrends-catchup
+2026-11-22T08:00Z,37,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T08:00Z,38,Lucas Silva,,getdaytrends-catchup
+2026-11-22T08:00Z,39,Paredes,97500,getdaytrends-catchup
+2026-11-22T08:00Z,40,Audi,10600,getdaytrends-catchup
+2026-11-22T08:00Z,41,Guarani,,getdaytrends-catchup
+2026-11-22T08:00Z,42,O Galo,15700,getdaytrends-catchup
+2026-11-22T08:00Z,43,Kombi,,getdaytrends-catchup
+2026-11-22T08:00Z,44,Éverson,,getdaytrends-catchup
+2026-11-22T08:00Z,45,Menin,,getdaytrends-catchup
+2026-11-22T08:00Z,46,Bernard,22900,getdaytrends-catchup
+2026-11-22T08:00Z,47,Engenheiro Leo,,getdaytrends-catchup
+2026-11-22T07:00Z,1,Leclerc,70500,getdaytrends-catchup
+2026-11-22T07:00Z,2,Russell,113100,getdaytrends-catchup
+2026-11-22T07:00Z,3,Verstappen,87200,getdaytrends-catchup
+2026-11-22T07:00Z,4,Las Vegas,114600,getdaytrends-catchup
+2026-11-22T07:00Z,5,Ferrari,73300,getdaytrends-catchup
+2026-11-22T07:00Z,6,Antonelli,18300,getdaytrends-catchup
+2026-11-22T07:00Z,7,Norris,24000,getdaytrends-catchup
+2026-11-22T07:00Z,8,Óscar,154300,getdaytrends-catchup
+2026-11-22T07:00Z,9,#F1naGlobo,,getdaytrends-catchup
+2026-11-22T07:00Z,10,hadjar,,getdaytrends-catchup
+2026-11-22T07:00Z,11,McLaren,24500,getdaytrends-catchup
+2026-11-22T07:00Z,12,Perez,167100,getdaytrends-catchup
+2026-11-22T07:00Z,13,Sainz,,getdaytrends-catchup
+2026-11-22T07:00Z,14,Ana Carolina,,getdaytrends-catchup
+2026-11-22T07:00Z,15,Lindblad,,getdaytrends-catchup
+2026-11-22T07:00Z,16,Gasly,,getdaytrends-catchup
+2026-11-22T07:00Z,17,#Formula1,,getdaytrends-catchup
+2026-11-22T07:00Z,18,Kimi,50100,getdaytrends-catchup
+2026-11-22T07:00Z,19,#AltasHoras,,getdaytrends-catchup
+2026-11-22T07:00Z,20,FELIZ ANIVERSARIO ANA,,getdaytrends-catchup
+2026-11-22T07:00Z,21,Keanu Reeves,,getdaytrends-catchup
+2026-11-22T07:00Z,22,Kelly Piquet,,getdaytrends-catchup
+2026-11-22T07:00Z,23,Red Bull,11900,getdaytrends-catchup
+2026-11-22T07:00Z,24,Safety Car,,getdaytrends-catchup
+2026-11-22T07:00Z,25,#F1noSporTV,,getdaytrends-catchup
+2026-11-22T07:00Z,26,Arvid,,getdaytrends-catchup
+2026-11-22T07:00Z,27,Bortoleto,,getdaytrends-catchup
+2026-11-22T07:00Z,28,O Max,14000,getdaytrends-catchup
+2026-11-22T07:00Z,29,atletico,78100,getdaytrends-catchup
+2026-11-22T07:00Z,30,Alpine,,getdaytrends-catchup
+2026-11-22T07:00Z,31,Twenty One Pilots,16600,getdaytrends-catchup
+2026-11-22T07:00Z,32,rafa camara,,getdaytrends-catchup
+2026-11-22T07:00Z,33,carol biazin,,getdaytrends-catchup
+2026-11-22T07:00Z,34,Bracks,,getdaytrends-catchup
+2026-11-22T07:00Z,35,Alanis Guillen,,getdaytrends-catchup
+2026-11-22T07:00Z,36,Barba,12400,getdaytrends-catchup
+2026-11-22T07:00Z,37,Malévola,52500,getdaytrends-catchup
+2026-11-22T07:00Z,38,Boca Juniors,54000,getdaytrends-catchup
+2026-11-22T07:00Z,39,Lucas Silva,,getdaytrends-catchup
+2026-11-22T07:00Z,40,Paredes,95400,getdaytrends-catchup
+2026-11-22T07:00Z,41,Menin,,getdaytrends-catchup
+2026-11-22T07:00Z,42,Audi,10400,getdaytrends-catchup
+2026-11-22T07:00Z,43,Deca,38000,getdaytrends-catchup
+2026-11-22T07:00Z,44,Sula,,getdaytrends-catchup
+2026-11-22T07:00Z,45,Éverson,,getdaytrends-catchup
+2026-11-22T07:00Z,46,O Galo,15700,getdaytrends-catchup
+2026-11-22T07:00Z,47,Guarani,,getdaytrends-catchup
+2026-11-22T07:00Z,48,Natanael,,getdaytrends-catchup
+2026-11-22T07:00Z,49,Igor Gomes,,getdaytrends-catchup
+2026-11-22T06:00Z,1,Leclerc,58200,getdaytrends-catchup
+2026-11-22T06:00Z,2,Russell,107300,getdaytrends-catchup
+2026-11-22T06:00Z,3,Verstappen,73500,getdaytrends-catchup
+2026-11-22T06:00Z,4,Hamilton,73300,getdaytrends-catchup
+2026-11-22T06:00Z,5,Las Vegas,95300,getdaytrends-catchup
+2026-11-22T06:00Z,6,Ferrari,65800,getdaytrends-catchup
+2026-11-22T06:00Z,7,Antonelli,18600,getdaytrends-catchup
+2026-11-22T06:00Z,8,Norris,20900,getdaytrends-catchup
+2026-11-22T06:00Z,9,#F1naGlobo,,getdaytrends-catchup
+2026-11-22T06:00Z,10,Óscar,138100,getdaytrends-catchup
+2026-11-22T06:00Z,11,hadjar,,getdaytrends-catchup
+2026-11-22T06:00Z,12,Perez,166500,getdaytrends-catchup
+2026-11-22T06:00Z,13,McLaren,20600,getdaytrends-catchup
+2026-11-22T06:00Z,14,#AltasHoras,,getdaytrends-catchup
+2026-11-22T06:00Z,15,Sainz,,getdaytrends-catchup
+2026-11-22T06:00Z,16,Ana Carolina,,getdaytrends-catchup
+2026-11-22T06:00Z,17,Lindblad,,getdaytrends-catchup
+2026-11-22T06:00Z,18,Gasly,,getdaytrends-catchup
+2026-11-22T06:00Z,19,#Formula1,,getdaytrends-catchup
+2026-11-22T06:00Z,20,FELIZ ANIVERSARIO ANA,,getdaytrends-catchup
+2026-11-22T06:00Z,21,Kimi,51200,getdaytrends-catchup
+2026-11-22T06:00Z,22,Keanu Reeves,,getdaytrends-catchup
+2026-11-22T06:00Z,23,Red Bull,11100,getdaytrends-catchup
+2026-11-22T06:00Z,24,Safety Car,,getdaytrends-catchup
+2026-11-22T06:00Z,25,Arvid,,getdaytrends-catchup
+2026-11-22T06:00Z,26,#F1noSporTV,,getdaytrends-catchup
+2026-11-22T06:00Z,27,Bortoleto,,getdaytrends-catchup
+2026-11-22T06:00Z,28,Kelly Piquet,,getdaytrends-catchup
+2026-11-22T06:00Z,29,atletico,77100,getdaytrends-catchup
+2026-11-22T06:00Z,30,carol biazin,,getdaytrends-catchup
+2026-11-22T06:00Z,31,O Max,13200,getdaytrends-catchup
+2026-11-22T06:00Z,32,Barba,12400,getdaytrends-catchup
+2026-11-22T06:00Z,33,Alpine,,getdaytrends-catchup
+2026-11-22T06:00Z,34,Lucas Silva,,getdaytrends-catchup
+2026-11-22T06:00Z,35,rafa camara,,getdaytrends-catchup
+2026-11-22T06:00Z,36,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T06:00Z,37,Boca Juniors,52800,getdaytrends-catchup
+2026-11-22T06:00Z,38,Paredes,91800,getdaytrends-catchup
+2026-11-22T06:00Z,39,#FestaAFazenda,,getdaytrends-catchup
+2026-11-22T06:00Z,40,Alanis Guillen,,getdaytrends-catchup
+2026-11-22T06:00Z,41,Malévola,51500,getdaytrends-catchup
+2026-11-22T06:00Z,42,Menin,,getdaytrends-catchup
+2026-11-22T06:00Z,43,O Galo,15600,getdaytrends-catchup
+2026-11-22T06:00Z,44,Maria Gadu,,getdaytrends-catchup
+2026-11-22T06:00Z,45,Deca,37600,getdaytrends-catchup
+2026-11-22T06:00Z,46,Sula,,getdaytrends-catchup
+2026-11-22T06:00Z,47,Kombi,,getdaytrends-catchup
+2026-11-22T06:00Z,48,Éverson,,getdaytrends-catchup
+2026-11-22T06:00Z,49,Vanessa da Mata,,getdaytrends-catchup
+2026-11-22T06:00Z,50,Wemby,15200,getdaytrends-catchup
+2026-11-22T05:00Z,1,hadjar,,getdaytrends-catchup
+2026-11-22T05:00Z,2,Hamilton,57000,getdaytrends-catchup
+2026-11-22T05:00Z,3,Perez,166200,getdaytrends-catchup
+2026-11-22T05:00Z,4,Ana Carolina,,getdaytrends-catchup
+2026-11-22T05:00Z,5,Leclerc,40000,getdaytrends-catchup
+2026-11-22T05:00Z,6,Verstappen,48700,getdaytrends-catchup
+2026-11-22T05:00Z,7,Russell,91900,getdaytrends-catchup
+2026-11-22T05:00Z,8,#AltasHoras,,getdaytrends-catchup
+2026-11-22T05:00Z,9,Lindblad,,getdaytrends-catchup
+2026-11-22T05:00Z,10,#F1naGlobo,,getdaytrends-catchup
+2026-11-22T05:00Z,11,Norris,15000,getdaytrends-catchup
+2026-11-22T05:00Z,12,Las Vegas,67500,getdaytrends-catchup
+2026-11-22T05:00Z,13,Ferrari,55800,getdaytrends-catchup
+2026-11-22T05:00Z,14,FELIZ ANIVERSARIO ANA,,getdaytrends-catchup
+2026-11-22T05:00Z,15,Gasly,,getdaytrends-catchup
+2026-11-22T05:00Z,16,Safety Car,,getdaytrends-catchup
+2026-11-22T05:00Z,17,atletico,75500,getdaytrends-catchup
+2026-11-22T05:00Z,18,Arvid,,getdaytrends-catchup
+2026-11-22T05:00Z,19,Barba,12300,getdaytrends-catchup
+2026-11-22T05:00Z,20,Red Bull,,getdaytrends-catchup
+2026-11-22T05:00Z,21,Boca Juniors,51000,getdaytrends-catchup
+2026-11-22T05:00Z,22,McLaren,13300,getdaytrends-catchup
+2026-11-22T05:00Z,23,Bortoleto,,getdaytrends-catchup
+2026-11-22T05:00Z,24,Antonelli,19900,getdaytrends-catchup
+2026-11-22T05:00Z,25,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T05:00Z,26,Lucas Silva,,getdaytrends-catchup
+2026-11-22T05:00Z,27,Paredes,86400,getdaytrends-catchup
+2026-11-22T05:00Z,28,Malévola,49700,getdaytrends-catchup
+2026-11-22T05:00Z,29,Alanis Guillen,,getdaytrends-catchup
+2026-11-22T05:00Z,30,#Formula1,,getdaytrends-catchup
+2026-11-22T05:00Z,31,#FestaAFazenda,,getdaytrends-catchup
+2026-11-22T05:00Z,32,O Galo,15500,getdaytrends-catchup
+2026-11-22T05:00Z,33,Sula,,getdaytrends-catchup
+2026-11-22T05:00Z,34,Menin,,getdaytrends-catchup
+2026-11-22T05:00Z,35,Bernard,22700,getdaytrends-catchup
+2026-11-22T05:00Z,36,Éverson,,getdaytrends-catchup
+2026-11-22T05:00Z,37,Deca,37000,getdaytrends-catchup
+2026-11-22T05:00Z,38,Maria Gadu,,getdaytrends-catchup
+2026-11-22T05:00Z,39,Kombi,,getdaytrends-catchup
+2026-11-22T05:00Z,40,Natanael,,getdaytrends-catchup
+2026-11-22T05:00Z,41,Knicks,18600,getdaytrends-catchup
+2026-11-22T05:00Z,42,Igor Gomes,,getdaytrends-catchup
+2026-11-22T05:00Z,43,Vanessa da Mata,,getdaytrends-catchup
+2026-11-22T05:00Z,44,Wemby,13800,getdaytrends-catchup
+2026-11-22T05:00Z,45,Nancy,64000,getdaytrends-catchup
+2026-11-22T05:00Z,46,#BakeOffBrasil,,getdaytrends-catchup
+2026-11-22T05:00Z,47,O Sport,,getdaytrends-catchup
+2026-11-22T05:00Z,48,Tapia,15400,getdaytrends-catchup
+2026-11-22T05:00Z,49,Wesley,68700,getdaytrends-catchup
+2026-11-22T05:00Z,50,Samuel Lino,35200,getdaytrends-catchup
+2026-11-22T04:00Z,1,Ana Carolina,,getdaytrends-catchup
+2026-11-22T04:00Z,2,#AltasHoras,,getdaytrends-catchup
+2026-11-22T04:00Z,3,Flamengo,329600,getdaytrends-catchup
+2026-11-22T04:00Z,4,atletico,73500,getdaytrends-catchup
+2026-11-22T04:00Z,5,Barba,12200,getdaytrends-catchup
+2026-11-22T04:00Z,6,Boca Juniors,47900,getdaytrends-catchup
+2026-11-22T04:00Z,7,Lucas Silva,,getdaytrends-catchup
+2026-11-22T04:00Z,8,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T04:00Z,9,Paredes,79300,getdaytrends-catchup
+2026-11-22T04:00Z,10,Sula,,getdaytrends-catchup
+2026-11-22T04:00Z,11,O Galo,15300,getdaytrends-catchup
+2026-11-22T04:00Z,12,Natanael,,getdaytrends-catchup
+2026-11-22T04:00Z,13,Menin,,getdaytrends-catchup
+2026-11-22T04:00Z,14,Malévola,47300,getdaytrends-catchup
+2026-11-22T04:00Z,15,#FestaAFazenda,,getdaytrends-catchup
+2026-11-22T04:00Z,16,Éverson,,getdaytrends-catchup
+2026-11-22T04:00Z,17,Igor Gomes,,getdaytrends-catchup
+2026-11-22T04:00Z,18,Bernard,22700,getdaytrends-catchup
+2026-11-22T04:00Z,19,Alanis Guillen,,getdaytrends-catchup
+2026-11-22T04:00Z,20,Maria Gadu,,getdaytrends-catchup
+2026-11-22T04:00Z,21,#BakeOffBrasil,,getdaytrends-catchup
+2026-11-22T04:00Z,22,Kombi,,getdaytrends-catchup
+2026-11-22T04:00Z,23,Deca,36300,getdaytrends-catchup
+2026-11-22T04:00Z,24,Vanessa da Mata,,getdaytrends-catchup
+2026-11-22T04:00Z,25,Nancy,63600,getdaytrends-catchup
+2026-11-22T04:00Z,26,Wesley,67400,getdaytrends-catchup
+2026-11-22T04:00Z,27,Preciado,,getdaytrends-catchup
+2026-11-22T04:00Z,28,Cisse,,getdaytrends-catchup
+2026-11-22T04:00Z,29,Knicks,17000,getdaytrends-catchup
+2026-11-22T04:00Z,30,Pascini,,getdaytrends-catchup
+2026-11-22T04:00Z,31,Neyser,,getdaytrends-catchup
+2026-11-22T04:00Z,32,Cassierra,,getdaytrends-catchup
+2026-11-22T04:00Z,33,Jota,24200,getdaytrends-catchup
+2026-11-22T04:00Z,34,Tapia,14700,getdaytrends-catchup
+2026-11-22T04:00Z,35,Pabllo Vittar,,getdaytrends-catchup
+2026-11-22T04:00Z,36,Scarpa,,getdaytrends-catchup
+2026-11-22T04:00Z,37,Samuel Lino,34800,getdaytrends-catchup
+2026-11-22T04:00Z,38,Arrascaeta,22900,getdaytrends-catchup
+2026-11-22T04:00Z,39,Merentiel,37900,getdaytrends-catchup
+2026-11-22T04:00Z,40,Lyanco,,getdaytrends-catchup
+2026-11-22T04:00Z,41,Enner Valencia,,getdaytrends-catchup
+2026-11-22T04:00Z,42,Bahía,22300,getdaytrends-catchup
+2026-11-22T04:00Z,43,Milito,,getdaytrends-catchup
+2026-11-22T04:00Z,44,Kaio Jorge,,getdaytrends-catchup
+2026-11-22T04:00Z,45,otoniel,,getdaytrends-catchup
+2026-11-22T04:00Z,46,#UnraveledTourSalvador,,getdaytrends-catchup
+2026-11-22T04:00Z,47,Chapecoense,,getdaytrends-catchup
+2026-11-22T04:00Z,48,Boca Jrs,,getdaytrends-catchup
+2026-11-22T04:00Z,49,Varela,12000,getdaytrends-catchup
+2026-11-22T04:00Z,50,O Sport,,getdaytrends-catchup
