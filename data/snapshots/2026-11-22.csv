@@ -1,0 +1,201 @@
+ts,rank,term,tweet_count,source
+2026-11-22T03:00Z,1,Ana Carolina,,getdaytrends
+2026-11-22T03:00Z,2,#AltasHoras,,getdaytrends
+2026-11-22T03:00Z,3,Flamengo,319800,getdaytrends
+2026-11-22T03:00Z,4,atletico,71200,getdaytrends
+2026-11-22T03:00Z,5,Barba,12200,getdaytrends
+2026-11-22T03:00Z,6,Boca Juniors,43600,getdaytrends
+2026-11-22T03:00Z,7,Lucas Silva,,getdaytrends
+2026-11-22T03:00Z,8,Natanael,,getdaytrends
+2026-11-22T03:00Z,9,O Galo,15100,getdaytrends
+2026-11-22T03:00Z,10,#FestaAFazenda,,getdaytrends
+2026-11-22T03:00Z,11,Paredes,67000,getdaytrends
+2026-11-22T03:00Z,12,Paulo Bracks,,getdaytrends
+2026-11-22T03:00Z,13,Sula,,getdaytrends
+2026-11-22T03:00Z,14,Bernard,22600,getdaytrends
+2026-11-22T03:00Z,15,Igor Gomes,,getdaytrends
+2026-11-22T03:00Z,16,Menin,,getdaytrends
+2026-11-22T03:00Z,17,Éverson,,getdaytrends
+2026-11-22T03:00Z,18,Nancy,63700,getdaytrends
+2026-11-22T03:00Z,19,Wesley,66000,getdaytrends
+2026-11-22T03:00Z,20,Malévola,44200,getdaytrends
+2026-11-22T03:00Z,21,Preciado,,getdaytrends
+2026-11-22T03:00Z,22,Cisse,,getdaytrends
+2026-11-22T03:00Z,23,#BakeOffBrasil,,getdaytrends
+2026-11-22T03:00Z,24,Cassierra,,getdaytrends
+2026-11-22T03:00Z,25,Deca,35100,getdaytrends
+2026-11-22T03:00Z,26,Scarpa,,getdaytrends
+2026-11-22T03:00Z,27,Maria Gadu,,getdaytrends
+2026-11-22T03:00Z,28,Pascini,,getdaytrends
+2026-11-22T03:00Z,29,Jota,24100,getdaytrends
+2026-11-22T03:00Z,30,Kombi,,getdaytrends
+2026-11-22T03:00Z,31,Vanessa da Mata,,getdaytrends
+2026-11-22T03:00Z,32,Neyser,,getdaytrends
+2026-11-22T03:00Z,33,Samuel Lino,34100,getdaytrends
+2026-11-22T03:00Z,34,Chapecoense,,getdaytrends
+2026-11-22T03:00Z,35,Merentiel,36100,getdaytrends
+2026-11-22T03:00Z,36,Bahía,22400,getdaytrends
+2026-11-22T03:00Z,37,otoniel,,getdaytrends
+2026-11-22T03:00Z,38,Boca Jrs,,getdaytrends
+2026-11-22T03:00Z,39,Knicks,12800,getdaytrends
+2026-11-22T03:00Z,40,Arrascaeta,21800,getdaytrends
+2026-11-22T03:00Z,41,Tapia,13800,getdaytrends
+2026-11-22T03:00Z,42,Cuello,14100,getdaytrends
+2026-11-22T03:00Z,43,Lodi,,getdaytrends
+2026-11-22T03:00Z,44,Lyanco,,getdaytrends
+2026-11-22T03:00Z,45,Enner Valencia,,getdaytrends
+2026-11-22T03:00Z,46,Milito,,getdaytrends
+2026-11-22T03:00Z,47,Varela,11600,getdaytrends
+2026-11-22T03:00Z,48,Marquinhos,,getdaytrends
+2026-11-22T03:00Z,49,#PALXFLA,11600,getdaytrends
+2026-11-22T03:00Z,50,Barranquilla,39300,getdaytrends
+2026-11-22T02:00Z,1,Flamengo,304500,getdaytrends-catchup
+2026-11-22T02:00Z,2,atletico,67100,getdaytrends-catchup
+2026-11-22T02:00Z,3,Ana Carolina,,getdaytrends-catchup
+2026-11-22T02:00Z,4,Barba,11900,getdaytrends-catchup
+2026-11-22T02:00Z,5,#AltasHoras,,getdaytrends-catchup
+2026-11-22T02:00Z,6,Boca Juniors,38200,getdaytrends-catchup
+2026-11-22T02:00Z,7,Natanael,,getdaytrends-catchup
+2026-11-22T02:00Z,8,O Galo,14400,getdaytrends-catchup
+2026-11-22T02:00Z,9,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T02:00Z,10,Lucas Silva,,getdaytrends-catchup
+2026-11-22T02:00Z,11,Igor Gomes,,getdaytrends-catchup
+2026-11-22T02:00Z,12,Sula,,getdaytrends-catchup
+2026-11-22T02:00Z,13,Bernard,22300,getdaytrends-catchup
+2026-11-22T02:00Z,14,Menin,,getdaytrends-catchup
+2026-11-22T02:00Z,15,Éverson,,getdaytrends-catchup
+2026-11-22T02:00Z,16,Nancy,63000,getdaytrends-catchup
+2026-11-22T02:00Z,17,Paredes,51000,getdaytrends-catchup
+2026-11-22T02:00Z,18,Cisse,,getdaytrends-catchup
+2026-11-22T02:00Z,19,Preciado,,getdaytrends-catchup
+2026-11-22T02:00Z,20,#FestaAFazenda,,getdaytrends-catchup
+2026-11-22T02:00Z,21,Wesley,64300,getdaytrends-catchup
+2026-11-22T02:00Z,22,Samuel Lino,33200,getdaytrends-catchup
+2026-11-22T02:00Z,23,Scarpa,,getdaytrends-catchup
+2026-11-22T02:00Z,24,Pascini,,getdaytrends-catchup
+2026-11-22T02:00Z,25,Cassierra,,getdaytrends-catchup
+2026-11-22T02:00Z,26,Neyser,,getdaytrends-catchup
+2026-11-22T02:00Z,27,Merentiel,32900,getdaytrends-catchup
+2026-11-22T02:00Z,28,Bahía,22300,getdaytrends-catchup
+2026-11-22T02:00Z,29,Malévola,40400,getdaytrends-catchup
+2026-11-22T02:00Z,30,Deca,33200,getdaytrends-catchup
+2026-11-22T02:00Z,31,Jota,23700,getdaytrends-catchup
+2026-11-22T02:00Z,32,Arrascaeta,20700,getdaytrends-catchup
+2026-11-22T02:00Z,33,Boca Jrs,,getdaytrends-catchup
+2026-11-22T02:00Z,34,Borbas,,getdaytrends-catchup
+2026-11-22T02:00Z,35,Kombi,,getdaytrends-catchup
+2026-11-22T02:00Z,36,Vanessa da Mata,,getdaytrends-catchup
+2026-11-22T02:00Z,37,Enner Valencia,,getdaytrends-catchup
+2026-11-22T02:00Z,38,Marquinhos,,getdaytrends-catchup
+2026-11-22T02:00Z,39,Cuello,14200,getdaytrends-catchup
+2026-11-22T02:00Z,40,Coritiba,,getdaytrends-catchup
+2026-11-22T02:00Z,41,Chapecoense,,getdaytrends-catchup
+2026-11-22T02:00Z,42,Tiago Leifert,,getdaytrends-catchup
+2026-11-22T02:00Z,43,otoniel,,getdaytrends-catchup
+2026-11-22T02:00Z,44,Milito,,getdaytrends-catchup
+2026-11-22T02:00Z,45,Villa,64900,getdaytrends-catchup
+2026-11-22T02:00Z,46,Barranquilla,36300,getdaytrends-catchup
+2026-11-22T02:00Z,47,Lodi,,getdaytrends-catchup
+2026-11-22T02:00Z,48,#PALXFLA,11400,getdaytrends-catchup
+2026-11-22T02:00Z,49,carrascal,14500,getdaytrends-catchup
+2026-11-22T02:00Z,50,Leo Jardim,,getdaytrends-catchup
+2026-11-22T01:00Z,1,Flamengo,284900,getdaytrends-catchup
+2026-11-22T01:00Z,2,atletico,58100,getdaytrends-catchup
+2026-11-22T01:00Z,3,Boca Juniors,28700,getdaytrends-catchup
+2026-11-22T01:00Z,4,Barba,11400,getdaytrends-catchup
+2026-11-22T01:00Z,5,Natanael,,getdaytrends-catchup
+2026-11-22T01:00Z,6,O Galo,13000,getdaytrends-catchup
+2026-11-22T01:00Z,7,Igor Gomes,,getdaytrends-catchup
+2026-11-22T01:00Z,8,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T01:00Z,9,Bernard,22200,getdaytrends-catchup
+2026-11-22T01:00Z,10,Sula,,getdaytrends-catchup
+2026-11-22T01:00Z,11,Samuel Lino,31900,getdaytrends-catchup
+2026-11-22T01:00Z,12,Cisse,,getdaytrends-catchup
+2026-11-22T01:00Z,13,Éverson,,getdaytrends-catchup
+2026-11-22T01:00Z,14,Pascini,,getdaytrends-catchup
+2026-11-22T01:00Z,15,Menin,,getdaytrends-catchup
+2026-11-22T01:00Z,16,Preciado,,getdaytrends-catchup
+2026-11-22T01:00Z,17,Merentiel,28100,getdaytrends-catchup
+2026-11-22T01:00Z,18,Arrascaeta,19500,getdaytrends-catchup
+2026-11-22T01:00Z,19,Scarpa,,getdaytrends-catchup
+2026-11-22T01:00Z,20,Bahía,21900,getdaytrends-catchup
+2026-11-22T01:00Z,21,Paredes,37500,getdaytrends-catchup
+2026-11-22T01:00Z,22,Cassierra,,getdaytrends-catchup
+2026-11-22T01:00Z,23,Jota,23500,getdaytrends-catchup
+2026-11-22T01:00Z,24,Boca Jrs,,getdaytrends-catchup
+2026-11-22T01:00Z,25,Coritiba,,getdaytrends-catchup
+2026-11-22T01:00Z,26,Enner Valencia,,getdaytrends-catchup
+2026-11-22T01:00Z,27,Deca,31000,getdaytrends-catchup
+2026-11-22T01:00Z,28,#PALXFLA,10900,getdaytrends-catchup
+2026-11-22T01:00Z,29,Bruno Henrique,12600,getdaytrends-catchup
+2026-11-22T01:00Z,30,Borbas,,getdaytrends-catchup
+2026-11-22T01:00Z,31,Malévola,36000,getdaytrends-catchup
+2026-11-22T01:00Z,32,Kombi,,getdaytrends-catchup
+2026-11-22T01:00Z,33,Cuello,14300,getdaytrends-catchup
+2026-11-22T01:00Z,34,Barranquilla,32700,getdaytrends-catchup
+2026-11-22T01:00Z,35,Villa,58900,getdaytrends-catchup
+2026-11-22T01:00Z,36,Colombia,95900,getdaytrends-catchup
+2026-11-22T01:00Z,37,Tiago Leifert,,getdaytrends-catchup
+2026-11-22T01:00Z,38,Leo Jardim,,getdaytrends-catchup
+2026-11-22T01:00Z,39,Pardal,,getdaytrends-catchup
+2026-11-22T01:00Z,40,Milito,,getdaytrends-catchup
+2026-11-22T01:00Z,41,Lodi,,getdaytrends-catchup
+2026-11-22T01:00Z,42,carrascal,14200,getdaytrends-catchup
+2026-11-22T01:00Z,43,Alexsander,,getdaytrends-catchup
+2026-11-22T01:00Z,44,Neyser,,getdaytrends-catchup
+2026-11-22T01:00Z,45,Paquetá,14100,getdaytrends-catchup
+2026-11-22T01:00Z,46,Lanús,,getdaytrends-catchup
+2026-11-22T01:00Z,47,Coxa,,getdaytrends-catchup
+2026-11-22T01:00Z,48,Carlos Miguel,,getdaytrends-catchup
+2026-11-22T01:00Z,49,Plata,49600,getdaytrends-catchup
+2026-11-22T01:00Z,50,Brasil 2024,,getdaytrends-catchup
+2026-11-22T00:00Z,1,Flamengo,260399,getdaytrends-catchup
+2026-11-22T00:00Z,2,Natanael,,getdaytrends-catchup
+2026-11-22T00:00Z,3,atletico,39500,getdaytrends-catchup
+2026-11-22T00:00Z,4,Samuel Lino,29900,getdaytrends-catchup
+2026-11-22T00:00Z,5,Barba,,getdaytrends-catchup
+2026-11-22T00:00Z,6,Cisse,,getdaytrends-catchup
+2026-11-22T00:00Z,7,Arrascaeta,17700,getdaytrends-catchup
+2026-11-22T00:00Z,8,Igor Gomes,,getdaytrends-catchup
+2026-11-22T00:00Z,9,Merentiel,19700,getdaytrends-catchup
+2026-11-22T00:00Z,10,Boca Juniors,16000,getdaytrends-catchup
+2026-11-22T00:00Z,11,O Galo,,getdaytrends-catchup
+2026-11-22T00:00Z,12,Bernard,21700,getdaytrends-catchup
+2026-11-22T00:00Z,13,#PALXFLA,10200,getdaytrends-catchup
+2026-11-22T00:00Z,14,Coritiba,,getdaytrends-catchup
+2026-11-22T00:00Z,15,Bruno Henrique,11200,getdaytrends-catchup
+2026-11-22T00:00Z,16,Bahía,21100,getdaytrends-catchup
+2026-11-22T00:00Z,17,Jota,22900,getdaytrends-catchup
+2026-11-22T00:00Z,18,Preciado,,getdaytrends-catchup
+2026-11-22T00:00Z,19,#SulamericanaNoSBT,,getdaytrends-catchup
+2026-11-22T00:00Z,20,Paredes,31500,getdaytrends-catchup
+2026-11-22T00:00Z,21,Éverson,,getdaytrends-catchup
+2026-11-22T00:00Z,22,Paquetá,13400,getdaytrends-catchup
+2026-11-22T00:00Z,23,Deca,27800,getdaytrends-catchup
+2026-11-22T00:00Z,24,O Boca,25300,getdaytrends-catchup
+2026-11-22T00:00Z,25,Plata,49200,getdaytrends-catchup
+2026-11-22T00:00Z,26,Villa,50000,getdaytrends-catchup
+2026-11-22T00:00Z,27,Malévola,31700,getdaytrends-catchup
+2026-11-22T00:00Z,28,Carlos Miguel,,getdaytrends-catchup
+2026-11-22T00:00Z,29,Abel,34800,getdaytrends-catchup
+2026-11-22T00:00Z,30,Tiago Leifert,,getdaytrends-catchup
+2026-11-22T00:00Z,31,Borbas,,getdaytrends-catchup
+2026-11-22T00:00Z,32,Menin,,getdaytrends-catchup
+2026-11-22T00:00Z,33,Cuello,13800,getdaytrends-catchup
+2026-11-22T00:00Z,34,Paulo Bracks,,getdaytrends-catchup
+2026-11-22T00:00Z,35,Arias,22500,getdaytrends-catchup
+2026-11-22T00:00Z,36,Pardal,,getdaytrends-catchup
+2026-11-22T00:00Z,37,Alexsander,,getdaytrends-catchup
+2026-11-22T00:00Z,38,É CAMPEÃO,28100,getdaytrends-catchup
+2026-11-22T00:00Z,39,Rossi,17000,getdaytrends-catchup
+2026-11-22T00:00Z,40,Rogério Ceni,,getdaytrends-catchup
+2026-11-22T00:00Z,41,Boca Jrs,,getdaytrends-catchup
+2026-11-22T00:00Z,42,Coxa,,getdaytrends-catchup
+2026-11-22T00:00Z,43,Leonardo Jardim,,getdaytrends-catchup
+2026-11-22T00:00Z,44,breno lopes,,getdaytrends-catchup
+2026-11-22T00:00Z,45,Fuchs,,getdaytrends-catchup
+2026-11-22T00:00Z,46,Vitor Roque,,getdaytrends-catchup
+2026-11-22T00:00Z,47,ESPI,49700,getdaytrends-catchup
+2026-11-22T00:00Z,48,Pacheco,11400,getdaytrends-catchup
+2026-11-22T00:00Z,49,Ayrton Lucas,,getdaytrends-catchup
+2026-11-22T00:00Z,50,Lodi,,getdaytrends-catchup
