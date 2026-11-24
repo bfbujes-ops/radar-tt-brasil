@@ -1,0 +1,300 @@
+ts,rank,term,tweet_count,source
+2026-11-24T05:00Z,1,Neymar,28500,getdaytrends
+2026-11-24T05:00Z,2,#RoçaAFazenda,,getdaytrends
+2026-11-24T05:00Z,3,Gremio,44900,getdaytrends
+2026-11-24T05:00Z,4,Fran,70800,getdaytrends
+2026-11-24T05:00Z,5,Renata,19800,getdaytrends
+2026-11-24T05:00Z,6,Serginho,20100,getdaytrends
+2026-11-24T05:00Z,7,Vitória,62800,getdaytrends
+2026-11-24T05:00Z,8,Weverton,,getdaytrends
+2026-11-24T05:00Z,9,Botafogo,17700,getdaytrends
+2026-11-24T05:00Z,10,Escobar,25700,getdaytrends
+2026-11-24T05:00Z,11,#AClinica,,getdaytrends
+2026-11-24T05:00Z,12,O Santos,44000,getdaytrends
+2026-11-24T05:00Z,13,Jayden Daniels,12400,getdaytrends
+2026-11-24T05:00Z,14,cuca,,getdaytrends
+2026-11-24T05:00Z,15,Internacional,59600,getdaytrends
+2026-11-24T05:00Z,16,Cebolinha,,getdaytrends
+2026-11-24T05:00Z,17,Thaíde,,getdaytrends
+2026-11-24T05:00Z,18,Ariela,11600,getdaytrends
+2026-11-24T05:00Z,19,Bengals,53700,getdaytrends
+2026-11-24T05:00Z,20,Farid,,getdaytrends
+2026-11-24T05:00Z,21,Wendell,,getdaytrends
+2026-11-24T05:00Z,22,Joe Burrow,13100,getdaytrends
+2026-11-24T05:00Z,23,Commanders,49000,getdaytrends
+2026-11-24T05:00Z,24,Ramon Abatti Abel,,getdaytrends
+2026-11-24T05:00Z,25,Morumbi,,getdaytrends
+2026-11-24T05:00Z,26,Arão,,getdaytrends
+2026-11-24T05:00Z,27,Rodinei,,getdaytrends
+2026-11-24T05:00Z,28,Braithwaite,,getdaytrends
+2026-11-24T05:00Z,29,Tony Ramos,,getdaytrends
+2026-11-24T05:00Z,30,Barcellos,,getdaytrends
+2026-11-24T05:00Z,31,Lindbergh,,getdaytrends
+2026-11-24T05:00Z,32,Beira-Rio,,getdaytrends
+2026-11-24T05:00Z,33,Sergio,86100,getdaytrends
+2026-11-24T05:00Z,34,Coutinho,,getdaytrends
+2026-11-24T05:00Z,35,Dorival,,getdaytrends
+2026-11-24T05:00Z,36,emmy,36400,getdaytrends
+2026-11-24T05:00Z,37,Fazendeiro,,getdaytrends
+2026-11-24T05:00Z,38,Caio Paulista,,getdaytrends
+2026-11-24T05:00Z,39,Leyla,29000,getdaytrends
+2026-11-24T05:00Z,40,Amuzu,,getdaytrends
+2026-11-24T05:00Z,41,Baldasso,,getdaytrends
+2026-11-24T05:00Z,42,Noriega,,getdaytrends
+2026-11-24T05:00Z,43,#NFLnaESPN,,getdaytrends
+2026-11-24T05:00Z,44,Se o Corinthians,,getdaytrends
+2026-11-24T05:00Z,45,Calleri,,getdaytrends
+2026-11-24T05:00Z,46,Marcelo de Lima Henrique,,getdaytrends
+2026-11-24T05:00Z,47,Crespo,,getdaytrends
+2026-11-24T05:00Z,48,Osasco,,getdaytrends
+2026-11-24T05:00Z,49,Wallace,17400,getdaytrends
+2026-11-24T05:00Z,50,Imortal,,getdaytrends
+2026-11-24T04:00Z,1,#RoçaAFazenda,,getdaytrends-catchup
+2026-11-24T04:00Z,2,Neymar,27400,getdaytrends-catchup
+2026-11-24T04:00Z,3,Gremio,43200,getdaytrends-catchup
+2026-11-24T04:00Z,4,Vitória,62000,getdaytrends-catchup
+2026-11-24T04:00Z,5,Fran,71000,getdaytrends-catchup
+2026-11-24T04:00Z,6,Weverton,,getdaytrends-catchup
+2026-11-24T04:00Z,7,Botafogo,17400,getdaytrends-catchup
+2026-11-24T04:00Z,8,Renata,19300,getdaytrends-catchup
+2026-11-24T04:00Z,9,Escobar,25500,getdaytrends-catchup
+2026-11-24T04:00Z,10,#AClinica,,getdaytrends-catchup
+2026-11-24T04:00Z,11,cuca,,getdaytrends-catchup
+2026-11-24T04:00Z,12,Serginho,18900,getdaytrends-catchup
+2026-11-24T04:00Z,13,O Santos,43400,getdaytrends-catchup
+2026-11-24T04:00Z,14,Internacional,59300,getdaytrends-catchup
+2026-11-24T04:00Z,15,Cebolinha,,getdaytrends-catchup
+2026-11-24T04:00Z,16,#VoleiNoSporTV,,getdaytrends-catchup
+2026-11-24T04:00Z,17,Farid,,getdaytrends-catchup
+2026-11-24T04:00Z,18,Thaíde,,getdaytrends-catchup
+2026-11-24T04:00Z,19,Ariela,12000,getdaytrends-catchup
+2026-11-24T04:00Z,20,Wendell,,getdaytrends-catchup
+2026-11-24T04:00Z,21,Arão,,getdaytrends-catchup
+2026-11-24T04:00Z,22,Rodinei,,getdaytrends-catchup
+2026-11-24T04:00Z,23,Morumbi,,getdaytrends-catchup
+2026-11-24T04:00Z,24,Ramon Abatti Abel,,getdaytrends-catchup
+2026-11-24T04:00Z,25,Braithwaite,,getdaytrends-catchup
+2026-11-24T04:00Z,26,Beira-Rio,,getdaytrends-catchup
+2026-11-24T04:00Z,27,Barcellos,,getdaytrends-catchup
+2026-11-24T04:00Z,28,Dorival,,getdaytrends-catchup
+2026-11-24T04:00Z,29,Tony Ramos,,getdaytrends-catchup
+2026-11-24T04:00Z,30,Coutinho,,getdaytrends-catchup
+2026-11-24T04:00Z,31,Noriega,,getdaytrends-catchup
+2026-11-24T04:00Z,32,Caio Paulista,,getdaytrends-catchup
+2026-11-24T04:00Z,33,Calleri,,getdaytrends-catchup
+2026-11-24T04:00Z,34,Amuzu,,getdaytrends-catchup
+2026-11-24T04:00Z,35,Wallace,17200,getdaytrends-catchup
+2026-11-24T04:00Z,36,otoniel,,getdaytrends-catchup
+2026-11-24T04:00Z,37,Se o Corinthians,,getdaytrends-catchup
+2026-11-24T04:00Z,38,Leyla,28900,getdaytrends-catchup
+2026-11-24T04:00Z,39,Baldasso,,getdaytrends-catchup
+2026-11-24T04:00Z,40,Crespo,,getdaytrends-catchup
+2026-11-24T04:00Z,41,Marcelo de Lima Henrique,,getdaytrends-catchup
+2026-11-24T04:00Z,42,Osasco,,getdaytrends-catchup
+2026-11-24T04:00Z,43,#SANxGRE,,getdaytrends-catchup
+2026-11-24T04:00Z,44,emmy,35900,getdaytrends-catchup
+2026-11-24T04:00Z,45,Sabino,,getdaytrends-catchup
+2026-11-24T04:00Z,46,Imortal,,getdaytrends-catchup
+2026-11-24T04:00Z,47,Oliva,,getdaytrends-catchup
+2026-11-24T04:00Z,48,Marcal,,getdaytrends-catchup
+2026-11-24T04:00Z,49,Sergio,85200,getdaytrends-catchup
+2026-11-24T04:00Z,50,Igor Vinicius,,getdaytrends-catchup
+2026-11-24T03:00Z,1,#RoçaAFazenda,,getdaytrends-catchup
+2026-11-24T03:00Z,2,Neymar,25100,getdaytrends-catchup
+2026-11-24T03:00Z,3,Gremio,38200,getdaytrends-catchup
+2026-11-24T03:00Z,4,Vitória,60200,getdaytrends-catchup
+2026-11-24T03:00Z,5,Weverton,,getdaytrends-catchup
+2026-11-24T03:00Z,6,Escobar,25300,getdaytrends-catchup
+2026-11-24T03:00Z,7,Botafogo,17000,getdaytrends-catchup
+2026-11-24T03:00Z,8,#AClinica,,getdaytrends-catchup
+2026-11-24T03:00Z,9,cuca,,getdaytrends-catchup
+2026-11-24T03:00Z,10,Internacional,58400,getdaytrends-catchup
+2026-11-24T03:00Z,11,O Santos,42200,getdaytrends-catchup
+2026-11-24T03:00Z,12,Fran,69400,getdaytrends-catchup
+2026-11-24T03:00Z,13,Cebolinha,,getdaytrends-catchup
+2026-11-24T03:00Z,14,Farid,,getdaytrends-catchup
+2026-11-24T03:00Z,15,Wendell,,getdaytrends-catchup
+2026-11-24T03:00Z,16,#VoleiNoSporTV,,getdaytrends-catchup
+2026-11-24T03:00Z,17,Renato,21300,getdaytrends-catchup
+2026-11-24T03:00Z,18,Rodinei,,getdaytrends-catchup
+2026-11-24T03:00Z,19,Ramon Abatti Abel,,getdaytrends-catchup
+2026-11-24T03:00Z,20,Arão,,getdaytrends-catchup
+2026-11-24T03:00Z,21,Serginho,17000,getdaytrends-catchup
+2026-11-24T03:00Z,22,Morumbi,,getdaytrends-catchup
+2026-11-24T03:00Z,23,Dorival,,getdaytrends-catchup
+2026-11-24T03:00Z,24,Caio Paulista,,getdaytrends-catchup
+2026-11-24T03:00Z,25,Calleri,,getdaytrends-catchup
+2026-11-24T03:00Z,26,Braithwaite,,getdaytrends-catchup
+2026-11-24T03:00Z,27,Barcellos,,getdaytrends-catchup
+2026-11-24T03:00Z,28,Coutinho,,getdaytrends-catchup
+2026-11-24T03:00Z,29,Beira-Rio,,getdaytrends-catchup
+2026-11-24T03:00Z,30,Tony Ramos,,getdaytrends-catchup
+2026-11-24T03:00Z,31,Ariela,12100,getdaytrends-catchup
+2026-11-24T03:00Z,32,Crespo,,getdaytrends-catchup
+2026-11-24T03:00Z,33,Marcal,,getdaytrends-catchup
+2026-11-24T03:00Z,34,otoniel,,getdaytrends-catchup
+2026-11-24T03:00Z,35,Osasco,,getdaytrends-catchup
+2026-11-24T03:00Z,36,Baldasso,,getdaytrends-catchup
+2026-11-24T03:00Z,37,Amuzu,,getdaytrends-catchup
+2026-11-24T03:00Z,38,Wallace,17000,getdaytrends-catchup
+2026-11-24T03:00Z,39,Igor Vinicius,,getdaytrends-catchup
+2026-11-24T03:00Z,40,Noriega,,getdaytrends-catchup
+2026-11-24T03:00Z,41,Tiquinho Soares,,getdaytrends-catchup
+2026-11-24T03:00Z,42,Marcelo de Lima Henrique,,getdaytrends-catchup
+2026-11-24T03:00Z,43,Elisa,31000,getdaytrends-catchup
+2026-11-24T03:00Z,44,Imortal,,getdaytrends-catchup
+2026-11-24T03:00Z,45,#SANxGRE,,getdaytrends-catchup
+2026-11-24T03:00Z,46,Oliva,,getdaytrends-catchup
+2026-11-24T03:00Z,47,Sabino,,getdaytrends-catchup
+2026-11-24T03:00Z,48,#trocadepasses,,getdaytrends-catchup
+2026-11-24T03:00Z,49,Bruno Gomes,,getdaytrends-catchup
+2026-11-24T02:00Z,1,Vitória,56100,getdaytrends-catchup
+2026-11-24T02:00Z,2,Escobar,24700,getdaytrends-catchup
+2026-11-24T02:00Z,3,#RoçaAFazenda,,getdaytrends-catchup
+2026-11-24T02:00Z,4,Botafogo,15700,getdaytrends-catchup
+2026-11-24T02:00Z,5,Gremio,25100,getdaytrends-catchup
+2026-11-24T02:00Z,6,Internacional,56800,getdaytrends-catchup
+2026-11-24T02:00Z,7,Weverton,,getdaytrends-catchup
+2026-11-24T02:00Z,8,Wendell,,getdaytrends-catchup
+2026-11-24T02:00Z,9,#VoleiNoSporTV,,getdaytrends-catchup
+2026-11-24T02:00Z,10,O Santos,37100,getdaytrends-catchup
+2026-11-24T02:00Z,11,cuca,,getdaytrends-catchup
+2026-11-24T02:00Z,12,Calleri,,getdaytrends-catchup
+2026-11-24T02:00Z,13,Cebolinha,,getdaytrends-catchup
+2026-11-24T02:00Z,14,Dorival,,getdaytrends-catchup
+2026-11-24T02:00Z,15,Rodinei,,getdaytrends-catchup
+2026-11-24T02:00Z,16,Ramon Abatti Abel,,getdaytrends-catchup
+2026-11-24T02:00Z,17,Beira Rio,,getdaytrends-catchup
+2026-11-24T02:00Z,18,otoniel,,getdaytrends-catchup
+2026-11-24T02:00Z,19,Marcal,,getdaytrends-catchup
+2026-11-24T02:00Z,20,Barcellos,,getdaytrends-catchup
+2026-11-24T02:00Z,21,Tony Ramos,,getdaytrends-catchup
+2026-11-24T02:00Z,22,Caio Paulista,,getdaytrends-catchup
+2026-11-24T02:00Z,23,Morumbi,,getdaytrends-catchup
+2026-11-24T02:00Z,24,Baldasso,,getdaytrends-catchup
+2026-11-24T02:00Z,25,Crespo,,getdaytrends-catchup
+2026-11-24T02:00Z,26,Braithwaite,,getdaytrends-catchup
+2026-11-24T02:00Z,27,Elisa,30600,getdaytrends-catchup
+2026-11-24T02:00Z,28,Coutinho,,getdaytrends-catchup
+2026-11-24T02:00Z,29,Igor Vinicius,,getdaytrends-catchup
+2026-11-24T02:00Z,30,#SANxGRE,,getdaytrends-catchup
+2026-11-24T02:00Z,31,Tiquinho Soares,,getdaytrends-catchup
+2026-11-24T02:00Z,32,#AClinica,,getdaytrends-catchup
+2026-11-24T02:00Z,33,Pedro Lima,,getdaytrends-catchup
+2026-11-24T02:00Z,34,Amuzu,,getdaytrends-catchup
+2026-11-24T02:00Z,35,Bruno Gomes,,getdaytrends-catchup
+2026-11-24T02:00Z,36,René,32200,getdaytrends-catchup
+2026-11-24T02:00Z,37,Farid,,getdaytrends-catchup
+2026-11-24T02:00Z,38,Montoro,,getdaytrends-catchup
+2026-11-24T02:00Z,39,Osasco,,getdaytrends-catchup
+2026-11-24T02:00Z,40,Mirassol,,getdaytrends-catchup
+2026-11-24T02:00Z,41,O São Paulo,16500,getdaytrends-catchup
+2026-11-24T02:00Z,42,Mauricio,54200,getdaytrends-catchup
+2026-11-24T02:00Z,43,Maiara Basso,,getdaytrends-catchup
+2026-11-24T02:00Z,44,Rollheiser,,getdaytrends-catchup
+2026-11-24T02:00Z,45,Vitinho,,getdaytrends-catchup
+2026-11-24T02:00Z,46,#VoleiNaGETV,,getdaytrends-catchup
+2026-11-24T02:00Z,47,mau mau,268600,getdaytrends-catchup
+2026-11-24T02:00Z,48,Oliva,,getdaytrends-catchup
+2026-11-24T02:00Z,49,GREnal,,getdaytrends-catchup
+2026-11-24T02:00Z,50,gabriel batista,,getdaytrends-catchup
+2026-11-24T01:00Z,1,Vitória,52900,getdaytrends-catchup
+2026-11-24T01:00Z,2,Internacional,54300,getdaytrends-catchup
+2026-11-24T01:00Z,3,Botafogo,13100,getdaytrends-catchup
+2026-11-24T01:00Z,4,Weverton,,getdaytrends-catchup
+2026-11-24T01:00Z,5,Wendell,,getdaytrends-catchup
+2026-11-24T01:00Z,6,Calleri,,getdaytrends-catchup
+2026-11-24T01:00Z,7,Beira Rio,,getdaytrends-catchup
+2026-11-24T01:00Z,8,Rodinei,,getdaytrends-catchup
+2026-11-24T01:00Z,9,Gremio,17900,getdaytrends-catchup
+2026-11-24T01:00Z,10,Marcal,,getdaytrends-catchup
+2026-11-24T01:00Z,11,Barcellos,,getdaytrends-catchup
+2026-11-24T01:00Z,12,#VoleiNoSporTV,,getdaytrends-catchup
+2026-11-24T01:00Z,13,otoniel,,getdaytrends-catchup
+2026-11-24T01:00Z,14,Elisa,29400,getdaytrends-catchup
+2026-11-24T01:00Z,15,Baldasso,,getdaytrends-catchup
+2026-11-24T01:00Z,16,Dorival,,getdaytrends-catchup
+2026-11-24T01:00Z,17,Tony Ramos,,getdaytrends-catchup
+2026-11-24T01:00Z,18,Ramón,50900,getdaytrends-catchup
+2026-11-24T01:00Z,19,#VoleiNaGETV,,getdaytrends-catchup
+2026-11-24T01:00Z,20,Bruno Gomes,,getdaytrends-catchup
+2026-11-24T01:00Z,21,Cebolinha,,getdaytrends-catchup
+2026-11-24T01:00Z,22,Pedro Lima,,getdaytrends-catchup
+2026-11-24T01:00Z,23,René,31600,getdaytrends-catchup
+2026-11-24T01:00Z,24,Tiquinho Soares,,getdaytrends-catchup
+2026-11-24T01:00Z,25,Matheus Bahia,,getdaytrends-catchup
+2026-11-24T01:00Z,26,Lucas Arcanjo,,getdaytrends-catchup
+2026-11-24T01:00Z,27,Baralhas,,getdaytrends-catchup
+2026-11-24T01:00Z,28,Montoro,,getdaytrends-catchup
+2026-11-24T01:00Z,29,Amuzu,,getdaytrends-catchup
+2026-11-24T01:00Z,30,Jair Ventura,,getdaytrends-catchup
+2026-11-24T01:00Z,31,Maiara Basso,,getdaytrends-catchup
+2026-11-24T01:00Z,32,GREnal,,getdaytrends-catchup
+2026-11-24T01:00Z,33,Bobadilla,,getdaytrends-catchup
+2026-11-24T01:00Z,34,Rafael Lacerda,,getdaytrends-catchup
+2026-11-24T01:00Z,35,Thiago Maia,,getdaytrends-catchup
+2026-11-24T01:00Z,36,Eliasson,,getdaytrends-catchup
+2026-11-24T01:00Z,37,Ziyech,,getdaytrends-catchup
+2026-11-24T01:00Z,38,mariana ximenes,,getdaytrends-catchup
+2026-11-24T01:00Z,39,Kannemann,,getdaytrends-catchup
+2026-11-24T01:00Z,40,#INTxVIT,,getdaytrends-catchup
+2026-11-24T01:00Z,41,Osasco,,getdaytrends-catchup
+2026-11-24T01:00Z,42,#SANxGRE,,getdaytrends-catchup
+2026-11-24T01:00Z,43,Coutinho,,getdaytrends-catchup
+2026-11-24T01:00Z,44,O Santos,33200,getdaytrends-catchup
+2026-11-24T01:00Z,45,Colorado,21000,getdaytrends-catchup
+2026-11-24T01:00Z,46,Ferraresi,,getdaytrends-catchup
+2026-11-24T01:00Z,47,Vitinho,,getdaytrends-catchup
+2026-11-24T01:00Z,48,Ana Rudiger,,getdaytrends-catchup
+2026-11-24T01:00Z,49,Dani Lins,,getdaytrends-catchup
+2026-11-24T01:00Z,50,Eduardo Baptista,,getdaytrends-catchup
+2026-11-24T00:00Z,1,Vitória,45800,getdaytrends-catchup
+2026-11-24T00:00Z,2,Internacional,49200,getdaytrends-catchup
+2026-11-24T00:00Z,3,Pedro Lima,,getdaytrends-catchup
+2026-11-24T00:00Z,4,#VoleiNaGETV,,getdaytrends-catchup
+2026-11-24T00:00Z,5,Bruno Gomes,,getdaytrends-catchup
+2026-11-24T00:00Z,6,René,31000,getdaytrends-catchup
+2026-11-24T00:00Z,7,Maiara Basso,,getdaytrends-catchup
+2026-11-24T00:00Z,8,Lucas Arcanjo,,getdaytrends-catchup
+2026-11-24T00:00Z,9,Matheus Bahia,,getdaytrends-catchup
+2026-11-24T00:00Z,10,Beira Rio,,getdaytrends-catchup
+2026-11-24T00:00Z,11,GREnal,,getdaytrends-catchup
+2026-11-24T00:00Z,12,Kannemann,,getdaytrends-catchup
+2026-11-24T00:00Z,13,Baldasso,,getdaytrends-catchup
+2026-11-24T00:00Z,14,Ramón,49100,getdaytrends-catchup
+2026-11-24T00:00Z,15,Dani Lins,,getdaytrends-catchup
+2026-11-24T00:00Z,16,Ana Rudiger,,getdaytrends-catchup
+2026-11-24T00:00Z,17,Vitinho,,getdaytrends-catchup
+2026-11-24T00:00Z,18,Montoro,,getdaytrends-catchup
+2026-11-24T00:00Z,19,#INTxVIT,,getdaytrends-catchup
+2026-11-24T00:00Z,20,#closecall,,getdaytrends-catchup
+2026-11-24T00:00Z,21,Bobadilla,,getdaytrends-catchup
+2026-11-24T00:00Z,22,Sesi,21000,getdaytrends-catchup
+2026-11-24T00:00Z,23,Marcal,,getdaytrends-catchup
+2026-11-24T00:00Z,24,#BlogueirinhaEntrevista,,getdaytrends-catchup
+2026-11-24T00:00Z,25,Justino,,getdaytrends-catchup
+2026-11-24T00:00Z,26,Ziyech,,getdaytrends-catchup
+2026-11-24T00:00Z,27,Calebe,,getdaytrends-catchup
+2026-11-24T00:00Z,28,Vingadores,40000,getdaytrends-catchup
+2026-11-24T00:00Z,29,Thaisa,,getdaytrends-catchup
+2026-11-24T00:00Z,30,Glorinha,,getdaytrends-catchup
+2026-11-24T00:00Z,31,Barcellos,,getdaytrends-catchup
+2026-11-24T00:00Z,32,#charlanopremiere,,getdaytrends-catchup
+2026-11-24T00:00Z,33,Ferraresi,,getdaytrends-catchup
+2026-11-24T00:00Z,34,Dodi,,getdaytrends-catchup
+2026-11-24T00:00Z,35,Polémica,15100,getdaytrends-catchup
+2026-11-24T00:00Z,36,Telles,,getdaytrends-catchup
+2026-11-24T00:00Z,37,Marvel,122000,getdaytrends-catchup
+2026-11-24T00:00Z,38,jason grace,,getdaytrends-catchup
+2026-11-24T00:00Z,39,Inter e Grêmio,,getdaytrends-catchup
+2026-11-24T00:00Z,40,B 2027,,getdaytrends-catchup
+2026-11-24T00:00Z,41,Calleri,,getdaytrends-catchup
+2026-11-24T00:00Z,42,WALL-API-1.0,,getdaytrends-catchup
+2026-11-24T00:00Z,43,Alerrandro,,getdaytrends-catchup
+2026-11-24T00:00Z,44,Luzia,,getdaytrends-catchup
+2026-11-24T00:00Z,45,Osorio,,getdaytrends-catchup
+2026-11-24T00:00Z,46,Newton,15600,getdaytrends-catchup
+2026-11-24T00:00Z,47,Medina,28100,getdaytrends-catchup
+2026-11-24T00:00Z,48,Maldonado,12000,getdaytrends-catchup
+2026-11-24T00:00Z,49,Matheus Martins,,getdaytrends-catchup
+2026-11-24T00:00Z,50,Diana,83100,getdaytrends-catchup
