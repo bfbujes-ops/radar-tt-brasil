@@ -21,6 +21,7 @@ import datetime as dt
 import json
 import re
 import sys
+import urllib.parse
 from collections import defaultdict
 from pathlib import Path
 
@@ -34,7 +35,8 @@ OUT = ROOT / "web" / "clients"
 SENSIVEL = ["morte", "morre", "morreu", "mort", "falece", "luto", "velorio", "enterro", "acidente", "tragedia",
             "assassin", "homicid", "estupr", "abuso", "cancer", "tiroteio", "chacina", "atentado", "guerra",
             "enchente", "desabamento", "sequestr", "violencia", "racis", "preso", "prisao", "pedofil",
-            "suicid", "overdose", "massacre", "vitima", "ferido", "bomba"]
+            "suicid", "overdose", "massacre", "vitima", "ferido", "bomba", "cetamina", "droga", "dependencia quimica",
+            "vicio", "crack", "cocaina"]
 RX_SENS = re.compile(r"(?<![a-z0-9])(" + "|".join(SENSIVEL) + ")")
 
 
@@ -90,6 +92,31 @@ def context_index() -> dict:
         return {}
 
 
+def gnews_client(client: dict) -> list[dict]:
+    """Notícias dos últimos 3 dias sobre a marca/empresa e sobre os concorrentes (Google Notícias)."""
+    nt = client.get("noticiario") or {}
+    out = []
+    for grp in ("marca", "concorrentes"):
+        terms = [t for t in nt.get(grp, []) if len(t) >= 4]
+        if not terms:
+            continue
+        q = "(" + " OR ".join(f'"{t}"' for t in terms[:8]) + ") when:3d"
+        url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+            {"q": q, "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
+        try:
+            items = C.rss_items(C.get(url).content)
+        except Exception as exc:  # noqa: BLE001
+            print(f"[clientes] Google Notícias ({client['nome']}): {exc}", file=sys.stderr)
+            continue
+        for it in items[:40]:
+            title, src = it["title"], it["source"] or "Google Notícias"
+            if src and title.endswith(" - " + src):
+                title = title[: -len(src) - 3]
+            out.append({"title": title, "src": src, "link": it["link"],
+                        "pub": (it["pub"] or C.NOW()).astimezone(dt.timezone.utc).isoformat(timespec="minutes")})
+    return out
+
+
 def auto_idea(item: dict, client: dict, hit: dict) -> str:
     word = hit.get("palavra_original") or hit["palavra"]
     if item["kind"] == "trend":
@@ -123,39 +150,45 @@ def collect_matches(cfg: dict) -> dict[str, list[dict]]:
                         "risco": risco, "score": score, "fonte": "regra"}
                 item["ideia"] = auto_idea(item, client, hit)
                 out[key].append(item)
-    # manchetes (últimas 24h)
-    seen_titles = defaultdict(list)
-    for n in C.news_load(24):
+    # manchetes (últimas 24h): só marca/empresa, concorrentes e categoria — nada de coincidência de palavra
+    GRUPOS = (("marca", "Marca"), ("concorrentes", "Concorrente"), ("categoria", "Categoria"))
+    seen = defaultdict(set)
+    pool = [(n, None) for n in C.news_load(72)]
+    for key, client in cfg.items():                   # busca dirigida: marca e concorrentes no Google Notícias
+        for n in gnews_client(client):
+            pool.append((n, key))
+    for n, only in pool:
         text = C.norm(n["title"])
         for key, client in cfg.items():
-            hits = find_hits(text, client)
-            if not hits:
+            if only and only != key:
                 continue
-            hit = sorted(hits, key=lambda h: h["tipo"] != "ativo")[0]
-            sig = hit["nome"] + "|" + " ".join(text.split()[:6])
-            same_word = hit["nome"] + "|" + hit["palavra"]
-            if sig in seen_titles[key] or sum(1 for s_ in seen_titles[key] if s_ == same_word) >= 2:
+            nt = client.get("noticiario") or {}
+            if nt.get("excluir") and nt.setdefault("_rx_ex", compile_rx(nt["excluir"])).search(text):
                 continue
-            seen_titles[key] += [sig, same_word]
+            hit = None
+            for grp, label in GRUPOS:
+                rx = nt.setdefault("_rx_" + grp, compile_rx(nt.get(grp) or ["\x00"]))
+                m = rx.search(text)
+                if m:
+                    hit = {"tipo": grp, "nome": label, "desc": "", "palavra": m.group(1).strip()}
+                    break
+            if not hit:
+                continue
+            sig = " ".join(re.sub(r"[^a-z0-9 ]", "", text).split()[:7])
+            if sig in seen[key]:
+                continue
+            seen[key].add(sig)
             hit["palavra_original"] = original_word(n["title"], hit["palavra"])
             risco = bool(RX_SENS.search(text)) or any(C.norm(e) in text for e in client.get("evitar", []))
             age_h = (C.NOW() - dt.datetime.fromisoformat(n["pub"])).total_seconds() / 3600
-            score = 18 + (20 if hit["tipo"] == "ativo" else 4) - age_h / 2 - (30 if risco else 0)
-            item = {"kind": "news", "title": n["title"], "src": C.FEEDS.get(n["src"], (n["src"],))[0],
-                    "link": n["link"], "pub": n["pub"], "hit": hit, "risco": risco, "score": round(score, 1),
-                    "fonte": "regra"}
-            item["ideia"] = auto_idea(item, client, hit)
-            out[key].append(item)
+            score = {"marca": 40, "concorrentes": 30, "categoria": 18}[hit["tipo"]] - age_h / 6
+            out[key].append({"kind": "news", "title": n["title"], "src": C.FEEDS.get(n["src"], (n["src"],))[0] if n["src"] in C.FEEDS else n["src"],
+                             "link": n["link"], "pub": n["pub"], "hit": hit, "risco": risco,
+                             "score": round(score, 1), "fonte": "regra"})
+
     for key in out:
         out[key].sort(key=lambda i: i["score"], reverse=True)
-        # manchetes que só tocam um território (sem ativo da marca) são as mais fracas: no máximo 3
-        n_terr, kept = 0, []
-        for m in out[key]:
-            if m["kind"] == "news" and m["hit"]["tipo"] == "territorio":
-                n_terr += 1
-                if n_terr > 3:
-                    continue
-            kept.append(m)
+        kept = out[key]
         out[key] = kept[:25]
     return out
 
@@ -173,7 +206,7 @@ def ai_review(cfg: dict, matches: dict) -> None:
         why = c.get("porque") or (c.get("destaque") or {}).get("t") or "sem explicação"
         lines.append(f"- {t['term']} (melhor posição {t['best']}º): {why}")
     for key, client in cfg.items():
-        cand = matches[key][:10]
+        cand = [m for m in matches[key] if m["kind"] == "trend"][:10]
         cand_txt = "\n".join(f"[{i}] {(m.get('term') or m.get('title'))} → {m['hit']['nome']}" for i, m in enumerate(cand))
         prompt = (
             f"Cliente: {client['nome']}. Universo da marca: {client['universo']}\n\n"
@@ -250,13 +283,18 @@ def save(cfg: dict, matches: dict) -> None:
                 r = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            if r.get("kind") == "news" and (r.get("hit") or {}).get("tipo") not in ("marca", "concorrentes", "categoria"):
+                continue
             prev = week[r["client"]].get(r["key"])
             if not prev or (r.get("score") or 0) > (prev.get("score") or 0):
                 week[r["client"]][r["key"]] = r
     payload = {"generated": C.NOW().isoformat(timespec="minutes"), "clients": {}}
     for key, client in cfg.items():
-        agora = [{k: v for k, v in m.items() if not k.startswith("_")} for m in matches[key][:15]]
-        semana = sorted(week[key].values(), key=lambda r: r.get("score") or 0, reverse=True)[:20]
+        trends_ = [m for m in matches[key] if m["kind"] == "trend"][:12]
+        news_ = [m for m in matches[key] if m["kind"] == "news"][:12]
+        agora = [{k: v for k, v in m.items() if not k.startswith("_")} for m in trends_ + news_]
+        wk = sorted(week[key].values(), key=lambda r: r.get("score") or 0, reverse=True)
+        semana = [r for r in wk if r.get("kind") == "trend"][:15] + [r for r in wk if r.get("kind") == "news"][:15]
         payload["clients"][key] = {"nome": client["nome"], "cor": client["cor"], "universo": client["universo"],
                                    "agora": agora, "semana": semana}
     (OUT / "latest.json").write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
@@ -274,6 +312,8 @@ def main():
         for kind in ("ativos", "territorios"):
             for a in client.get(kind, []):
                 a.pop("_rx", None); a.pop("_rx_ex", None)
+        for g in ("marca", "concorrentes", "categoria", "ex"):
+            (client.get("noticiario") or {}).pop("_rx_" + g, None)
     save(cfg, matches)
 
 

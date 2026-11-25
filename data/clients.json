@@ -1,5 +1,5 @@
 {
-  "_como_editar": "Cada cliente tem 'ativos' (produtos, ícones, slogans, embaixadores) e 'territorios' (assuntos da marca). 'radicais' são começos de palavra, sem acento e em minúsculas: 'cebol' pega cebola, cebolinha, Cebolinha. Para incluir um cliente novo, copie um bloco e troque os valores. 'excluir' (opcional) descarta a conexão quando o texto também tem uma dessas palavras.",
+  "_como_editar": "Cada cliente tem 'ativos' (produtos, ícones, slogans, embaixadores) e 'territorios' (assuntos da marca), usados para achar ganchos criativos nos trending topics. 'noticiario' define o que conta nas manchetes: a própria marca e a empresa dona ('marca'), 'concorrentes' e a 'categoria'. 'radicais' e listas são começos de palavra, sem acento e em minúsculas: 'cebol' pega cebola, cebolinha, Cebolinha. 'excluir' (opcional) descarta a conexão quando o texto também tem uma dessas palavras. Para incluir um cliente novo, copie um bloco e troque os valores.",
   "outback": {
     "nome": "Outback",
     "cor": "#8a2b1e",
@@ -85,7 +85,39 @@
       "alimentar",
       "anvisa",
       "interdit"
-    ]
+    ],
+    "noticiario": {
+      "marca": [
+        "outback",
+        "bloomin brands",
+        "bloomin' brands",
+        "abbraccio"
+      ],
+      "concorrentes": [
+        "coco bambu",
+        "madero",
+        "fogo de chao",
+        "applebee",
+        "texas roadhouse",
+        "jeronimo burger"
+      ],
+      "categoria": [
+        "abrasel",
+        "bares e restaurantes",
+        "setor de restaurantes",
+        "food service",
+        "redes de restaurantes",
+        "preco da carne",
+        "preco da cebola"
+      ],
+      "excluir": [
+        "subaru",
+        "suv",
+        "carro",
+        "veiculo",
+        "test drive"
+      ]
+    }
   },
   "huggies": {
     "nome": "Huggies",
@@ -189,7 +221,33 @@
       "recall",
       "suspen",
       "contamina"
-    ]
+    ],
+    "noticiario": {
+      "marca": [
+        "huggies",
+        "kimberly-clark",
+        "kimberly clark"
+      ],
+      "concorrentes": [
+        "pampers",
+        "procter & gamble",
+        "procter e gamble",
+        "mamypoko",
+        "babysec",
+        "pom pom"
+      ],
+      "categoria": [
+        "mercado de fraldas",
+        "fraldas descartaveis",
+        "preco das fraldas",
+        "fabricante de fraldas",
+        "taxa de natalidade",
+        "licenca-maternidade",
+        "licenca maternidade",
+        "licenca-paternidade",
+        "licenca paternidade"
+      ]
+    }
   },
   "heinz": {
     "nome": "Heinz",
@@ -293,7 +351,29 @@
       "anvisa",
       "apreend",
       "contamina"
-    ]
+    ],
+    "noticiario": {
+      "marca": [
+        "heinz",
+        "kraft heinz",
+        "hemmer"
+      ],
+      "concorrentes": [
+        "hellmann",
+        "unilever",
+        "predilecta",
+        "fugini",
+        "quero ketchup"
+      ],
+      "categoria": [
+        "ketchup",
+        "maionese",
+        "preco do tomate",
+        "mercado de molhos",
+        "condimentos"
+      ],
+      "excluir": []
+    }
   },
   "yoki": {
     "nome": "Yoki",
@@ -425,7 +505,31 @@
       "apreend",
       "recall",
       "contamina"
-    ]
+    ],
+    "noticiario": {
+      "marca": [
+        "yoki",
+        "kitano",
+        "3coracoes",
+        "3 coracoes",
+        "tres coracoes",
+        "general mills"
+      ],
+      "concorrentes": [
+        "elma chips",
+        "pepsico",
+        "pipoca premiata",
+        "dori alimentos"
+      ],
+      "categoria": [
+        "pipoca de micro-ondas",
+        "mercado de pipoca",
+        "preco do milho",
+        "farofa pronta",
+        "festa junina",
+        "festas juninas"
+      ]
+    }
   },
   "sonho-de-valsa": {
     "nome": "Sonho de Valsa",
@@ -520,6 +624,34 @@
       "divorc",
       "feminicid",
       "violencia"
-    ]
+    ],
+    "noticiario": {
+      "marca": [
+        "sonho de valsa",
+        "lacta",
+        "mondelez",
+        "ouro branco",
+        "diamante negro"
+      ],
+      "concorrentes": [
+        "cacau show",
+        "chocolates garoto",
+        "garoto",
+        "nestle",
+        "kopenhagen",
+        "ferrero",
+        "serenata de amor"
+      ],
+      "categoria": [
+        "preco do chocolate",
+        "mercado de chocolate",
+        "industria de chocolate",
+        "chocolates",
+        "preco do cacau",
+        "cacau",
+        "pascoa",
+        "dia dos namorados"
+      ]
+    }
   }
 }

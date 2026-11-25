@@ -75,7 +75,18 @@ mark{background:color-mix(in srgb,var(--c) 22%,#fff);color:inherit;border-radius
 .bridge{font-size:14px}
 .bridge b{color:color-mix(in srgb,var(--c) 85%,#000)}
 .idea{margin:0;font-size:15px;line-height:1.45;color:var(--ink)}
-.oempty{color:var(--muted);padding:12px 0}
+.oempty{color:var(--muted);padding:4px 0 8px;margin:0}
+.ptitle{margin:22px 0 10px;font-size:18px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.ptitle small{font-weight:400;font-size:14px;color:var(--muted)}
+.nlist{list-style:none;margin:0;padding:0 18px}
+.nlist li{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:4px 14px;padding:12px 0;border-top:1px solid var(--rule)}
+.nlist li:first-child{border-top:0}
+.nlist .g{font-size:13px;font-weight:700;color:color-mix(in srgb,var(--c) 85%,#000)}
+.nlist .g span{display:block;font-weight:400;color:var(--muted)}
+.nlist a{text-decoration:none;font-weight:600;font-size:16px;line-height:1.35}
+.nlist a:hover{text-decoration:underline}
+.nlist .s{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+@media(max-width:560px){.nlist li{grid-template-columns:minmax(0,1fr)}}
 
 /* agora no X */
 .grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(22px,3vw,40px);align-items:start}
@@ -293,7 +304,7 @@ footer li{margin:4px 0}
   <div class="wrap">
     <h3>Como ler o radar</h3>
     <ul>
-      <li><b>Radar dos clientes</b>: cruza os trending topics das últimas 24 horas (e o motivo de cada um) e as manchetes com o universo de cada marca: produtos, ícones, embaixadores e territórios. Conexões marcadas como sensíveis envolvem tragédia, violência ou polêmica e pedem cuidado.</li>
+      <li><b>Radar dos clientes</b>: os ganchos cruzam os trending topics das últimas 24 horas (e o motivo de cada um) com o universo de cada marca: produtos, ícones, embaixadores e territórios. O noticiário traz só manchetes sobre a própria marca, a empresa dona, os concorrentes e a categoria. Itens marcados como sensíveis envolvem tragédia, violência ou polêmica e pedem cuidado.</li>
       <li><b>Agora no X</b>: os 10 primeiros dos trending topics do Brasil na última leitura, com o motivo de cada um tirado das notícias.</li>
       <li><b>Pauta da imprensa</b>: assuntos mais repetidos nas manchetes de g1, Folha, Estadão, O Globo, CNN Brasil, BBC Brasil, Metrópoles, Poder360, Veja, Exame e ge.</li>
       <li><b>Horas em trend e pontos</b>: cada hora no top 50 vale pela posição (1º = 50 pontos, 50º = 1). <b>No Google</b>: interesse de busca de 0 a 100, não é contagem de buscas.</li>
@@ -471,18 +482,25 @@ function renderClients(){
   if (selClient && !CL.clients[selClient]) selClient = null;
   $('#climeta').textContent = `Atualizado ${ago(CL.generated)} · trends das últimas 24h e manchetes do dia`;
   $('#clients').innerHTML = keys.map(k => {
-    const c = CL.clients[k], ok = c.agora.filter(o => !o.risco), t = ok[0];
+    const c = CL.clients[k], ok = c.agora.filter(o => o.kind === 'trend' && !o.risco), t = ok[0];
+    const nn = c.agora.filter(o => o.kind === 'news').length;
     const what = t ? (t.kind === 'trend' ? `“${esc(t.term)}”` : esc((t.title || '').split(' ').slice(0, 7).join(' ') + '…')) : '';
     return `<button type="button" class="cl" style="--c:${c.cor}" data-client="${k}" aria-pressed="${selClient === k}">
-      <span class="cname">${esc(c.nome)}</span><span class="ccount"><b>${ok.length}</b> ${ok.length === 1 ? 'conexão' : 'conexões'} agora</span>
-      <span class="ctop">${t ? `<b>${what}</b> → ${esc(t.hit.nome)}` : 'Nada forte agora'}</span></button>`;
+      <span class="cname">${esc(c.nome)}</span><span class="ccount"><b>${ok.length}</b> ${ok.length === 1 ? 'gancho' : 'ganchos'} nos trends · <b>${nn}</b> no noticiário</span>
+      <span class="ctop">${t ? `<b>${what}</b> → ${esc(t.hit.nome)}` : 'Nenhum gancho forte agora'}</span></button>`;
   }).join('');
   if (!selClient){ $('#cpanel').innerHTML = '<p class="pnote" style="margin:0">Escolha um cliente para ver as oportunidades.</p>'; return; }
   const c = CL.clients[selClient], list = clTab === 'agora' ? c.agora : c.semana;
+  const tr = list.filter(o => o.kind === 'trend'), nw = list.filter(o => o.kind === 'news');
   $('#cpanel').innerHTML = `<div class="cphead"><h3>${esc(c.nome)}</h3>
       <div class="seg" role="group" aria-label="Período"><button type="button" data-ctab="agora" aria-pressed="${clTab === 'agora'}">Agora</button><button type="button" data-ctab="semana" aria-pressed="${clTab === 'semana'}">Últimos 7 dias</button></div></div>
     <p class="cuni">${esc(c.universo)}</p>
-    ${list.length ? `<div class="opps">${list.slice(0, 12).map(o => oppCard(o, c.cor)).join('')}</div>` : '<p class="oempty">Nenhuma conexão neste período.</p>'}`;
+    <h4 class="ptitle">Ganchos nos trending topics <small>palavras do trend ou do motivo dele que puxam algo da marca</small></h4>
+    ${tr.length ? `<div class="opps">${tr.slice(0, 9).map(o => oppCard(o, c.cor)).join('')}</div>` : `<p class="oempty">Nenhum trend ${clTab === 'agora' ? 'das últimas 24 horas' : 'dos últimos 7 dias'} conversa com o universo de ${esc(c.nome)}.</p>`}
+    <h4 class="ptitle">No noticiário <small>a marca, a empresa, os concorrentes e a categoria${clTab === 'agora' ? ' nos últimos 3 dias' : ' nos últimos 7 dias'}</small></h4>
+    ${nw.length ? `<ul class="nlist card" style="--c:${c.cor}">${nw.slice(0, 12).map(o => `<li><span class="g">${esc(o.hit.nome)}<span>${esc(o.hit.palavra_original || '')}</span></span>
+      <div><a href="${esc(o.link)}" target="_blank" rel="noopener">${esc(o.title)}</a><span class="s">${esc(o.src)}${o.pub ? ' · ' + ago(o.pub) : ''}${o.risco ? ' · <b style="color:var(--warn)">assunto sensível</b>' : ''}</span></div></li>`).join('')}</ul>`
+      : `<p class="oempty">Nenhuma notícia sobre ${esc(c.nome)}, a empresa, os concorrentes ou a categoria no período.</p>`}`;
 }
 function dossierClients(q){
   if (!CL){ $('#dcli').innerHTML = ''; return; }
