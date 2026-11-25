@@ -9,8 +9,9 @@ Subcomandos:
                  → frase "Porque…", categoria e contexto (web/context/<slug>.json)
   all            news + explain + analyze-news
 
-A IA usada é a do GitHub Models (grátis dentro do GitHub Actions, via GITHUB_TOKEN).
-Se ANTHROPIC_API_KEY existir, ela é usada no lugar. Tweets só entram com TWITTERAPI_IO_KEY.
+A explicação por IA usa a API da Anthropic (secret ANTHROPIC_API_KEY). Sem a chave, o radar usa
+o modo automático: a manchete mais relevante no lugar do "Porque…" e os assuntos citados por mais
+veículos na pauta. Tweets só entram com TWITTERAPI_IO_KEY.
 """
 from __future__ import annotations
 
@@ -137,7 +138,7 @@ def get(url, **kw):
 # ---------------------------------------------------------------- IA
 
 def llm_json(prompt: str, max_tokens=700) -> dict | None:
-    """Pede JSON à IA. GitHub Models (grátis no Actions) ou Claude se houver chave."""
+    """Pede JSON ao Claude (precisa de ANTHROPIC_API_KEY); sem chave devolve None."""
     if os.environ.get("ANTHROPIC_API_KEY"):
         r = requests.post("https://api.anthropic.com/v1/messages", timeout=90, headers={
             "x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01",
@@ -148,45 +149,6 @@ def llm_json(prompt: str, max_tokens=700) -> dict | None:
             txt = r.json()["content"][0]["text"]
             return _parse_json(txt)
         print(f"[ia] Claude {r.status_code}: {r.text[:200]}", file=sys.stderr)
-    tok = os.environ.get("GITHUB_TOKEN")
-    if not tok:
-        return None
-    for model in ("openai/gpt-4.1-mini", "openai/gpt-4o-mini"):
-        strict = True
-        for attempt in range(3):
-            body = {"model": model, "max_tokens": max_tokens, "temperature": 0.2,
-                    "messages": [{"role": "system", "content": "Você é editor de uma página brasileira que explica "
-                                  "os trending topics do X. Escreve em português do Brasil, frases curtas, tom neutro e "
-                                  "factual. Nunca inventa: usa só o material fornecido. Responde só em JSON."},
-                                 {"role": "user", "content": prompt}]}
-            if strict:
-                body["response_format"] = {"type": "json_object"}
-            try:
-                r = requests.post("https://models.github.ai/inference/chat/completions", timeout=90, headers={
-                    "Authorization": f"Bearer {tok}", "Content-Type": "application/json",
-                    "Accept": "application/json"}, json=body)
-            except requests.RequestException as exc:
-                print(f"[ia] {model}: {exc}", file=sys.stderr)
-                time.sleep(5)
-                continue
-            if r.ok:
-                time.sleep(4.5)                       # limite de ~15 pedidos por minuto
-                try:
-                    return _parse_json(r.json()["choices"][0]["message"]["content"])
-                except (ValueError, KeyError, IndexError):
-                    print(f"[ia] {model}: resposta inesperada ({r.headers.get('content-type')}) "
-                          f"{r.text[:200]!r}", file=sys.stderr)
-                    strict = False                    # tenta de novo sem exigir JSON
-                    continue
-            if r.status_code == 429:
-                wait = int(r.headers.get("retry-after", "20"))
-                if wait > 120:
-                    print(f"[ia] {model}: limite diário atingido", file=sys.stderr)
-                    break
-                time.sleep(wait + 1)
-                continue
-            print(f"[ia] {model} {r.status_code}: {r.text[:200]}", file=sys.stderr)
-            break
     return None
 
 
@@ -410,6 +372,8 @@ def explain_term(term: str, snap, headlines, rank=None) -> dict:
         "atribua o termo a uma notícia se ela claramente for o assunto."
     )
     res = llm_json(prompt)
+    lead = next((n for n in news if rx and rx.search(norm(n["t"]))), news[0] if news else None)
+    ep["destaque"] = lead                              # usado quando não há explicação da IA
     if res:
         ep["porque"] = (res.get("porque") or None)
         ep["contexto"] = res.get("contexto") or None
@@ -448,6 +412,7 @@ def rebuild_index():
         except Exception:  # noqa: BLE001
             continue
         idx[f.stem] = {"term": rec["term"], "start": e["start"], "updated": e["updated"],
+                       "destaque": e.get("destaque"),
                        "porque": e.get("porque"), "categoria": e.get("categoria"),
                        "confianca": e.get("confianca"), "contexto": e.get("contexto"),
                        "n_news": len(e.get("news", [])), "n_tweets": len(e.get("tweets", [])),
@@ -471,7 +436,8 @@ def cmd_explain(a) -> int:
             try:
                 last = json.loads(f.read_text(encoding="utf-8"))["episodes"][0]
                 age = NOW() - dt.datetime.fromisoformat(last["updated"])
-                if last["start"] == start and (last.get("porque") or age < dt.timedelta(hours=2)) \
+                retry_ai = not last.get("porque") and os.environ.get("ANTHROPIC_API_KEY") and age > dt.timedelta(minutes=50)
+                if last["start"] == start and not retry_ai and (last.get("porque") or age < dt.timedelta(hours=3)) \
                         and age < dt.timedelta(hours=a.refresh_hours):
                     print(f"[explain] {term}: já explicado")
                     continue
@@ -488,6 +454,81 @@ def cmd_explain(a) -> int:
               f"{len(ep['tweets'])} tweets")
     rebuild_index()
     return done
+
+
+STOP = set("""a o as os um uma uns umas de do da dos das em no na nos nas por pelo pela pelos pelas para pra
+com sem sob sobre entre ate após apos e ou mas que se ser foi é ha há tem têm ter vai vão diz dizem
+como mais menos muito muita ja já nao não sim seu sua seus suas ele ela eles elas isso este esta esse essa
+ao aos à às apos ano anos dia dias hoje ontem amanha amanhã novo nova novos novas veja saiba entenda video
+vídeo fotos ao vivo brasil brasileiro brasileira governo diz após contra pode podem deve devem quer
+quando onde qual quais quem the of and in on to for""".split())
+
+
+def auto_themes(recent: list[dict], tt_terms: list[str], k=7) -> dict:
+    """Pauta sem IA: nomes próprios e expressões com maiúsculas (São Paulo, Segurança Pública)
+    citados pelo maior número de veículos diferentes nas últimas horas."""
+    CONN = {"de", "da", "do", "dos", "das", "e"}
+    split = lambda t: re.findall(r"[\wÀ-ÿ'’-]+", t)
+    cap = lambda w: w[:1].isupper() or (len(w) > 1 and w.isupper())
+    mid_caps = defaultdict(int)                       # palavra maiúscula fora do início do título
+    for n in recent:
+        for w in split(n["title"])[1:]:
+            if cap(w):
+                mid_caps[norm(w)] += 1
+    def proper(w, pos):
+        return cap(w) and norm(w) not in STOP and len(norm(w)) >= 3 and (pos > 0 or mid_caps[norm(w)] > 0)
+    cand = defaultdict(lambda: {"srcs": set(), "idx": set(), "forms": defaultdict(int)})
+    for i, n in enumerate(recent):
+        ws = split(n["title"])
+        j = 0
+        while j < len(ws):                            # sequências de nomes próprios, com "de/da/do" no meio
+            if not proper(ws[j], j):
+                j += 1; continue
+            k2 = j + 1
+            while k2 < len(ws) and (proper(ws[k2], k2) or (norm(ws[k2]) in CONN and k2 + 1 < len(ws) and proper(ws[k2 + 1], k2 + 1))):
+                k2 += 1
+            run = ws[j:k2]
+            for size in range(1, min(3, len(run)) + 1):
+                for a0 in range(len(run) - size + 1):
+                    gram = run[a0:a0 + size]
+                    if norm(gram[0]) in CONN or norm(gram[-1]) in CONN:
+                        continue
+                    key = " ".join(norm(w) for w in gram)
+                    c = cand[key]; c["srcs"].add(n["src"]); c["idx"].add(i); c["forms"][" ".join(gram)] += 1
+            j = k2
+    # "São" sozinho perde para "São Paulo" quando quase sempre aparece dentro da expressão maior,
+    # e some de vez quando é só o começo de vários nomes diferentes (São Paulo, São Luís, São José)
+    for key in [k for k in cand if " " not in k]:
+        starts = {b.split()[1] for b in cand if b.count(" ") == 1 and b.split()[0] == key}
+        if len(starts) >= 3:
+            cand[key]["srcs"] = set()
+            continue
+        for big, c2 in cand.items():
+            if " " in big and f" {key} " in f" {big} " and len(c2["idx"]) >= 0.7 * len(cand[key]["idx"]) \
+                    and len(c2["srcs"]) >= len(cand[key]["srcs"]) - 1:
+                cand[key]["srcs"] = set()
+                break
+    ranked = sorted(cand.items(), key=lambda kv: (len(kv[1]["srcs"]), min(len(kv[0].split()), 2), len(kv[1]["idx"])), reverse=True)
+    temas, used_idx, chosen = [], set(), []
+    for key, c in ranked:
+        if len(c["srcs"]) < 3:
+            break
+        if any(f" {key} " in f" {ch} " or f" {ch} " in f" {key} " for ch in chosen):
+            continue
+        if len(c["idx"] & used_idx) > 0.6 * len(c["idx"]):
+            continue                                  # mesmo assunto de um tema já escolhido
+        chosen.append(key); used_idx |= c["idx"]
+        label = max(c["forms"].items(), key=lambda kv: kv[1])[0]
+        tt = None
+        for t in tt_terms:
+            rt = term_regex(t)
+            if rt and (rt.search(key) or (term_regex(label) and term_regex(label).search(norm(t)))):
+                tt = t; break
+        temas.append({"titulo": label, "resumo": None, "categoria": "Outros",
+                      "itens": sorted(c["idx"])[:8], "fontes": sorted(c["srcs"]), "tt": tt})
+        if len(temas) >= k:
+            break
+    return {"resumo": None, "temas": temas, "modo": "automatico"}
 
 
 def cmd_analyze_news(_a=None):
@@ -546,10 +587,12 @@ def cmd_analyze_news(_a=None):
                               "fontes": sorted({recent[i]["src"] for i in idxs}),
                               "tt": t.get("tt") if t.get("tt") in tt_terms else None})
             analysis = {"generated": NOW().isoformat(timespec="minutes"), "resumo": res.get("resumo"),
-                        "temas": temas}
+                        "temas": temas, "modo": "ia"}
         else:
-            # mantém a análise anterior, mas os índices podem ter mudado: refaz pelo link
-            analysis = prev
+            auto = auto_themes(recent, tt_terms)
+            for t in auto["temas"]:                   # índices de `recent` → índices de `items`
+                t["itens"] = [pos[recent[i]["link"]] for i in t["itens"] if recent[i]["link"] in pos]
+            analysis = {"generated": NOW().isoformat(timespec="minutes"), **auto}
 
     payload = {"generated": NOW().isoformat(timespec="minutes"),
                "sources": {k: v[0] for k, v in FEEDS.items()},

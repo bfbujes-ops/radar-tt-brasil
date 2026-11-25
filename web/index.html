@@ -50,7 +50,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .rk{font-weight:800;font-size:38px;color:var(--muted);text-align:right;padding-top:2px}
 .item:first-child .rk{color:var(--acc)}
 .ihead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
-.term{background:none;border:0;padding:0;font-weight:800;font-size:clamp(24px,2.6vw,30px);color:var(--ink);text-align:left}
+.term{background:none;border:0;padding:0;font-weight:800;font-size:clamp(22px,2.6vw,30px);color:var(--ink);text-align:left;overflow-wrap:anywhere;max-width:100%}
 .term:hover{color:var(--acc-ink)}
 .cat{font-size:13px;font-weight:600;color:var(--acc-ink)}
 .why{margin:4px 0 6px;font-size:16px;max-width:66ch}
@@ -85,7 +85,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .ago{display:block;font-size:12px;color:var(--muted);margin-top:2px}
 
 .cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
-.chip{background:transparent;border:1px solid color-mix(in srgb,var(--acc) 35%,var(--rule));border-radius:20px;padding:4px 12px;min-height:36px;color:var(--acc-ink);font-weight:600;line-height:1.2}
+.chip{overflow-wrap:anywhere;max-width:100%;text-align:left;background:transparent;border:1px solid color-mix(in srgb,var(--acc) 35%,var(--rule));border-radius:20px;padding:4px 12px;min-height:36px;color:var(--acc-ink);font-weight:600;line-height:1.2}
 .chip small{color:var(--muted);font-weight:400;font-size:.72em;margin-left:4px}
 
 /* ficha do termo */
@@ -93,7 +93,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .dhead{padding:10px 0 24px;border-bottom:3px solid var(--ink)}
 .kick{margin:0 0 6px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
 .kick .cat{font-size:14px}
-.dhead h1{font-weight:800;font-size:clamp(40px,6vw,64px);margin:0 0 10px;text-wrap:balance}
+.dhead h1{font-weight:800;font-size:clamp(36px,6vw,64px);margin:0 0 10px;text-wrap:balance;overflow-wrap:anywhere}
 .whybig{font-size:clamp(19px,2.1vw,23px);line-height:1.35;margin:0 0 10px;max-width:58ch;font-weight:500}
 .dctx{margin:0 0 12px;color:var(--muted);max-width:70ch}
 .conf{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--panel);color:var(--muted)}
@@ -353,7 +353,8 @@ function renderHome(){
     const term = D.terms[id], c = CTX[slug(term)], hrs = streak(id), best = bestRank(id, HH - hrs - GAP);
     const nNews = (c && c.n_news) || (NEWS && NEWS.overlap && NEWS.overlap[term]) || 0;
     const why = c && c.porque ? `<p class="why">${esc(cleanWhy(c.porque, term))}</p>`
-      : `<p class="why none">${c ? 'Sem explicação confirmada ainda.' : 'Explicação em preparo.'}${c && c.co && c.co.length ? ' Sobe junto com: ' + c.co.map(esc).join(', ') + '.' : ''}</p>`;
+      : c && c.destaque ? `<p class="why"><span class="src">${esc(c.destaque.src)}</span>${esc(c.destaque.t)}</p>`
+      : `<p class="why none">${c ? 'Sem notícias sobre o termo nos últimos 2 dias.' : 'Explicação em preparo.'}${c && c.co && c.co.length ? ' Sobe junto com: ' + c.co.map(esc).join(', ') + '.' : ''}</p>`;
     return `<li class="item"><span class="rk">${i+1}</span><div>
       <div class="ihead"><button type="button" class="term" data-q="${esc(term)}">${esc(term)}</button>${c && c.categoria && c.categoria !== 'Outros' ? `<span class="cat">${esc(c.categoria)}</span>` : ''}</div>
       ${why}
@@ -374,11 +375,12 @@ function renderPauta(){
   if (!A || !A.temas || !A.temas.length){ $('#pres').textContent = NEWS ? 'A análise das manchetes sai na próxima atualização.' : 'Manchetes indisponíveis agora.'; $('#temas').innerHTML = ''; return; }
   const src = NEWS.sources || {};
   $('#pautameta').textContent = `Atualizada ${ago(A.generated)}`;
-  $('#pres').textContent = A.resumo || '';
-  $('#temas').innerHTML = A.temas.map(t => `<div class="tema"><h3>${esc(t.titulo)}</h3><p>${esc(t.resumo)}</p>
-    <div class="tmeta"><span>${t.fontes.length} ${t.fontes.length===1?'veículo':'veículos'} · ${esc(t.categoria)}</span>${t.tt ? `<button type="button" class="ttag" data-q="${esc(t.tt)}">também no X: ${esc(t.tt)}</button>` : ''}</div>
+  $('#pres').textContent = A.resumo || 'Os nomes e assuntos citados por mais veículos nas últimas horas.';
+  $('#temas').innerHTML = A.temas.map(t => { const first = NEWS.items[t.itens[0]];
+    return `<div class="tema"><h3>${esc(t.titulo)}</h3><p>${t.resumo ? esc(t.resumo) : first ? esc(first[2]) : ''}</p>
+    <div class="tmeta"><span>${t.fontes.length} ${t.fontes.length===1?'veículo':'veículos'}${t.categoria && t.categoria !== 'Outros' ? ' · ' + esc(t.categoria) : ''}</span>${t.tt ? `<button type="button" class="ttag" data-q="${esc(t.tt)}">também no X: ${esc(t.tt)}</button>` : ''}</div>
     <details><summary>Ver ${t.itens.length} ${t.itens.length===1?'manchete':'manchetes'}</summary><ul class="hl">${t.itens.map(i => NEWS.items[i]).filter(Boolean).map(([pub,s,title,link]) =>
-      `<li><span class="src">${esc(src[s]||s)}</span><a href="${esc(link)}" target="_blank" rel="noopener">${esc(title)}</a></li>`).join('')}</ul></details></div>`).join('');
+      `<li><span class="src">${esc(src[s]||s)}</span><a href="${esc(link)}" target="_blank" rel="noopener">${esc(title)}</a></li>`).join('')}</ul></details></div>`; }).join('');
 }
 function renderPapers(){
   if (!NEWS){ $('#papers').innerHTML = '<p class="empty">Manchetes indisponíveis agora.</p>'; return; }
@@ -429,7 +431,7 @@ async function context(q){
   const conf = {alta:'Confiança alta', media:'Confiança média', baixa:'Confiança baixa'}[e.confianca] || '';
   $('#dhead').innerHTML = `<p class="kick">${e.categoria && e.categoria !== 'Outros' ? `<span class="cat">${esc(e.categoria)}</span>` : ''}<span>Explicação de ${fmt.format(new Date(e.updated))}</span>${e.porque && conf ? `<span class="conf">${conf}</span>` : ''}</p>
     <h1>“${esc(rec.term)}”</h1>
-    ${e.porque ? `<p class="whybig">${esc(cleanWhy(e.porque, rec.term))}</p>` : `<p class="whybig" style="color:var(--muted)">Não encontramos nas notícias e posts uma explicação segura para o termo.</p>`}
+    ${e.porque ? `<p class="whybig">${esc(cleanWhy(e.porque, rec.term))}</p>` : e.destaque ? `<p class="whybig"><span class="src" style="font-size:14px">${esc(e.destaque.src)} · manchete mais relevante</span><br>${esc(e.destaque.t)}</p>` : `<p class="whybig" style="color:var(--muted)">Não encontramos notícias sobre o termo nos últimos 2 dias.</p>`}
     ${e.contexto ? `<p class="dctx">${esc(e.contexto)}</p>` : ''}
     ${e.co && e.co.length ? `<div class="cloud" style="margin-top:10px"><span class="pnote" style="margin:0">Sobe junto com:</span>${e.co.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}`;
   const news = (e.news || []).map((n,i) => ({...n, used: usedN.has(i)})).sort((a,b) => b.used - a.used);
