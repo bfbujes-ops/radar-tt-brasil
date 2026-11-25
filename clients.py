@@ -63,10 +63,13 @@ def find_hits(text: str, client: dict) -> list[dict]:
 
 
 def original_word(text: str, norm_word: str) -> str:
-    """Recupera a palavra como apareceu no texto original (ex.: 'cebol' → 'Cebolinha')."""
-    for w in re.findall(r"[\wÀ-ÿ'’-]+", text):
-        if C.norm(w).startswith(norm_word.split()[0]):
-            return w
+    """Recupera o trecho como apareceu no texto original ('cebol' → 'Cebolinha',
+    'sonho de valsa' → 'Sonho de Valsa')."""
+    words = re.findall(r"[\wÀ-ÿ'’&-]+", text)
+    parts = norm_word.split()
+    for i, w in enumerate(words):
+        if C.norm(w).startswith(parts[0]):
+            return " ".join(words[i:i + len(parts)])
     return norm_word
 
 
