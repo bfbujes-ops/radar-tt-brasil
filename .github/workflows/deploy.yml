@@ -1,6 +1,9 @@
 name: Publicar página
 
+# Chamado pelos outros robôs no fim de cada execução, e também pode ser rodado à mão.
+# Todas as publicações passam por esta fila única ("pages"), para não brigarem entre si.
 on:
+  workflow_call:
   workflow_dispatch:
 
 permissions:
@@ -8,25 +11,25 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: deploy
-  cancel-in-progress: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main            # pega o commit que o robô acabou de enviar
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python radar.py build-db
-      - run: python radar.py export --out web/data/index.json
+      - run: python radar.py build-db && python radar.py export --out web/data/index.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

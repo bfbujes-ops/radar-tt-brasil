@@ -16,6 +16,7 @@ permissions:
   issues: write
   pages: write
   id-token: write
+  models: read
 
 concurrency:
   group: google
@@ -25,9 +26,10 @@ jobs:
   google:
     if: github.event_name != 'issues' || (startsWith(github.event.issue.title, 'google:') && github.event.issue.user.login == github.repository_owner)
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -42,8 +44,8 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
           : > pedidos.txt
-          if [ -n "$ISSUE_TITLE" ]; then echo "${ISSUE_TITLE#google:}" | tr ',' '\n' >> pedidos.txt; fi
-          if [ -n "$INPUT_TERMOS" ]; then echo "$INPUT_TERMOS" | tr ',' '\n' >> pedidos.txt; fi
+          if [ -n "$ISSUE_TITLE" ]; then echo "${ISSUE_TITLE#google:}" | tr ',' '\n' | sed 's/^ *//;s/ *$//' >> pedidos.txt; fi
+          if [ -n "$INPUT_TERMOS" ]; then echo "$INPUT_TERMOS" | tr ',' '\n' | sed 's/^ *//;s/ *$//' >> pedidos.txt; fi
           cat pedidos.txt
 
       - name: Baixar dados do Google Trends
@@ -51,30 +53,39 @@ jobs:
           if [ -s pedidos.txt ]; then python gtrends.py --from-file pedidos.txt
           else python gtrends.py --top10; fi
 
+      - name: Explicar os termos pedidos (notícias, tweets e IA)
+        if: hashFiles('pedidos.txt') != ''
+        continue-on-error: true
+        run: |
+          if [ -s pedidos.txt ]; then
+            python context.py news || true
+            mapfile -t T < pedidos.txt
+            python context.py explain --terms "${T[@]}"
+          fi
+
       - name: Salvar no repositório
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add web/google
+          git add web/google web/context data/news 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m "google trends $(date -u +%Y-%m-%dT%H:%MZ)"
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
 
-      - run: python radar.py build-db && python radar.py export --out web/data/index.json
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: web
-      - id: deployment
-        uses: actions/deploy-pages@v4
+  deploy:
+    needs: google
+    uses: ./.github/workflows/deploy.yml
 
-      - name: Responder o pedido
-        if: github.event_name == 'issues' && always()
-        env:
+  reply:
+    needs: [google, deploy]
+    if: always() && github.event_name == 'issues' && needs.google.result != 'skipped'
+    runs-on: ubuntu-latest
+    steps:
+      - env:
           GH_TOKEN: ${{ github.token }}
           N: ${{ github.event.issue.number }}
-          OK: ${{ job.status }}
+          OK: ${{ needs.google.result }}
         run: |
-          if [ "$OK" = "success" ]; then MSG="Pronto: os dados do Google já estão no site. Recarregue a página."; else MSG="O Google recusou o acesso agora. Tente de novo mais tarde."; fi
+          if [ "$OK" = "success" ]; then MSG="Pronto: a análise já está no site. Recarregue a página."; else MSG="O Google recusou o acesso agora. Tente de novo mais tarde."; fi
           gh issue comment "$N" --repo "$GITHUB_REPOSITORY" --body "$MSG"
           gh issue close "$N" --repo "$GITHUB_REPOSITORY"
