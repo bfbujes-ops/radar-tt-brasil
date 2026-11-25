@@ -61,13 +61,14 @@ jobs:
             python context.py news || true
             mapfile -t T < pedidos.txt
             python context.py explain --terms "${T[@]}"
+            python clients.py || true
           fi
 
       - name: Salvar no repositório
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add web/google web/context data/news 2>/dev/null || true
+          git add web/google web/context web/clients data/news data/clients 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m "google trends $(date -u +%Y-%m-%dT%H:%MZ)"
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

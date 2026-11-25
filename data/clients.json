@@ -1,0 +1,525 @@
+{
+  "_como_editar": "Cada cliente tem 'ativos' (produtos, ícones, slogans, embaixadores) e 'territorios' (assuntos da marca). 'radicais' são começos de palavra, sem acento e em minúsculas: 'cebol' pega cebola, cebolinha, Cebolinha. Para incluir um cliente novo, copie um bloco e troque os valores. 'excluir' (opcional) descarta a conexão quando o texto também tem uma dessas palavras.",
+  "outback": {
+    "nome": "Outback",
+    "cor": "#8a2b1e",
+    "universo": "Rede de steakhouse de tema australiano: Bloomin' Onion (a cebola gigante em forma de flor), Ribs on the Barbie, happy hour Billabong Hour, porções generosas e clima descontraído.",
+    "ativos": [
+      {
+        "nome": "Bloomin' Onion",
+        "desc": "a cebola gigante em forma de flor, símbolo do Outback",
+        "radicais": [
+          "cebol",
+          "onion",
+          "bloomin"
+        ]
+      },
+      {
+        "nome": "Ribs on the Barbie",
+        "desc": "a costela ao barbecue, prato mais pedido da casa",
+        "radicais": [
+          "costel",
+          "ribs",
+          "barbecue",
+          "barbie"
+        ]
+      },
+      {
+        "nome": "Billabong Hour",
+        "desc": "o happy hour com bebidas pela metade do preço",
+        "radicais": [
+          "happy hour",
+          "chopp",
+          "chope",
+          "billabong"
+        ]
+      },
+      {
+        "nome": "Steaks",
+        "desc": "os cortes de carne da casa",
+        "radicais": [
+          "steak",
+          "picanha",
+          "file mignon",
+          "rib eye",
+          "ribeye"
+        ]
+      },
+      {
+        "nome": "Austrália",
+        "desc": "o tema australiano da marca",
+        "radicais": [
+          "australi",
+          "canguru",
+          "coala",
+          "sydney",
+          "melbourne",
+          "aussie",
+          "bumerangue"
+        ]
+      }
+    ],
+    "territorios": [
+      {
+        "nome": "Comer fora e celebrar",
+        "radicais": [
+          "jantar",
+          "rodizio",
+          "restaurante",
+          "comer fora"
+        ]
+      },
+      {
+        "nome": "Jogo com os amigos",
+        "radicais": [
+          "copa do mundo",
+          "classico",
+          "final da copa",
+          "final do brasileirao",
+          "final da libertadores"
+        ]
+      }
+    ],
+    "evitar": [
+      "intoxica",
+      "alimentar",
+      "anvisa",
+      "interdit"
+    ]
+  },
+  "huggies": {
+    "nome": "Huggies",
+    "cor": "#1f5fbf",
+    "universo": "Fraldas e cuidados com o bebê (Kimberly-Clark), licenciada da Turma da Mônica no Brasil: Natural Care, Supreme Care, Roupinha, lenços umedecidos, Little Swimmers e Huggies Kids.",
+    "ativos": [
+      {
+        "nome": "Turma da Mônica",
+        "desc": "a turma que estampa as fraldas Huggies no Brasil",
+        "radicais": [
+          "monica",
+          "cebolinha",
+          "cascao",
+          "magali",
+          "sansao",
+          "turma da monica",
+          "mauricio de sousa",
+          "chico bento"
+        ]
+      },
+      {
+        "nome": "Fraldas",
+        "desc": "as fraldas Natural Care, Supreme Care e Roupinha",
+        "radicais": [
+          "fralda",
+          "roupinha",
+          "xixi",
+          "coco do bebe",
+          "assadura"
+        ]
+      },
+      {
+        "nome": "Lenços umedecidos",
+        "desc": "os lencinhos para a troca",
+        "radicais": [
+          "lenco umedecido",
+          "lencinho",
+          "toalhinha"
+        ]
+      },
+      {
+        "nome": "Little Swimmers",
+        "desc": "a fralda para piscina e praia",
+        "radicais": [
+          "piscina",
+          "natacao"
+        ]
+      },
+      {
+        "nome": "Huggies Kids",
+        "desc": "a linha de banho infantil",
+        "radicais": [
+          "banho de crianca",
+          "shampoo infantil"
+        ]
+      }
+    ],
+    "territorios": [
+      {
+        "nome": "Bebês e maternidade",
+        "radicais": [
+          "bebe",
+          "nenem",
+          "recem-nascid",
+          "recem nascid",
+          "maternidade",
+          "paternidade",
+          "gravid",
+          "gestante",
+          "gestacao",
+          "cha de bebe",
+          "cha revelacao",
+          "parto",
+          "nasceu",
+          "nascimento",
+          "filho de",
+          "filha de",
+          "primeiro filho",
+          "mamae",
+          "papai"
+        ]
+      },
+      {
+        "nome": "Infância",
+        "radicais": [
+          "infancia",
+          "dia das criancas",
+          "crianca"
+        ]
+      }
+    ],
+    "evitar": [
+      "morte de bebe",
+      "aborto",
+      "abandon",
+      "maus-tratos",
+      "maus tratos",
+      "anvisa",
+      "apreend",
+      "proib",
+      "recall",
+      "suspen",
+      "contamina"
+    ]
+  },
+  "heinz": {
+    "nome": "Heinz",
+    "cor": "#c8102e",
+    "universo": "Ketchup líder no Brasil, maionese, mostarda e atomatados (Kraft Heinz). Campanhas com humor, futebol ('Se dá sorte, tem que ser Heinz', a mancha de molho na camisa da sorte), avós e crochê, e 'Tem que ser Heinz'.",
+    "ativos": [
+      {
+        "nome": "Ketchup",
+        "desc": "o ketchup Heinz, incluindo o Zero açúcar",
+        "radicais": [
+          "ketchup",
+          "catchup",
+          "catchupe"
+        ]
+      },
+      {
+        "nome": "Maionese",
+        "desc": "a maionese Heinz, aposta de crescimento da marca",
+        "radicais": [
+          "maionese",
+          "mayo"
+        ]
+      },
+      {
+        "nome": "Mostarda",
+        "desc": "a mostarda Heinz",
+        "radicais": [
+          "mostarda"
+        ]
+      },
+      {
+        "nome": "Tomate",
+        "desc": "o tomate selecionado dos atomatados Heinz",
+        "radicais": [
+          "tomate",
+          "molho de tomate",
+          "extrato de tomate"
+        ]
+      },
+      {
+        "nome": "Batata frita e hambúrguer",
+        "desc": "as companhias naturais do ketchup",
+        "radicais": [
+          "batata frita",
+          "fritas",
+          "hamburguer",
+          "burger",
+          "cachorro-quente",
+          "cachorro quente",
+          "hot dog"
+        ]
+      },
+      {
+        "nome": "Camisa da sorte",
+        "desc": "a campanha da mancha de molho que dá sorte ao torcedor",
+        "radicais": [
+          "camisa da sorte",
+          "mancha",
+          "amuleto",
+          "supersticao",
+          "pe-quente",
+          "pe quente"
+        ]
+      }
+    ],
+    "territorios": [
+      {
+        "nome": "Futebol e torcida",
+        "radicais": [
+          "torcedor",
+          "torcida",
+          "copa do mundo",
+          "selecao",
+          "gol de",
+          "titulo",
+          "campeao"
+        ]
+      },
+      {
+        "nome": "Avós e nostalgia",
+        "radicais": [
+          "vovo",
+          "avo ",
+          "croche",
+          "nostalgi"
+        ]
+      },
+      {
+        "nome": "Comida rápida",
+        "radicais": [
+          "lanche",
+          "fast food",
+          "delivery",
+          "ifood"
+        ]
+      }
+    ],
+    "evitar": [
+      "intoxica",
+      "recall",
+      "anvisa",
+      "apreend",
+      "contamina"
+    ]
+  },
+  "yoki": {
+    "nome": "Yoki",
+    "cor": "#d48a00",
+    "universo": "Pipoca de micro-ondas, farofa pronta, batata palha, amendoins Yokitos, canjica, fubá e polvilho (hoje do Grupo 3corações). Festa Junina é o pico do ano; pipoca é ícone de cinema e séries em casa; Simone Mendes é embaixadora.",
+    "ativos": [
+      {
+        "nome": "Pipoca de micro-ondas",
+        "desc": "a pipoca Yoki, líder da categoria",
+        "radicais": [
+          "pipoca",
+          "milho de pipoca",
+          "popcorn"
+        ]
+      },
+      {
+        "nome": "Farofa pronta",
+        "desc": "a farofa Yoki, companheira do churrasco",
+        "radicais": [
+          "farofa"
+        ]
+      },
+      {
+        "nome": "Batata palha",
+        "desc": "a batata palha Yoki",
+        "radicais": [
+          "batata palha",
+          "estrogonofe",
+          "strogonoff"
+        ]
+      },
+      {
+        "nome": "Amendoim e Yokitos",
+        "desc": "os amendoins e salgadinhos da marca",
+        "radicais": [
+          "amendoim",
+          "pacoca",
+          "yokitos",
+          "salgadinho"
+        ]
+      },
+      {
+        "nome": "Canjica, fubá e polvilho",
+        "desc": "os ingredientes de receitas brasileiras",
+        "radicais": [
+          "canjica",
+          "fuba",
+          "polvilho",
+          "pao de queijo",
+          "tapioca",
+          "bolo de milho",
+          "curau",
+          "pamonha"
+        ]
+      },
+      {
+        "nome": "Simone Mendes",
+        "desc": "a embaixadora da Yoki",
+        "radicais": [
+          "simone mendes"
+        ]
+      }
+    ],
+    "territorios": [
+      {
+        "nome": "Festa Junina",
+        "radicais": [
+          "junina",
+          "junino",
+          "arraia",
+          "sao joao",
+          "quadrilha",
+          "quentao",
+          "fogueira"
+        ],
+        "excluir": [
+          "del-rei",
+          "del rei",
+          "sao joao da barra",
+          "sao joao de meriti",
+          "sao joao da boa vista"
+        ]
+      },
+      {
+        "nome": "Filme e série em casa",
+        "radicais": [
+          "filme",
+          "cinema",
+          "serie da netflix",
+          "nova serie",
+          "serie de tv",
+          "netflix",
+          "prime video",
+          "disney+",
+          "hbo",
+          "estreia nos cinemas",
+          "trailer",
+          "oscar",
+          "maratonar",
+          "bilheteria"
+        ],
+        "excluir": [
+          "serie a",
+          "serie b",
+          "serie c",
+          "serie d",
+          "serie ouro",
+          "jogador",
+          "zagueiro",
+          "futebol",
+          "campeonat",
+          "rodada",
+          "clube",
+          "formula 1",
+          "f1",
+          "gp de"
+        ]
+      },
+      {
+        "nome": "Churrasco e jogo",
+        "radicais": [
+          "churrasco",
+          "copa do mundo"
+        ]
+      }
+    ],
+    "evitar": [
+      "anvisa",
+      "apreend",
+      "recall",
+      "contamina"
+    ]
+  },
+  "sonho-de-valsa": {
+    "nome": "Sonho de Valsa",
+    "cor": "#c2185b",
+    "universo": "Bombom da Lacta (Mondelēz) ligado a declarações de amor: 'Declare-se com Sonho de Valsa' com João Gomes, o histórico 'Pense menos, ame mais', Dia dos Namorados e Dia do Beijo.",
+    "ativos": [
+      {
+        "nome": "Bombom",
+        "desc": "o bombom mais famoso do Brasil",
+        "radicais": [
+          "bombom",
+          "bombons",
+          "chocolate"
+        ]
+      },
+      {
+        "nome": "Sonho de Valsa",
+        "desc": "o próprio nome da marca",
+        "radicais": [
+          "sonho de valsa",
+          "valsa",
+          "baile",
+          "debutante"
+        ]
+      },
+      {
+        "nome": "Declare-se",
+        "desc": "a campanha de declarações de amor",
+        "radicais": [
+          "declaracao de amor",
+          "se declarou",
+          "se declara",
+          "declarou seu amor",
+          "declarou amor",
+          "pedido de namoro",
+          "pedido de casamento",
+          "pediu em casamento",
+          "noivado",
+          "noivou",
+          "alianca"
+        ]
+      },
+      {
+        "nome": "João Gomes",
+        "desc": "o embaixador da campanha Declare-se",
+        "radicais": [
+          "joao gomes"
+        ]
+      },
+      {
+        "nome": "Pense menos, ame mais",
+        "desc": "o posicionamento histórico da marca",
+        "radicais": [
+          "pense menos",
+          "ame mais"
+        ]
+      }
+    ],
+    "territorios": [
+      {
+        "nome": "Amor e casais",
+        "radicais": [
+          "namor",
+          "casal",
+          "casais",
+          "beijo",
+          "beijou",
+          "apaixon",
+          "romance",
+          "romantic",
+          "crush",
+          "shipp",
+          "casament",
+          "casou",
+          "reatou",
+          "voltaram",
+          "amor"
+        ]
+      },
+      {
+        "nome": "Datas românticas",
+        "radicais": [
+          "dia dos namorados",
+          "dia do beijo",
+          "valentine"
+        ]
+      }
+    ],
+    "evitar": [
+      "traicao",
+      "separ",
+      "divorc",
+      "feminicid",
+      "violencia"
+    ]
+  }
+}

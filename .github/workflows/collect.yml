@@ -47,11 +47,15 @@ jobs:
         run: python context.py analyze-news
         continue-on-error: true
 
+      - name: Filtro de clientes (Outback, Huggies, Heinz, Yoki, Sonho de Valsa)
+        run: python clients.py
+        continue-on-error: true
+
       - name: Salvar no repositório
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add data/snapshots data/news web/context web/news 2>/dev/null || true
+          git add data/snapshots data/news data/clients web/context web/news web/clients 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -m "coleta $(date -u +%Y-%m-%dT%H:00Z)"
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

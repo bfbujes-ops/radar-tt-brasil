@@ -7,98 +7,133 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Sofia+Sans+Condensed:wght@600;800&display=swap">
 <style>
-/* VOICE work: mesa de edição de um jornal, densa, exata, atualizada de hora em hora
-   IDEA a primeira página de um diário: manchetes numeradas do X na coluna principal, a pauta da imprensa na lateral
-   PICTURE o painel "Agora no X": dez linhas com posição, termo, o porquê e a trilha de posição das últimas 24h
-   COLOUR papel branco, tinta preta, vermelhão #ff4a1c como única cor de destaque; noite #120d0b
-   TYPE Sofia Sans Condensed 800 para termos, números e títulos + Instrument Sans no texto
-   LAYOUT cabeçalho preto com busca; grade 2/3 + 1/3 na capa; ficha do termo em coluna larga; tudo empilha abaixo de 860px */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f3eeea);--muted:light-dark(#5b5550,#b9b0a8);--rule:light-dark(#e4dfda,#2e2522);--panel:light-dark(#f6f3f0,#1c1512);--acc:#ff4a1c;--acc-ink:light-dark(#c2310b,#ff7a52);--hb:light-dark(#111111,#211915);--hf:#f3eeea}
-:root[data-theme=light]{color-scheme:light}
-:root[data-theme=dark]{color-scheme:dark}
+/* VOICE work: painel de agência para real time marketing, claro, colorido e rápido de ler
+   IDEA o mural da sala de planejamento: cada cliente tem sua faixa de cor e os cartões do dia colados nela
+   PICTURE a faixa "Radar dos clientes": cinco cartões nas cores das marcas, com a conexão mais forte de cada uma
+   COLOUR papel branco, tinta grafite, vermelhão #ff4a1c para o X, e a cor de cada cliente nos próprios cartões
+   TYPE Sofia Sans Condensed 800 para termos e números + Instrument Sans no texto
+   LAYOUT topo branco com busca; faixa de clientes; painel do cliente; top 10 em cartões ao lado da pauta; tudo empilha no celular */
+:root{color-scheme:light;--bg:#ffffff;--soft:#f5f4f2;--ink:#17171a;--muted:#5d5a56;--rule:#e7e4df;--acc:#ff4a1c;--acc-ink:#c2310b;--warn:#b42318;--shadow:0 1px 2px rgba(23,23,26,.06),0 6px 20px rgba(23,23,26,.05)}
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
 a{color:inherit}
 button{font:inherit;cursor:pointer}
 .wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
-.disp,h1,h2,.rk,.term,.num{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;letter-spacing:-.02em;line-height:1.05}
-
-/* cabeçalho */
-.mast{background:var(--hb);color:var(--hf);padding:18px 0 20px}
-.mrow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:14px}
-.brand{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,44px);letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--hf)}
-.brand span{color:var(--acc)}
-.edition{margin:0;font-size:14px;color:color-mix(in srgb,var(--hf) 70%,var(--hb))}
-form{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:10px;align-items:center}
-input[type=search],select{font:inherit;font-size:17px;height:50px;padding:0 14px;border:2px solid color-mix(in srgb,var(--hf) 22%,var(--hb));border-radius:6px;background:var(--bg);color:var(--ink)}
-.go{height:50px;padding:0 22px;border:0;border-radius:6px;background:var(--acc);color:#fff;font-weight:700}
-.chk{display:flex;gap:8px;align-items:center;white-space:nowrap;font-size:15px;color:color-mix(in srgb,var(--hf) 85%,var(--hb))}
-.chk input{width:20px;height:20px;accent-color:var(--acc)}
+h1,h2,.rk,.term,.num,.brand,.cname{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;letter-spacing:-.02em;line-height:1.05}
 input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 
-/* seções */
-.sec{padding:clamp(24px,3.4vw,44px) 0}
-.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;border-top:3px solid var(--ink);padding-top:10px;margin-bottom:14px}
-.sechead h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin:0}
-.sechead p{margin:0;font-size:14px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:clamp(24px,3.4vw,48px);align-items:start}
+/* topo */
+.mast{padding:20px 0 18px;border-bottom:1px solid var(--rule)}
+.mrow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:14px}
+.brand{font-weight:800;font-size:clamp(32px,4.4vw,46px);text-decoration:none;color:var(--ink)}
+.brand span{color:var(--acc)}
+.edition{margin:0;font-size:14px;color:var(--muted)}
+form{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:10px;align-items:center}
+input[type=search],select{font:inherit;font-size:17px;height:52px;padding:0 18px;border:1px solid var(--rule);border-radius:26px;background:var(--soft);color:var(--ink)}
+select{padding:0 14px}
+.go{height:52px;padding:0 26px;border:0;border-radius:26px;background:var(--acc);color:#fff;font-weight:700}
+.chk{display:flex;gap:8px;align-items:center;white-space:nowrap;font-size:15px;color:var(--muted)}
+.chk input{width:20px;height:20px;accent-color:var(--acc)}
 
-/* painel "Agora no X" */
-.board{list-style:none;margin:0;padding:0}
-.item{display:grid;grid-template-columns:2.4em minmax(0,1fr) 104px;gap:4px 14px;padding:14px 0;border-bottom:1px solid var(--rule)}
-.rk{font-weight:800;font-size:38px;color:var(--muted);text-align:right;padding-top:2px}
-.item:first-child .rk{color:var(--acc)}
-.ihead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
-.term{background:none;border:0;padding:0;font-weight:800;font-size:clamp(22px,2.6vw,30px);color:var(--ink);text-align:left;overflow-wrap:anywhere;max-width:100%}
+/* seções */
+.sec{padding:clamp(24px,3.4vw,40px) 0}
+.band{background:var(--soft)}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin-bottom:16px}
+.sechead h2{font-size:clamp(28px,3.2vw,36px);font-weight:800;margin:0}
+.sechead p{margin:0;font-size:14px;color:var(--muted)}
+.card{background:var(--bg);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow)}
+
+/* clientes */
+.clients{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.cl{position:relative;text-align:left;border:2px solid transparent;border-radius:16px;padding:16px 16px 14px;background:color-mix(in srgb,var(--c) 9%,#fff);color:var(--ink);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-height:150px}
+.cl::before{content:"";position:absolute;left:16px;right:16px;top:0;height:5px;border-radius:0 0 4px 4px;background:var(--c)}
+.cl[aria-pressed=true]{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,#fff)}
+.cname{font-weight:800;font-size:26px;margin-top:4px}
+.ccount{font-size:14px;color:var(--muted)}
+.ccount b{color:var(--ink)}
+.ctop{margin-top:auto;font-size:15px;line-height:1.35}
+.ctop b{color:color-mix(in srgb,var(--c) 80%,#000)}
+.cpanel{margin-top:22px}
+.cphead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-bottom:6px}
+.cphead h3{margin:0;font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:28px;letter-spacing:-.02em}
+.cuni{margin:0 0 16px;color:var(--muted);font-size:15px;max-width:90ch}
+.seg{display:flex;border:1px solid var(--rule);border-radius:20px;overflow:hidden;width:max-content;background:var(--bg)}
+.seg button{height:38px;padding:0 16px;background:transparent;color:var(--ink);border:0;font-size:14px;font-weight:600}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.opps{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.opp{padding:16px;display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--c)}
+.otop{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:12px;padding:2px 10px;font-size:13px;font-weight:600;background:var(--soft);color:var(--ink);white-space:nowrap}
+.pill.x{background:color-mix(in srgb,var(--acc) 12%,#fff);color:var(--acc-ink)}
+.pill.risk{background:#fde8e6;color:var(--warn)}
+.pill.ia{background:#efeafc;color:#5b3cc4}
+.otitle{margin:0;font-weight:700;font-size:18px;line-height:1.3}
+.otitle button,.otitle a{all:unset;cursor:pointer}
+.otitle button:hover,.otitle a:hover{text-decoration:underline}
+mark{background:color-mix(in srgb,var(--c) 22%,#fff);color:inherit;border-radius:3px;padding:0 2px}
+.bridge{font-size:14px}
+.bridge b{color:color-mix(in srgb,var(--c) 85%,#000)}
+.idea{margin:0;font-size:15px;line-height:1.45;color:var(--ink)}
+.oempty{color:var(--muted);padding:12px 0}
+
+/* agora no X */
+.grid{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:clamp(22px,3vw,40px);align-items:start}
+.board{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.item{display:grid;grid-template-columns:44px minmax(0,1fr) 104px;gap:6px 14px;padding:14px 16px;align-items:start}
+.rk{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--soft);font-weight:800;font-size:22px;color:var(--muted)}
+.item:nth-child(-n+3) .rk{background:var(--acc);color:#fff}
+.ihead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.term{background:none;border:0;padding:0;font-weight:800;font-size:clamp(22px,2.4vw,28px);color:var(--ink);text-align:left;overflow-wrap:anywhere;max-width:100%}
 .term:hover{color:var(--acc-ink)}
 .cat{font-size:13px;font-weight:600;color:var(--acc-ink)}
-.why{margin:4px 0 6px;font-size:16px;max-width:66ch}
+.why{margin:4px 0 6px;font-size:15.5px;max-width:66ch}
 .why.none{color:var(--muted);font-size:15px}
-.meta{margin:0;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px}
+.src{font-weight:700;font-size:12px;color:var(--muted);margin-right:6px;white-space:nowrap}
+.meta{margin:0;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
 .meta b{color:var(--ink);font-weight:600}
+.ctag{display:inline-flex;align-items:center;gap:5px;border:0;border-radius:12px;padding:2px 9px;font-size:12px;font-weight:700;background:color-mix(in srgb,var(--c) 13%,#fff);color:color-mix(in srgb,var(--c) 85%,#000)}
+.ctag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
 .spk{align-self:center}
 .spk svg{display:block;width:104px;height:40px;overflow:visible}
 .spk small{display:block;font-size:11px;color:var(--muted);text-align:right}
 
-/* pauta da imprensa */
-.pres{font-size:17px;line-height:1.45;margin:0 0 14px;font-weight:500}
+/* pauta e manchetes */
+.side{padding:18px 18px 8px}
+.pres{font-size:16px;line-height:1.45;margin:0 0 10px;font-weight:500}
 .tema{border-top:1px solid var(--rule);padding:12px 0}
 .tema h3{margin:0 0 4px;font-size:17px;line-height:1.3}
-.tema p{margin:0 0 6px;font-size:15px;color:var(--muted)}
+.tema p{margin:0 0 6px;font-size:14.5px;color:var(--muted)}
 .tmeta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
 .ttag{border:1px solid var(--acc);color:var(--acc-ink);background:transparent;border-radius:14px;padding:2px 10px;font-size:13px;font-weight:600}
 .tema details summary{cursor:pointer;font-size:13px;color:var(--acc-ink);font-weight:600;min-height:32px;display:inline-flex;align-items:center}
 .hl{list-style:none;margin:4px 0 0;padding:0}
 .hl li{font-size:14px;padding:4px 0;border-top:1px dotted var(--rule)}
-.hl a{text-decoration:none}
-.hl a:hover{text-decoration:underline}
-.src{font-weight:700;font-size:12px;color:var(--muted);margin-right:6px;white-space:nowrap}
-
-/* manchetes por jornal */
-.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 28px}
-.paper h3{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:22px;margin:0 0 4px;letter-spacing:-.01em;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.hl a,.paper a{text-decoration:none}
+.hl a:hover,.paper a:hover{color:var(--acc-ink);text-decoration:underline}
+.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.paper{padding:14px 16px 6px}
+.paper h3{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
 .paper ol{margin:0;padding:0;list-style:none}
-.paper li{padding:7px 0;border-bottom:1px solid var(--rule);font-size:15px;line-height:1.35}
-.paper a{text-decoration:none}
-.paper a:hover{color:var(--acc-ink);text-decoration:underline}
+.paper li{padding:8px 0;border-top:1px solid var(--rule);font-size:15px;line-height:1.35}
 .ago{display:block;font-size:12px;color:var(--muted);margin-top:2px}
-
 .cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
-.chip{overflow-wrap:anywhere;max-width:100%;text-align:left;background:transparent;border:1px solid color-mix(in srgb,var(--acc) 35%,var(--rule));border-radius:20px;padding:4px 12px;min-height:36px;color:var(--acc-ink);font-weight:600;line-height:1.2}
+.chip{overflow-wrap:anywhere;max-width:100%;text-align:left;background:var(--bg);border:1px solid var(--rule);border-radius:20px;padding:4px 12px;min-height:36px;color:var(--ink);font-weight:600;line-height:1.2}
+.chip:hover{border-color:var(--acc);color:var(--acc-ink)}
 .chip small{color:var(--muted);font-weight:400;font-size:.72em;margin-left:4px}
 
 /* ficha do termo */
 .back{background:none;border:0;padding:0;margin:18px 0 0;color:var(--acc-ink);font-weight:600;min-height:44px}
-.dhead{padding:10px 0 24px;border-bottom:3px solid var(--ink)}
-.kick{margin:0 0 6px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
-.kick .cat{font-size:14px}
+.dhead{padding:8px 0 24px}
+.kick{margin:0 0 6px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}
 .dhead h1{font-weight:800;font-size:clamp(36px,6vw,64px);margin:0 0 10px;text-wrap:balance;overflow-wrap:anywhere}
 .whybig{font-size:clamp(19px,2.1vw,23px);line-height:1.35;margin:0 0 10px;max-width:58ch;font-weight:500}
 .dctx{margin:0 0 12px;color:var(--muted);max-width:70ch}
-.conf{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--panel);color:var(--muted)}
-.cta{display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:6px;background:var(--acc);color:#fff;font-weight:700;text-decoration:none}
-.ev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:24px 0}
+.conf{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:10px;background:var(--soft);color:var(--muted)}
+.cta{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:24px;background:var(--acc);color:#fff;font-weight:700;text-decoration:none}
+.dclients{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:6px 0 4px}
+.ev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,32px);padding:8px 0 24px}
+.evc{padding:16px 18px}
 .ev h3,.blk h3{margin:0 0 10px;font-size:18px}
 .ncard{padding:10px 0;border-top:1px solid var(--rule)}
 .ncard a{text-decoration:none;font-size:16px;font-weight:600;line-height:1.35}
@@ -108,7 +143,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .tw{border:1px solid var(--rule);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:var(--bg)}
 .tw.used{border-color:color-mix(in srgb,var(--acc) 60%,var(--rule))}
 .twh{display:flex;gap:10px;align-items:center;margin-bottom:8px}
-.av{width:42px;height:42px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-weight:700;color:var(--muted);overflow:hidden;flex:none}
+.av{width:42px;height:42px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:700;color:var(--muted);overflow:hidden;flex:none}
 .av img{width:100%;height:100%;object-fit:cover}
 .twn{line-height:1.25;font-size:15px}
 .twn b{display:inline-flex;align-items:center;gap:4px}
@@ -117,11 +152,11 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .twm{width:100%;border-radius:10px;border:1px solid var(--rule);margin:0 0 10px;max-height:320px;object-fit:cover}
 .twf{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted);align-items:center}
 .twf a{margin-left:auto;color:var(--acc-ink);font-weight:600}
-.empty{color:var(--muted);font-size:15px;border-top:1px solid var(--rule);padding-top:10px}
+.empty{color:var(--muted);font-size:15px}
 .empty a{color:var(--acc-ink);font-weight:600}
 
 /* números do X e do Google */
-.blk{padding:28px 0;border-top:3px solid var(--ink)}
+.blk{padding:22px 22px 26px;margin-bottom:18px}
 .blk>h2{font-size:clamp(26px,3vw,34px);margin:0 0 6px;font-weight:800}
 .lead{margin:0 0 16px;color:var(--muted);max-width:72ch}
 .lead a{color:var(--acc-ink);font-weight:600}
@@ -129,26 +164,23 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .var{display:flex;gap:8px;align-items:center;min-height:40px;padding:4px 12px;border:1px solid var(--rule);border-radius:20px;font-size:15px;cursor:pointer}
 .var input{accent-color:var(--acc);width:18px;height:18px}
 .var small{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:22px}
-.stat{padding:10px 16px 12px 0}
-.num{font-weight:800;font-size:clamp(28px,3.6vw,40px);display:block;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));gap:10px;margin-bottom:22px}
+.stat{padding:12px 14px;background:var(--soft);border-radius:12px}
+.num{font-weight:800;font-size:clamp(28px,3.4vw,38px);display:block;white-space:nowrap}
 .lbl{font-size:14px;color:var(--muted)}
 .chead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px}
 .chead h3{margin:0;font-size:18px}
-.seg,.tabs{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content}
-.seg button,.tabs button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border:0;font-size:14px;font-weight:600}
-.seg button[aria-pressed=true],.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 .fig{position:relative;height:300px}
 .fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 svg text{font:13px "Instrument Sans",sans-serif;fill:var(--muted)}
-.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:14px;padding:8px 10px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font-size:14px;padding:8px 10px;border-radius:8px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%)}
 .tip b{display:block}
 .two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 40px;margin-top:28px;align-items:start}
 .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
 .hm{display:grid;grid-template-columns:2.6em repeat(24,minmax(0,1fr));gap:2px}
 .hm .hlab{font-size:11px;color:var(--muted);text-align:center;align-self:end}
 .hm .dlab{font-size:12px;color:var(--muted);align-self:center;padding-right:6px;text-align:right}
-.hm .c{aspect-ratio:1;border-radius:2px;background:var(--panel)}
+.hm .c{aspect-ratio:1;border-radius:3px;background:var(--soft)}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th{text-align:left;font-weight:600;font-size:14px;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px 8px 0}
@@ -158,30 +190,33 @@ td.when{white-space:nowrap}
 td.ctx{max-width:60ch}
 td.ctx .co{color:var(--muted)}
 td.ctx a{color:var(--acc-ink);font-weight:600;white-space:nowrap}
-.more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px;padding:0 16px;border-radius:6px}
+.more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px;padding:0 16px;border-radius:22px}
 details.tbl{margin-top:20px}
 details.tbl summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.tabs{display:flex;border:1px solid var(--rule);border-radius:20px;overflow:hidden;width:max-content;margin-bottom:10px}
+.tabs button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border:0;font-size:14px;font-weight:600}
+.tabs button[aria-pressed=true]{background:var(--ink);color:#fff}
 .rows{display:grid}
 .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,38%) 4.6em;gap:10px;align-items:center;min-height:34px;border-bottom:1px solid var(--rule)}
 .row .t{background:none;border:0;padding:0;color:var(--ink);font-size:15px;text-align:left;overflow-wrap:anywhere}
 button.t:hover{color:var(--acc-ink);text-decoration:underline}
-.row .bar{height:10px;background:var(--panel);border-radius:2px;overflow:hidden}
-.row .bar i{display:block;height:100%;background:var(--acc)}
+.row .bar{height:10px;background:var(--soft);border-radius:5px;overflow:hidden}
+.row .bar i{display:block;height:100%;background:var(--acc);border-radius:5px}
 .row .v{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted);white-space:nowrap}
 .row .v.up{color:var(--acc-ink);font-weight:600}
 .gpeak{display:flex;flex-wrap:wrap;gap:6px 24px;margin:0 0 10px;font-size:15px;color:var(--muted)}
 .gpeak b{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-size:28px;color:var(--ink);margin-right:6px}
 .gsrc{font-size:13px;color:var(--muted);margin-top:18px}
 
-footer{background:var(--panel);margin-top:20px}
-footer .wrap{padding-top:28px;padding-bottom:36px}
+footer{border-top:1px solid var(--rule);margin-top:10px}
+footer .wrap{padding-top:26px;padding-bottom:34px}
 footer h3{margin:0 0 8px;font-size:18px}
 footer ul{margin:0;padding-left:20px;color:var(--muted);max-width:95ch;font-size:15px}
 footer li{margin:4px 0}
 
 @media(max-width:860px){.grid,.ev,.two{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:720px){form{grid-template-columns:minmax(0,1fr) auto}.chk{grid-column:1}.go{grid-column:2;grid-row:2}}
-@media(max-width:560px){.item{grid-template-columns:2em minmax(0,1fr)}.rk{font-size:30px}.spk{grid-column:2}.spk small{text-align:left}
+@media(max-width:720px){form{grid-template-columns:minmax(0,1fr) auto}.chk{grid-column:1}.go{grid-column:2;grid-row:2}.clients{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin:0 -2px}.cl{flex:0 0 72%;scroll-snap-align:start;min-height:130px}}
+@media(max-width:560px){.item{grid-template-columns:40px minmax(0,1fr)}.spk{grid-column:2}.spk small{text-align:left}.opps{grid-template-columns:minmax(0,1fr)}
   .stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}.stack td::before{content:attr(data-l);color:var(--muted);text-align:left}.stack td.ctx{display:block;text-align:left}.stack td.ctx::before{display:block}.fig{height:240px}}
 </style>
 </head>
@@ -193,7 +228,7 @@ footer li{margin:4px 0}
       <p class="edition" id="edition">Carregando a edição…</p>
     </div>
     <form id="f" role="search">
-      <input type="search" id="q" placeholder="Pesquise qualquer palavra, ex.: shampoo" aria-label="Termo" autocomplete="off">
+      <input type="search" id="q" placeholder="Pesquise qualquer palavra, ex.: cebola" aria-label="Termo" autocomplete="off">
       <select id="win" aria-label="Janela">
         <option value="30">30 dias</option>
         <option value="90">90 dias</option>
@@ -206,34 +241,48 @@ footer li{margin:4px 0}
   </div>
 </header>
 
-<main id="home" class="wrap">
-  <div class="sec grid">
-    <section>
-      <div class="sechead"><h2>Agora no X</h2><p id="boardmeta"></p></div>
-      <ol class="board" id="board"><li class="item"><span></span><p class="why none">Carregando…</p></li></ol>
-    </section>
-    <aside>
-      <div class="sechead"><h2>Pauta da imprensa</h2><p id="pautameta"></p></div>
-      <p class="pres" id="pres"></p>
-      <div id="temas"></div>
-    </aside>
+<main id="home">
+  <section class="band sec">
+    <div class="wrap">
+      <div class="sechead"><h2>Radar dos clientes</h2><p id="climeta">Conexões entre o que está em alta e o universo de cada marca</p></div>
+      <div class="clients" id="clients" role="group" aria-label="Clientes"></div>
+      <div class="cpanel" id="cpanel"></div>
+    </div>
+  </section>
+  <div class="wrap">
+    <div class="sec grid">
+      <section>
+        <div class="sechead"><h2>Agora no X</h2><p id="boardmeta"></p></div>
+        <ol class="board" id="board"><li class="item card"><span></span><p class="why none">Carregando…</p></li></ol>
+      </section>
+      <aside class="card side">
+        <div class="sechead" style="margin-bottom:8px"><h2 style="font-size:28px">Pauta da imprensa</h2><p id="pautameta"></p></div>
+        <p class="pres" id="pres"></p>
+        <div id="temas"></div>
+      </aside>
+    </div>
   </div>
-  <section class="sec">
-    <div class="sechead"><h2>Manchetes por jornal</h2><p>As mais recentes de cada veículo</p></div>
-    <div class="papers" id="papers"></div>
+  <section class="band sec">
+    <div class="wrap">
+      <div class="sechead"><h2>Manchetes por jornal</h2><p>As mais recentes de cada veículo</p></div>
+      <div class="papers" id="papers"></div>
+    </div>
   </section>
   <section class="sec">
-    <div class="sechead"><h2>Mais fortes da semana</h2><p>Termos que somaram mais tempo e posição nos últimos 7 dias</p></div>
-    <div class="cloud" id="week"></div>
+    <div class="wrap">
+      <div class="sechead"><h2>Mais fortes da semana</h2><p>Termos que somaram mais tempo e posição nos últimos 7 dias</p></div>
+      <div class="cloud" id="week"></div>
+    </div>
   </section>
 </main>
 
 <main id="dossier" class="wrap" hidden>
   <button type="button" class="back" data-home>← Voltar ao radar</button>
   <section class="dhead" id="dhead"></section>
+  <section id="dcli"></section>
   <section class="ev" id="ev"></section>
-  <section class="blk" id="xsec"></section>
-  <section class="blk" id="gsec">
+  <section class="blk card" id="xsec"></section>
+  <section class="blk card" id="gsec">
     <h2 id="gtitle">No Google</h2>
     <p class="lead" id="glead"></p>
     <div id="gbody"></div>
@@ -244,10 +293,10 @@ footer li{margin:4px 0}
   <div class="wrap">
     <h3>Como ler o radar</h3>
     <ul>
-      <li><b>Agora no X</b>: os 10 primeiros dos trending topics do Brasil na última leitura. A explicação “Porque…” é escrita por IA a partir de notícias e posts sobre o termo; o selo de confiança diz quantas fontes sustentam a explicação.</li>
-      <li><b>Pauta da imprensa</b>: temas mais repetidos nas manchetes de g1, Folha, Estadão, O Globo, CNN Brasil, BBC Brasil, Metrópoles, Poder360, Veja, Exame e ge nas últimas horas, agrupados por IA.</li>
-      <li><b>Horas em trend e pontos</b>: cada hora no top 50 vale pela posição (1º = 50 pontos, 50º = 1). A força relativa é a porcentagem de termos do período que somaram menos pontos.</li>
-      <li><b>No Google</b>: dados do Google Trends para o Brasil, de 0 a 100 (100 é o pico do termo no período); não é contagem de buscas.</li>
+      <li><b>Radar dos clientes</b>: cruza os trending topics das últimas 24 horas (e o motivo de cada um) e as manchetes com o universo de cada marca: produtos, ícones, embaixadores e territórios. Conexões marcadas como sensíveis envolvem tragédia, violência ou polêmica e pedem cuidado.</li>
+      <li><b>Agora no X</b>: os 10 primeiros dos trending topics do Brasil na última leitura, com o motivo de cada um tirado das notícias.</li>
+      <li><b>Pauta da imprensa</b>: assuntos mais repetidos nas manchetes de g1, Folha, Estadão, O Globo, CNN Brasil, BBC Brasil, Metrópoles, Poder360, Veja, Exame e ge.</li>
+      <li><b>Horas em trend e pontos</b>: cada hora no top 50 vale pela posição (1º = 50 pontos, 50º = 1). <b>No Google</b>: interesse de busca de 0 a 100, não é contagem de buscas.</li>
     </ul>
   </div>
 </footer>
@@ -270,7 +319,7 @@ const nf = new Intl.NumberFormat('pt-BR');
 const nfc = new Intl.NumberFormat('pt-BR',{notation:'compact',maximumFractionDigits:1});
 const GAP = 3, PER_PAGE = 15, REPO = 'bfbujes-ops/radar-tt-brasil';
 
-let D, N, T0, H, HH, CTX = {}, NEWS = null, ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
+let D, N, T0, H, HH, CTX = {}, NEWS = null, CL = null, selClient = null, clTab = 'agora', ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
 let gKey = '', gPoll = null, gState = {rel:'top'}, cKey = '';
 
 const dateOf = h => new Date(T0 + h*3600e3);
@@ -347,7 +396,8 @@ function spark(id){
 function renderHome(){
   $('#home').hidden = false; $('#dossier').hidden = true; gKey = cKey = ''; clearInterval(gPoll);
   document.title = 'Radar TT Brasil';
-  const top = D.h[HH].slice(0,10);
+  renderClients();
+  const top = D.h[HH].slice(0,10), tagMap = clientTagMap();
   $('#boardmeta').textContent = `Top 10 do Brasil · leitura das ${fmtHM.format(dateOf(HH))}`;
   $('#board').innerHTML = top.map((id, i) => {
     const term = D.terms[id], c = CTX[slug(term)], hrs = streak(id), best = bestRank(id, HH - hrs - GAP);
@@ -355,8 +405,9 @@ function renderHome(){
     const why = c && c.porque ? `<p class="why">${esc(cleanWhy(c.porque, term))}</p>`
       : c && c.destaque ? `<p class="why"><span class="src">${esc(c.destaque.src)}</span>${esc(c.destaque.t)}</p>`
       : `<p class="why none">${c ? 'Sem notícias sobre o termo nos últimos 2 dias.' : 'Explicação em preparo.'}${c && c.co && c.co.length ? ' Sobe junto com: ' + c.co.map(esc).join(', ') + '.' : ''}</p>`;
-    return `<li class="item"><span class="rk">${i+1}</span><div>
-      <div class="ihead"><button type="button" class="term" data-q="${esc(term)}">${esc(term)}</button>${c && c.categoria && c.categoria !== 'Outros' ? `<span class="cat">${esc(c.categoria)}</span>` : ''}</div>
+    const tags = (tagMap[norm(term)] || []).map(k => `<button type="button" class="ctag" style="--c:${CL.clients[k].cor}" data-client="${k}">${esc(CL.clients[k].nome)}</button>`).join('');
+    return `<li class="item card"><span class="rk">${i+1}</span><div>
+      <div class="ihead"><button type="button" class="term" data-q="${esc(term)}">${esc(term)}</button>${c && c.categoria && c.categoria !== 'Outros' ? `<span class="cat">${esc(c.categoria)}</span>` : ''}${tags}</div>
       ${why}
       <p class="meta"><span><b>${hrs}h</b> na lista</span><span>pico <b>${best}º</b></span>${nNews ? `<span><b>${nNews}</b> ${nNews===1?'notícia':'notícias'}</span>` : ''}${c && c.n_tweets ? `<span><b>${c.n_tweets}</b> posts</span>` : ''}</p>
       </div><div class="spk">${spark(id)}</div></li>`;
@@ -390,6 +441,59 @@ function renderPapers(){
     `<li><a href="${esc(link)}" target="_blank" rel="noopener">${esc(title)}</a><span class="ago">${ago(pub)}</span></li>`).join('')}</ol></div>`).join('');
 }
 
+
+// ------------------------------------------------------------- clientes
+function clientTagMap(){
+  const m = {}; if (!CL) return m;
+  Object.entries(CL.clients).forEach(([k, c]) => c.agora.forEach(o => { if (o.kind === 'trend' && !o.risco){ const n = norm(o.term); (m[n] ||= []).includes(k) || m[n].push(k); } }));
+  return m;
+}
+function markWord(text, word){
+  const t = esc(text); if (!word) return t;
+  const w = esc(word), i = t.toLowerCase().indexOf(w.toLowerCase());
+  return i < 0 ? t : t.slice(0, i) + '<mark>' + t.slice(i, i + w.length) + '</mark>' + t.slice(i + w.length);
+}
+function oppCard(o, color){
+  const h = o.hit || {}, word = h.palavra_original || '';
+  const top = o.kind === 'trend' ? `<span class="pill x">No X · ${o.best}º</span>${o.hours ? `<span>${o.hours}h em alta</span>` : ''}`
+    : `<span class="pill">${esc(o.src)}</span><span>${o.pub ? ago(o.pub) : ''}</span>`;
+  const title = o.kind === 'trend' ? `<button type="button" data-q="${esc(o.term)}">${markWord(o.term, word)}</button>`
+    : `<a href="${esc(o.link)}" target="_blank" rel="noopener">${markWord(o.title, word)}</a>`;
+  return `<article class="opp card" style="--c:${color}"><div class="otop">${top}${o.risco ? '<span class="pill risk">Assunto sensível</span>' : ''}${o.fonte === 'ia' ? '<span class="pill ia">ideia da IA</span>' : ''}</div>
+    <p class="otitle">${title}</p>
+    ${o.kind === 'trend' && o.onde === 'contexto' && o.why ? `<p class="pnote" style="margin:0">${markWord(cleanWhy(o.why), word)}</p>` : ''}
+    <p class="bridge">Ponte: <b>${esc(h.nome)}</b>${h.tipo === 'territorio' ? ' · território da marca' : ''}</p>
+    <p class="idea">${esc(o.ideia || '')}</p></article>`;
+}
+function renderClients(){
+  if (!CL){ $('#clients').innerHTML = '<p class="empty">O filtro de clientes aparece depois da próxima coleta.</p>'; $('#cpanel').innerHTML = ''; return; }
+  const keys = Object.keys(CL.clients);
+  if (selClient && !CL.clients[selClient]) selClient = null;
+  $('#climeta').textContent = `Atualizado ${ago(CL.generated)} · trends das últimas 24h e manchetes do dia`;
+  $('#clients').innerHTML = keys.map(k => {
+    const c = CL.clients[k], ok = c.agora.filter(o => !o.risco), t = ok[0];
+    const what = t ? (t.kind === 'trend' ? `“${esc(t.term)}”` : esc((t.title || '').split(' ').slice(0, 7).join(' ') + '…')) : '';
+    return `<button type="button" class="cl" style="--c:${c.cor}" data-client="${k}" aria-pressed="${selClient === k}">
+      <span class="cname">${esc(c.nome)}</span><span class="ccount"><b>${ok.length}</b> ${ok.length === 1 ? 'conexão' : 'conexões'} agora</span>
+      <span class="ctop">${t ? `<b>${what}</b> → ${esc(t.hit.nome)}` : 'Nada forte agora'}</span></button>`;
+  }).join('');
+  if (!selClient){ $('#cpanel').innerHTML = '<p class="pnote" style="margin:0">Escolha um cliente para ver as oportunidades.</p>'; return; }
+  const c = CL.clients[selClient], list = clTab === 'agora' ? c.agora : c.semana;
+  $('#cpanel').innerHTML = `<div class="cphead"><h3>${esc(c.nome)}</h3>
+      <div class="seg" role="group" aria-label="Período"><button type="button" data-ctab="agora" aria-pressed="${clTab === 'agora'}">Agora</button><button type="button" data-ctab="semana" aria-pressed="${clTab === 'semana'}">Últimos 7 dias</button></div></div>
+    <p class="cuni">${esc(c.universo)}</p>
+    ${list.length ? `<div class="opps">${list.slice(0, 12).map(o => oppCard(o, c.cor)).join('')}</div>` : '<p class="oempty">Nenhuma conexão neste período.</p>'}`;
+}
+function dossierClients(q){
+  if (!CL){ $('#dcli').innerHTML = ''; return; }
+  const n = norm(q), cards = [];
+  Object.values(CL.clients).forEach(c => {
+    const seen = new Set();
+    [...c.agora, ...c.semana].forEach(o => { if (o.kind === 'trend' && norm(o.term) === n && !seen.has(o.hit.nome)){ seen.add(o.hit.nome); cards.push(oppCard({...o, src:c.nome}, c.cor).replace('<div class="otop">', `<div class="otop"><span class="ctag" style="--c:${c.cor}">${esc(c.nome)}</span>`)); } });
+  });
+  $('#dcli').innerHTML = cards.length ? `<h3 style="margin:0 0 10px;font-size:18px">Conexões com os clientes</h3><div class="dclients">${cards.join('')}</div>` : '';
+}
+
 // ------------------------------------------------------------- ficha do termo
 function termFromHash(h){
   const s = decodeURIComponent(h);
@@ -409,7 +513,7 @@ function renderDossier(q){
   const days = +$('#win').value, exact = $('#exact').checked;
   const R = search(q, days, exact);
   state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE; state.q = q;
-  context(q); draw(); google(q, days);
+  dossierClients(q); context(q); draw(); google(q, days);
 }
 
 async function context(q){
@@ -424,7 +528,7 @@ async function context(q){
       <p class="dctx">Ainda não temos a explicação deste termo. A análise lê as notícias e os posts sobre ele, escreve o porquê e traz os dados do Google; leva uns 2 minutos.</p>
       <a class="cta" href="${issueURL(q)}" target="_blank" rel="noopener">Analisar “${esc(q)}” agora</a>
       <p class="pnote" style="margin-top:10px">Abre o pedido pronto no GitHub: é só clicar em <b>Create</b>. Esta página atualiza sozinha.</p>`;
-    $('#ev').innerHTML = `<div><h3>Notícias</h3><p class="empty">Aparecem com a análise.</p></div><div><h3>No X</h3><p class="empty"><a href="${xLink(q)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p></div>`;
+    $('#ev').innerHTML = `<div class="card evc"><h3>Notícias</h3><p class="empty">Aparecem com a análise.</p></div><div class="card evc"><h3>No X</h3><p class="empty"><a href="${xLink(q)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p></div>`;
     startPoll(q); return;
   }
   const usedN = new Set(e.news_used || []), usedT = new Set(e.tweets_used || []);
@@ -436,8 +540,8 @@ async function context(q){
     ${e.co && e.co.length ? `<div class="cloud" style="margin-top:10px"><span class="pnote" style="margin:0">Sobe junto com:</span>${e.co.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}`;
   const news = (e.news || []).map((n,i) => ({...n, used: usedN.has(i)})).sort((a,b) => b.used - a.used);
   const tw = (e.tweets || []).map((t,i) => ({...t, used: usedT.has(i)})).sort((a,b) => b.used - a.used);
-  $('#ev').innerHTML = `<div><h3>Notícias</h3>${news.length ? news.map(n => `<div class="ncard ${n.used?'used':''}"><span class="src">${esc(n.src)} · ${ago(n.pub)}</span><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.t)}</a></div>`).join('') : '<p class="empty">Nenhuma notícia sobre o termo nos últimos 2 dias.</p>'}</div>
-    <div><h3>No X</h3>${tw.length ? tw.slice(0,5).map(tweetCard).join('') : `<p class="empty">Os posts aparecem aqui quando a coleta de tweets estiver ligada. <a href="${xLink(rec.term)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p>`}</div>`;
+  $('#ev').innerHTML = `<div class="card evc"><h3>Notícias</h3>${news.length ? news.map(n => `<div class="ncard ${n.used?'used':''}"><span class="src">${esc(n.src)} · ${ago(n.pub)}</span><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.t)}</a></div>`).join('') : '<p class="empty">Nenhuma notícia sobre o termo nos últimos 2 dias.</p>'}</div>
+    <div class="card evc"><h3>No X</h3>${tw.length ? tw.slice(0,5).map(tweetCard).join('') : `<p class="empty">Os posts aparecem aqui quando a coleta de tweets estiver ligada. <a href="${xLink(rec.term)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p>`}</div>`;
 }
 function tweetCard(t){
   const name = t.name || t.user || '', ini = esc(name.trim().charAt(0).toUpperCase() || '@');
@@ -643,8 +747,13 @@ function gChart(tl){
 function go(q){ $('#q').value = q; $('#exact').checked = false; const h = '#' + slug(q);
   if (location.hash === h) route(); else location.hash = h; window.scrollTo({top:0}); }
 document.addEventListener('click', ev => {
-  const t = ev.target.closest('[data-q],[data-m],[data-home],[data-rel],#more'); if (!t) return;
-  if (t.dataset.q){ ev.preventDefault(); go(t.dataset.q); }
+  const t = ev.target.closest('[data-q],[data-m],[data-home],[data-rel],[data-client],[data-ctab],#more'); if (!t) return;
+  if (t.dataset.client){ ev.preventDefault(); selClient = selClient === t.dataset.client && t.classList.contains('cl') ? null : t.dataset.client;
+    try { localStorage.setItem('radar-cliente', selClient || ''); } catch(e) {}
+    if (location.hash){ location.hash = ''; } else renderClients();
+    setTimeout(() => $('#cpanel').scrollIntoView({behavior:'smooth', block:'nearest'}), 50); }
+  else if (t.dataset.ctab){ clTab = t.dataset.ctab; renderClients(); }
+  else if (t.dataset.q){ ev.preventDefault(); go(t.dataset.q); }
   else if ('home' in t.dataset){ ev.preventDefault(); if (location.hash) location.hash = ''; else renderHome(); window.scrollTo({top:0}); }
   else if (t.dataset.m){ state.mode = t.dataset.m; document.querySelectorAll('[data-m]').forEach(b => b.setAttribute('aria-pressed', b.dataset.m===state.mode)); drawChart(); }
   else if (t.dataset.rel && gState.rec){ gState.rel = t.dataset.rel; document.querySelectorAll('[data-rel]').forEach(x => x.setAttribute('aria-pressed', x.dataset.rel === gState.rel)); const {w} = gWin(); gRel(w.related_top || [], w.related_rising || []); }
@@ -658,16 +767,18 @@ $('#f').addEventListener('submit', ev => { ev.preventDefault(); const q = $('#q'
 window.addEventListener('hashchange', route);
 new ResizeObserver(() => { if (!$('#dossier').hidden){ drawChart(); if (gState.rec && $('#gchart')) gChart(gWin().tl); } }).observe(document.body);
 
-Promise.all([getJSON('data/index.json'), getJSON('context/index.json').catch(() => ({})), getJSON('news/latest.json').catch(() => null)])
-  .then(([data, ctx, news]) => {
-    D = data; CTX = ctx || {}; NEWS = news; N = D.terms.map(norm); T0 = Date.parse(D.start.replace('Z',':00Z')); H = D.h.length;
+try { selClient = localStorage.getItem('radar-cliente') || null; } catch(e) {}
+Promise.all([getJSON('data/index.json'), getJSON('context/index.json').catch(() => ({})), getJSON('news/latest.json').catch(() => null), getJSON('clients/latest.json').catch(() => null)])
+  .then(([data, ctx, news, cl]) => {
+    D = data; CTX = ctx || {}; NEWS = news; CL = cl; N = D.terms.map(norm); T0 = Date.parse(D.start.replace('Z',':00Z')); H = D.h.length;
     HH = H - 1; while (HH > 0 && D.h[HH].length < 10) HH--;
     const day = fmtDay.format(dateOf(HH));
     $('#edition').textContent = `${day.charAt(0).toUpperCase() + day.slice(1)} · trends das ${fmtHM.format(dateOf(HH))}${NEWS ? ' · manchetes ' + ago(NEWS.generated) : ''}`;
     route();
   })
-  .catch(e => { $('#board').innerHTML = `<li class="item"><span></span><p class="why none">Não consegui carregar os dados (${esc(e.message)}).</p></li>`; });
+  .catch(e => { $('#board').innerHTML = `<li class="item card"><span></span><p class="why none">Não consegui carregar os dados (${esc(e.message)}).</p></li>`; });
 }
 </script>
+
 </body>
 </html>
