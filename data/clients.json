@@ -372,7 +372,14 @@
         "mercado de molhos",
         "condimentos"
       ],
-      "excluir": []
+      "excluir": [
+        "karl-heinz",
+        "karl heinz",
+        "rummenigge",
+        "emigholz",
+        "heinz-christian",
+        "heinz-harald"
+      ]
     }
   },
   "yoki": {
@@ -511,8 +518,8 @@
         "yoki",
         "kitano",
         "3coracoes",
-        "3 coracoes",
-        "tres coracoes",
+        "grupo 3 coracoes",
+        "grupo tres coracoes",
         "general mills"
       ],
       "concorrentes": [
@@ -630,13 +637,14 @@
         "sonho de valsa",
         "lacta",
         "mondelez",
-        "ouro branco",
+        "chocolate ouro branco",
+        "bombom ouro branco",
         "diamante negro"
       ],
       "concorrentes": [
         "cacau show",
         "chocolates garoto",
-        "garoto",
+        "chocolate garoto",
         "nestle",
         "kopenhagen",
         "ferrero",

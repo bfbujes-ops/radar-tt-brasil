@@ -32,3 +32,12 @@ def test_acertos_por_marca():
 def test_risco():
     assert CL.RX_SENS.search(C.norm("Acidente deixa mortos"))
     assert not CL.RX_SENS.search(C.norm("Cebolinha brilha no Santos"))
+
+
+def test_ruido_de_noticias():
+    assert CL.is_noise("How Many Shares of Coca-Cola or PepsiCo Pay $1,000 a Month in Dividends?", "TIKR.com")
+    assert CL.is_noise("Previsão semanal das ações da PepsiCo: risco de recuperação", "Traders Union")
+    assert not CL.is_noise("Heinz e Tabasco lançam ketchup picante no Brasil", "EP Grupo")
+    nt = CFG["heinz"]["noticiario"]
+    assert CL.compile_rx(nt["excluir"]).search(C.norm("Uli Hoeneß e Karl-Heinz Rummenigge se incomodavam"))
+    assert not CL.compile_rx(CFG["sonho-de-valsa"]["noticiario"]["marca"]).search(C.norm("Sine de Ouro Branco abre vagas"))

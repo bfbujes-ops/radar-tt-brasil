@@ -92,6 +92,21 @@ def context_index() -> dict:
         return {}
 
 
+EN_WORDS = {"the", "of", "and", "or", "for", "to", "with", "is", "are", "my", "i'd", "how", "which", "stock",
+            "shares", "vs", "better", "next", "years", "only", "one", "gets", "hold", "pay", "month"}
+FIN_NOISE = re.compile(r"(?<![a-z0-9])(dividend|dividendo|acoes da|acao da|acoes de|previsao semanal|bdr|cotacao|"
+                       r"portfolio|stock|wall street|bolsa de nova york|nyse|nasdaq|preco-alvo|preco alvo)")
+NOISE_SOURCES = {"tikr.com", "traders union", "marketbeat", "seeking alpha", "simply wall st"}
+
+
+def is_noise(title: str, src: str) -> bool:
+    """Notícia de cotação de ação, em inglês ou de agregador financeiro não interessa à agência."""
+    words = re.findall(r"[a-z']+", title.lower())
+    if sum(w in EN_WORDS for w in words) >= 2:
+        return True
+    return (src or "").strip().lower() in NOISE_SOURCES or bool(FIN_NOISE.search(C.norm(title)))
+
+
 def gnews_client(client: dict) -> list[dict]:
     """Notícias dos últimos 3 dias sobre a marca/empresa e sobre os concorrentes (Google Notícias)."""
     nt = client.get("noticiario") or {}
@@ -158,6 +173,8 @@ def collect_matches(cfg: dict) -> dict[str, list[dict]]:
         for n in gnews_client(client):
             pool.append((n, key))
     for n, only in pool:
+        if is_noise(n["title"], n.get("src", "")):
+            continue
         text = C.norm(n["title"])
         for key, client in cfg.items():
             if only and only != key:
