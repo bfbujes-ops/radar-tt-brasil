@@ -41,3 +41,10 @@ def test_ruido_de_noticias():
     nt = CFG["heinz"]["noticiario"]
     assert CL.compile_rx(nt["excluir"]).search(C.norm("Uli Hoeneß e Karl-Heinz Rummenigge se incomodavam"))
     assert not CL.compile_rx(CFG["sonho-de-valsa"]["noticiario"]["marca"]).search(C.norm("Sine de Ouro Branco abre vagas"))
+
+
+def test_hellmann_tecnico_nao_conta():
+    nt = CFG["heinz"]["noticiario"]
+    t = C.norm("Odair Hellmann critica clima e cobra apoio no Athletico-PR")
+    assert CL.compile_rx(nt["excluir"]).search(t)
+    assert CL.compile_rx(nt["concorrentes"]).search(C.norm("Hellmann's lança maionese de pote novo"))
