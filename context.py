@@ -152,19 +152,32 @@ def llm_json(prompt: str, max_tokens=700) -> dict | None:
     if not tok:
         return None
     for model in ("openai/gpt-4.1-mini", "openai/gpt-4o-mini"):
+        strict = True
         for attempt in range(3):
-            r = requests.post("https://models.github.ai/inference/chat/completions", timeout=90, headers={
-                "Authorization": f"Bearer {tok}", "Content-Type": "application/json",
-                "Accept": "application/vnd.github+json"}, json={
-                "model": model, "max_tokens": max_tokens, "temperature": 0.2,
-                "response_format": {"type": "json_object"},
-                "messages": [{"role": "system", "content": "Você é editor de uma página brasileira que explica "
-                              "os trending topics do X. Escreve em português do Brasil, frases curtas, tom neutro e "
-                              "factual. Nunca inventa: usa só o material fornecido. Responde só em JSON."},
-                             {"role": "user", "content": prompt}]})
+            body = {"model": model, "max_tokens": max_tokens, "temperature": 0.2,
+                    "messages": [{"role": "system", "content": "Você é editor de uma página brasileira que explica "
+                                  "os trending topics do X. Escreve em português do Brasil, frases curtas, tom neutro e "
+                                  "factual. Nunca inventa: usa só o material fornecido. Responde só em JSON."},
+                                 {"role": "user", "content": prompt}]}
+            if strict:
+                body["response_format"] = {"type": "json_object"}
+            try:
+                r = requests.post("https://models.github.ai/inference/chat/completions", timeout=90, headers={
+                    "Authorization": f"Bearer {tok}", "Content-Type": "application/json",
+                    "Accept": "application/json"}, json=body)
+            except requests.RequestException as exc:
+                print(f"[ia] {model}: {exc}", file=sys.stderr)
+                time.sleep(5)
+                continue
             if r.ok:
                 time.sleep(4.5)                       # limite de ~15 pedidos por minuto
-                return _parse_json(r.json()["choices"][0]["message"]["content"])
+                try:
+                    return _parse_json(r.json()["choices"][0]["message"]["content"])
+                except (ValueError, KeyError, IndexError):
+                    print(f"[ia] {model}: resposta inesperada ({r.headers.get('content-type')}) "
+                          f"{r.text[:200]!r}", file=sys.stderr)
+                    strict = False                    # tenta de novo sem exigir JSON
+                    continue
             if r.status_code == 429:
                 wait = int(r.headers.get("retry-after", "20"))
                 if wait > 120:
@@ -464,7 +477,11 @@ def cmd_explain(a) -> int:
                     continue
             except Exception:  # noqa: BLE001
                 pass
-        ep = explain_term(term, snap, headlines, rank)
+        try:
+            ep = explain_term(term, snap, headlines, rank)
+        except Exception as exc:  # noqa: BLE001 — um termo com problema não derruba os outros
+            print(f"[explain] {term}: erro {exc}", file=sys.stderr)
+            continue
         save_episode(term, ep)
         done += 1
         print(f"[explain] {term}: {ep.get('porque') or '(sem explicação)'} · {len(ep['news'])} notícias, "

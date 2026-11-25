@@ -5,131 +5,193 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Radar TT Brasil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Sofia+Sans+Condensed:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Sofia+Sans+Condensed:wght@600;800&display=swap">
 <style>
-/* VOICE work: ferramenta de pesquisa, densa e exata, padrão de editoria de gráficos
-   IDEA um arquivo de jornal: você procura um termo e recebe a ficha dele, com cada aparição datada
-   PICTURE a coluna de barras semanais em vermelhão, grande, logo abaixo da busca
-   COLOUR branco, tinta preta, vermelhão #ff4a1c como a massa do gráfico; noite #120d0b
-   TYPE Sofia Sans Condensed 800 nos títulos e números + Instrument Sans no texto
-   LAYOUT busca larga no topo; achado + números + gráfico no primeiro ecrã; episódios em tabela abaixo; no celular tudo empilha */
-:root{color-scheme:light dark;--hb:light-dark(#111111,#2a1f1b);--hf:#f3eeea;--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f3eeea);--muted:light-dark(#5b5550,#b9b0a8);--rule:light-dark(#e4dfda,#2e2522);--panel:light-dark(#f6f3f0,#1c1512);--acc:#ff4a1c;--acc-ink:light-dark(#c2310b,#ff7a52)}
+/* VOICE work: mesa de edição de um jornal, densa, exata, atualizada de hora em hora
+   IDEA a primeira página de um diário: manchetes numeradas do X na coluna principal, a pauta da imprensa na lateral
+   PICTURE o painel "Agora no X": dez linhas com posição, termo, o porquê e a trilha de posição das últimas 24h
+   COLOUR papel branco, tinta preta, vermelhão #ff4a1c como única cor de destaque; noite #120d0b
+   TYPE Sofia Sans Condensed 800 para termos, números e títulos + Instrument Sans no texto
+   LAYOUT cabeçalho preto com busca; grade 2/3 + 1/3 na capa; ficha do termo em coluna larga; tudo empilha abaixo de 860px */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f3eeea);--muted:light-dark(#5b5550,#b9b0a8);--rule:light-dark(#e4dfda,#2e2522);--panel:light-dark(#f6f3f0,#1c1512);--acc:#ff4a1c;--acc-ink:light-dark(#c2310b,#ff7a52);--hb:light-dark(#111111,#211915);--hf:#f3eeea}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
-.band{padding:clamp(20px,3vw,40px) max(5vw,16px)}
-.wrap{max-width:1240px;margin:0 auto}
-header.band{background:var(--hb);color:var(--hf);padding-bottom:28px}
-h1,h2,.num{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.05}
-h1{font-size:clamp(32px,5vw,48px);margin:0 0 4px}
-.sub{margin:0 0 20px;color:color-mix(in srgb,var(--hf) 72%,var(--hb))}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.disp,h1,h2,.rk,.term,.num{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;letter-spacing:-.02em;line-height:1.05}
+
+/* cabeçalho */
+.mast{background:var(--hb);color:var(--hf);padding:18px 0 20px}
+.mrow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:14px}
+.brand{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,44px);letter-spacing:-.02em;line-height:1;text-decoration:none;color:var(--hf)}
+.brand span{color:var(--acc)}
+.edition{margin:0;font-size:14px;color:color-mix(in srgb,var(--hf) 70%,var(--hb))}
 form{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:10px;align-items:center}
-input[type=search],select{font:inherit;font-size:17px;height:52px;padding:0 14px;border:2px solid color-mix(in srgb,var(--hf) 25%,var(--hb));border-radius:6px;background:var(--bg);color:var(--ink)}
-input[type=search]:focus,select:focus,button:focus-visible,.chip:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-button{font:inherit;font-weight:600;height:52px;padding:0 22px;border:0;border-radius:6px;background:var(--acc);color:#fff;cursor:pointer}
-button:hover{filter:brightness(1.08)}
-.chk{display:flex;gap:8px;align-items:center;white-space:nowrap;color:color-mix(in srgb,var(--hf) 85%,var(--hb))}
+input[type=search],select{font:inherit;font-size:17px;height:50px;padding:0 14px;border:2px solid color-mix(in srgb,var(--hf) 22%,var(--hb));border-radius:6px;background:var(--bg);color:var(--ink)}
+.go{height:50px;padding:0 22px;border:0;border-radius:6px;background:var(--acc);color:#fff;font-weight:700}
+.chk{display:flex;gap:8px;align-items:center;white-space:nowrap;font-size:15px;color:color-mix(in srgb,var(--hf) 85%,var(--hb))}
 .chk input{width:20px;height:20px;accent-color:var(--acc)}
-.now{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px;font-size:14px}
-.now span{color:color-mix(in srgb,var(--hf) 70%,var(--hb))}
-.chip{font:inherit;font-size:14px;height:auto;min-height:36px;padding:4px 12px;border-radius:18px;border:1px solid color-mix(in srgb,var(--hf) 40%,var(--hb));background:transparent;color:var(--hf)}
-.demo{margin:14px 0 0;font-size:14px;color:color-mix(in srgb,var(--hf) 75%,var(--hb))}
-.demo b{color:var(--acc)}
-h2{font-size:clamp(28px,3.6vw,40px);margin:0 0 6px;text-wrap:balance}
-.lead{margin:0 0 18px;color:var(--muted);max-width:70ch}
-.vars{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+
+/* seções */
+.sec{padding:clamp(24px,3.4vw,44px) 0}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;border-top:3px solid var(--ink);padding-top:10px;margin-bottom:14px}
+.sechead h2{font-size:clamp(26px,3vw,34px);font-weight:800;margin:0}
+.sechead p{margin:0;font-size:14px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,1fr);gap:clamp(24px,3.4vw,48px);align-items:start}
+
+/* painel "Agora no X" */
+.board{list-style:none;margin:0;padding:0}
+.item{display:grid;grid-template-columns:2.4em minmax(0,1fr) 104px;gap:4px 14px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.rk{font-weight:800;font-size:38px;color:var(--muted);text-align:right;padding-top:2px}
+.item:first-child .rk{color:var(--acc)}
+.ihead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.term{background:none;border:0;padding:0;font-weight:800;font-size:clamp(24px,2.6vw,30px);color:var(--ink);text-align:left}
+.term:hover{color:var(--acc-ink)}
+.cat{font-size:13px;font-weight:600;color:var(--acc-ink)}
+.why{margin:4px 0 6px;font-size:16px;max-width:66ch}
+.why.none{color:var(--muted);font-size:15px}
+.meta{margin:0;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 14px}
+.meta b{color:var(--ink);font-weight:600}
+.spk{align-self:center}
+.spk svg{display:block;width:104px;height:40px;overflow:visible}
+.spk small{display:block;font-size:11px;color:var(--muted);text-align:right}
+
+/* pauta da imprensa */
+.pres{font-size:17px;line-height:1.45;margin:0 0 14px;font-weight:500}
+.tema{border-top:1px solid var(--rule);padding:12px 0}
+.tema h3{margin:0 0 4px;font-size:17px;line-height:1.3}
+.tema p{margin:0 0 6px;font-size:15px;color:var(--muted)}
+.tmeta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
+.ttag{border:1px solid var(--acc);color:var(--acc-ink);background:transparent;border-radius:14px;padding:2px 10px;font-size:13px;font-weight:600}
+.tema details summary{cursor:pointer;font-size:13px;color:var(--acc-ink);font-weight:600;min-height:32px;display:inline-flex;align-items:center}
+.hl{list-style:none;margin:4px 0 0;padding:0}
+.hl li{font-size:14px;padding:4px 0;border-top:1px dotted var(--rule)}
+.hl a{text-decoration:none}
+.hl a:hover{text-decoration:underline}
+.src{font-weight:700;font-size:12px;color:var(--muted);margin-right:6px;white-space:nowrap}
+
+/* manchetes por jornal */
+.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 28px}
+.paper h3{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;font-size:22px;margin:0 0 4px;letter-spacing:-.01em;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.paper ol{margin:0;padding:0;list-style:none}
+.paper li{padding:7px 0;border-bottom:1px solid var(--rule);font-size:15px;line-height:1.35}
+.paper a{text-decoration:none}
+.paper a:hover{color:var(--acc-ink);text-decoration:underline}
+.ago{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+
+.cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
+.chip{background:transparent;border:1px solid color-mix(in srgb,var(--acc) 35%,var(--rule));border-radius:20px;padding:4px 12px;min-height:36px;color:var(--acc-ink);font-weight:600;line-height:1.2}
+.chip small{color:var(--muted);font-weight:400;font-size:.72em;margin-left:4px}
+
+/* ficha do termo */
+.back{background:none;border:0;padding:0;margin:18px 0 0;color:var(--acc-ink);font-weight:600;min-height:44px}
+.dhead{padding:10px 0 24px;border-bottom:3px solid var(--ink)}
+.kick{margin:0 0 6px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
+.kick .cat{font-size:14px}
+.dhead h1{font-weight:800;font-size:clamp(40px,6vw,64px);margin:0 0 10px;text-wrap:balance}
+.whybig{font-size:clamp(19px,2.1vw,23px);line-height:1.35;margin:0 0 10px;max-width:58ch;font-weight:500}
+.dctx{margin:0 0 12px;color:var(--muted);max-width:70ch}
+.conf{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--panel);color:var(--muted)}
+.cta{display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:6px;background:var(--acc);color:#fff;font-weight:700;text-decoration:none}
+.ev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);padding:24px 0}
+.ev h3,.blk h3{margin:0 0 10px;font-size:18px}
+.ncard{padding:10px 0;border-top:1px solid var(--rule)}
+.ncard a{text-decoration:none;font-size:16px;font-weight:600;line-height:1.35}
+.ncard a:hover{color:var(--acc-ink);text-decoration:underline}
+.ncard .src{display:block;margin-bottom:2px}
+.ncard.used a{border-left:3px solid var(--acc);padding-left:8px;display:block}
+.tw{border:1px solid var(--rule);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:var(--bg)}
+.tw.used{border-color:color-mix(in srgb,var(--acc) 60%,var(--rule))}
+.twh{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.av{width:42px;height:42px;border-radius:50%;background:var(--panel);display:grid;place-items:center;font-weight:700;color:var(--muted);overflow:hidden;flex:none}
+.av img{width:100%;height:100%;object-fit:cover}
+.twn{line-height:1.25;font-size:15px}
+.twn b{display:inline-flex;align-items:center;gap:4px}
+.twn span{display:block;color:var(--muted);font-size:14px}
+.twt{margin:0 0 10px;font-size:15px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.twm{width:100%;border-radius:10px;border:1px solid var(--rule);margin:0 0 10px;max-height:320px;object-fit:cover}
+.twf{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--muted);align-items:center}
+.twf a{margin-left:auto;color:var(--acc-ink);font-weight:600}
+.empty{color:var(--muted);font-size:15px;border-top:1px solid var(--rule);padding-top:10px}
+.empty a{color:var(--acc-ink);font-weight:600}
+
+/* números do X e do Google */
+.blk{padding:28px 0;border-top:3px solid var(--ink)}
+.blk>h2{font-size:clamp(26px,3vw,34px);margin:0 0 6px;font-weight:800}
+.lead{margin:0 0 16px;color:var(--muted);max-width:72ch}
+.lead a{color:var(--acc-ink);font-weight:600}
+.vars{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
 .var{display:flex;gap:8px;align-items:center;min-height:40px;padding:4px 12px;border:1px solid var(--rule);border-radius:20px;font-size:15px;cursor:pointer}
 .var input{accent-color:var(--acc);width:18px;height:18px}
 .var small{color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);margin-bottom:24px}
-.stat{padding:12px 16px 14px 0}
-.stat .num{font-size:clamp(30px,4vw,42px);display:block;white-space:nowrap}
-.stat .lbl{font-size:14px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:22px}
+.stat{padding:10px 16px 12px 0}
+.num{font-weight:800;font-size:clamp(28px,3.6vw,40px);display:block;white-space:nowrap}
+.lbl{font-size:14px;color:var(--muted)}
 .chead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px}
 .chead h3{margin:0;font-size:18px}
-.seg{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
-.seg button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border-radius:0;font-size:14px}
-.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
-.fig{position:relative;height:320px}
+.seg,.tabs{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content}
+.seg button,.tabs button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border:0;font-size:14px;font-weight:600}
+.seg button[aria-pressed=true],.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.fig{position:relative;height:300px}
 .fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 svg text{font:13px "Instrument Sans",sans-serif;fill:var(--muted)}
 .tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font-size:14px;padding:8px 10px;border-radius:6px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%)}
 .tip b{display:block}
-.note{font-size:14px;color:var(--muted);margin:8px 0 0;max-width:80ch}
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px 40px;margin-top:28px;align-items:start}
+.pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
+.hm{display:grid;grid-template-columns:2.6em repeat(24,minmax(0,1fr));gap:2px}
+.hm .hlab{font-size:11px;color:var(--muted);text-align:center;align-self:end}
+.hm .dlab{font-size:12px;color:var(--muted);align-self:center;padding-right:6px;text-align:right}
+.hm .c{aspect-ratio:1;border-radius:2px;background:var(--panel)}
 .scroll{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:15px}
 th{text-align:left;font-weight:600;font-size:14px;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 10px 8px 0}
 td{border-bottom:1px solid var(--rule);padding:12px 10px 12px 0;vertical-align:top}
-td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-th.n{text-align:right}
+.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 td.when{white-space:nowrap}
-.ctx{max-width:60ch}
-.ctx .co{color:var(--muted)}
-.ctx a{color:var(--acc-ink);font-weight:600;text-decoration-thickness:1px;text-underline-offset:3px;white-space:nowrap}
-.tag{display:inline-block;font-size:13px;padding:0 6px;border-radius:4px;background:var(--panel);color:var(--muted);margin-right:4px}
-.panels{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;margin-top:32px;align-items:start}
-.panel h3{margin:0 0 4px;font-size:18px}
-.panel .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
-.hm{display:grid;grid-template-columns:2.6em repeat(24,minmax(0,1fr));gap:2px}
-.hm .hlab{font-size:11px;color:var(--muted);text-align:center;align-self:end;padding-bottom:2px}
-.hm .dlab{font-size:12px;color:var(--muted);align-self:center;padding-right:6px;text-align:right}
-.hm .c{aspect-ratio:1;border-radius:2px;background:var(--panel);min-width:0}
-.cloud{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:baseline}
-.cloud .chip{color:var(--acc-ink);border-color:color-mix(in srgb,var(--acc) 35%,var(--rule));background:transparent;font-weight:600;line-height:1.2}
-.cloud .chip small{color:var(--muted);font-weight:400;font-size:.72em;margin-left:4px}
-.home h3{margin:28px 0 4px;font-size:18px}
-.home .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
-.home .cloud .chip{min-height:0}
-@media(max-width:860px){.panels{grid-template-columns:minmax(0,1fr)}}
-.gsec{border-top:6px solid var(--ink);padding-top:22px}
-.gsec h2 .gtag{font-family:"Instrument Sans",sans-serif;font-size:15px;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:10px;vertical-align:middle}
-.gsec .lead a{color:var(--acc-ink);font-weight:600;white-space:nowrap}
-.ggrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 36px}
-.gcard.wide{grid-column:1/-1}
-.gcard h3{margin:0 0 4px;font-size:18px}
-.gcard .pnote{font-size:14px;color:var(--muted);margin:0 0 12px}
-.gfig{position:relative;height:300px}
-.gfig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.gpeak{display:flex;flex-wrap:wrap;gap:6px 24px;margin:0 0 10px;font-size:15px;color:var(--muted)}
-.gpeak b{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-size:28px;color:var(--ink);margin-right:6px;letter-spacing:-.02em}
-.tabs{display:flex;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;width:max-content;margin-bottom:10px}
-.tabs button{height:36px;padding:0 14px;background:transparent;color:var(--ink);border-radius:0;font-size:14px;font-weight:600}
-.tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
-.rows{display:grid;gap:2px}
-.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,38%) 4.6em;gap:10px;align-items:center;min-height:34px;padding:2px 0;border-bottom:1px solid var(--rule)}
-.row .t{background:none;border:0;padding:0;height:auto;color:var(--ink);font:inherit;font-size:15px;text-align:left;cursor:pointer;overflow-wrap:anywhere}
-.row .t:hover{color:var(--acc-ink);text-decoration:underline}
+td.ctx{max-width:60ch}
+td.ctx .co{color:var(--muted)}
+td.ctx a{color:var(--acc-ink);font-weight:600;white-space:nowrap}
+.more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px;padding:0 16px;border-radius:6px}
+details.tbl{margin-top:20px}
+details.tbl summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+.rows{display:grid}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(60px,38%) 4.6em;gap:10px;align-items:center;min-height:34px;border-bottom:1px solid var(--rule)}
+.row .t{background:none;border:0;padding:0;color:var(--ink);font-size:15px;text-align:left;overflow-wrap:anywhere}
+button.t:hover{color:var(--acc-ink);text-decoration:underline}
 .row .bar{height:10px;background:var(--panel);border-radius:2px;overflow:hidden}
-.row .bar i{display:block;height:100%;background:var(--acc);border-radius:0 2px 2px 0}
+.row .bar i{display:block;height:100%;background:var(--acc)}
 .row .v{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted);white-space:nowrap}
 .row .v.up{color:var(--acc-ink);font-weight:600}
-.gempty{padding:24px 0;border-top:1px solid var(--rule)}
-.gempty p{color:var(--muted);max-width:70ch;margin:0 0 14px}
-.gbtn{display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:6px;background:var(--acc);color:#fff;font-weight:600;text-decoration:none}
+.gpeak{display:flex;flex-wrap:wrap;gap:6px 24px;margin:0 0 10px;font-size:15px;color:var(--muted)}
+.gpeak b{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-size:28px;color:var(--ink);margin-right:6px}
 .gsrc{font-size:13px;color:var(--muted);margin-top:18px}
-.gsrc a{color:var(--acc-ink)}
-@media(max-width:760px){.ggrid{grid-template-columns:minmax(0,1fr)}}
-details{margin-top:28px;border-top:1px solid var(--rule);padding-top:12px}
-summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
-.more{margin-top:12px;background:transparent;color:var(--ink);border:1px solid var(--rule);height:44px}
-.empty{padding:28px 0;border-top:2px solid var(--ink)}
-.empty p{color:var(--muted);max-width:70ch}
-.how{background:var(--panel)}
-.how h3{margin:0 0 8px;font-size:18px}
-.how ul{margin:0;padding-left:20px;color:var(--muted);max-width:90ch}
-.how li{margin:4px 0}
-@media(max-width:720px){form{grid-template-columns:minmax(0,1fr) auto}form .chk{grid-column:1}form button{grid-column:2;grid-row:2}}
-@media(max-width:600px){table{font-size:14px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}.stack td::before{content:attr(data-l);color:var(--muted);text-align:left}.stack td.ctx{display:block;text-align:left}.stack td.ctx::before{display:block}.fig{height:260px}}
-@media(prefers-reduced-motion:no-preference){.bar{transition:opacity .15s}}
+
+footer{background:var(--panel);margin-top:20px}
+footer .wrap{padding-top:28px;padding-bottom:36px}
+footer h3{margin:0 0 8px;font-size:18px}
+footer ul{margin:0;padding-left:20px;color:var(--muted);max-width:95ch;font-size:15px}
+footer li{margin:4px 0}
+
+@media(max-width:860px){.grid,.ev,.two{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:720px){form{grid-template-columns:minmax(0,1fr) auto}.chk{grid-column:1}.go{grid-column:2;grid-row:2}}
+@media(max-width:560px){.item{grid-template-columns:2em minmax(0,1fr)}.rk{font-size:30px}.spk{grid-column:2}.spk small{text-align:left}
+  .stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--rule)}.stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}.stack td::before{content:attr(data-l);color:var(--muted);text-align:left}.stack td.ctx{display:block;text-align:left}.stack td.ctx::before{display:block}.fig{height:240px}}
 </style>
 </head>
 <body>
-<header class="band">
+<header class="mast">
   <div class="wrap">
-    <h1>Radar TT Brasil</h1>
-    <p class="sub" id="sub">Histórico dos trending topics do X no Brasil, hora a hora.</p>
+    <div class="mrow">
+      <a class="brand" href="#" data-home>Radar <span>TT Brasil</span></a>
+      <p class="edition" id="edition">Carregando a edição…</p>
+    </div>
     <form id="f" role="search">
       <input type="search" id="q" placeholder="Pesquise qualquer palavra, ex.: shampoo" aria-label="Termo" autocomplete="off">
       <select id="win" aria-label="Janela">
@@ -139,67 +201,96 @@ summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:
         <option value="365">12 meses</option>
       </select>
       <label class="chk"><input type="checkbox" id="exact"> Termo exato</label>
-      <button type="submit">Buscar</button>
+      <button class="go" type="submit">Buscar</button>
     </form>
-    <div class="now" id="now"></div>
-    <p class="demo" id="demo" hidden><b>Dados simulados.</b> Esta é uma demonstração com 6 meses de tendências geradas por computador e episódios de exemplo; nada aqui aconteceu de verdade. Ao rodar o coletor, a página passa a mostrar o histórico real.</p>
   </div>
 </header>
 
-<main class="band">
-  <div class="wrap" id="out"><p class="lead">Carregando o histórico…</p></div>
+<main id="home" class="wrap">
+  <div class="sec grid">
+    <section>
+      <div class="sechead"><h2>Agora no X</h2><p id="boardmeta"></p></div>
+      <ol class="board" id="board"><li class="item"><span></span><p class="why none">Carregando…</p></li></ol>
+    </section>
+    <aside>
+      <div class="sechead"><h2>Pauta da imprensa</h2><p id="pautameta"></p></div>
+      <p class="pres" id="pres"></p>
+      <div id="temas"></div>
+    </aside>
+  </div>
+  <section class="sec">
+    <div class="sechead"><h2>Manchetes por jornal</h2><p>As mais recentes de cada veículo</p></div>
+    <div class="papers" id="papers"></div>
+  </section>
+  <section class="sec">
+    <div class="sechead"><h2>Mais fortes da semana</h2><p>Termos que somaram mais tempo e posição nos últimos 7 dias</p></div>
+    <div class="cloud" id="week"></div>
+  </section>
 </main>
 
-<section class="band" id="gsec" hidden>
-  <div class="wrap gsec">
+<main id="dossier" class="wrap" hidden>
+  <button type="button" class="back" data-home>← Voltar ao radar</button>
+  <section class="dhead" id="dhead"></section>
+  <section class="ev" id="ev"></section>
+  <section class="blk" id="xsec"></section>
+  <section class="blk" id="gsec">
     <h2 id="gtitle">No Google</h2>
     <p class="lead" id="glead"></p>
     <div id="gbody"></div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="band how">
+<footer>
   <div class="wrap">
-    <h3>Como ler os números</h3>
+    <h3>Como ler o radar</h3>
     <ul>
-      <li><b>Horas em trend</b>: quantas horas o termo esteve entre os 50 assuntos do momento no Brasil (uma leitura por hora).</li>
-      <li><b>Pontos</b>: cada hora vale pela posição. 1º lugar = 50 pontos, 50º = 1. Somam tempo e força num número só.</li>
-      <li><b>Força relativa</b>: a porcentagem de termos que entraram nos TTs na mesma janela e somaram menos pontos que este.</li>
-      <li><b>Episódio</b>: aparições seguidas; mais de 3 horas fora da lista abre um episódio novo.</li>
-      <li><b>No Google</b>: dados do Google Trends para o Brasil, baixados por um robô e desenhados aqui. O índice vai de 0 a 100, onde 100 é o pico de buscas do termo no período; não é contagem de buscas. Os 10 termos em alta no X são analisados a cada 3 horas; qualquer outra palavra pode ser pedida pelo botão “Analisar agora”.</li>
-      <li><b>Contexto</b>: a frase “Porque…” vem dos posts mais engajados no momento do episódio, resumidos por IA quando o coletor está configurado para isso. Sem ela, mostramos os termos que subiram e caíram junto, que costumam ser a pista do assunto, e o link para os posts daquela data no X.</li>
+      <li><b>Agora no X</b>: os 10 primeiros dos trending topics do Brasil na última leitura. A explicação “Porque…” é escrita por IA a partir de notícias e posts sobre o termo; o selo de confiança diz quantas fontes sustentam a explicação.</li>
+      <li><b>Pauta da imprensa</b>: temas mais repetidos nas manchetes de g1, Folha, Estadão, O Globo, CNN Brasil, BBC Brasil, Metrópoles, Poder360, Veja, Exame e ge nas últimas horas, agrupados por IA.</li>
+      <li><b>Horas em trend e pontos</b>: cada hora no top 50 vale pela posição (1º = 50 pontos, 50º = 1). A força relativa é a porcentagem de termos do período que somaram menos pontos.</li>
+      <li><b>No Google</b>: dados do Google Trends para o Brasil, de 0 a 100 (100 é o pico do termo no período); não é contagem de buscas.</li>
     </ul>
   </div>
-</section>
+</footer>
 
 <script>
 {
 const $ = s => document.querySelector(s);
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm = s => s.normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[#_]/g,' ').replace(/\s+/g,' ').trim();
-const slug = s => norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-const fmt = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
-const fmtD = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'short'});
-const fmtM = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',month:'short'});
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[#_]/g,' ').replace(/\s+/g,' ').trim();
+const slug = s => norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'termo';
+const TZ = 'America/Sao_Paulo';
+const fmt = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+const fmtD = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,day:'2-digit',month:'short'});
+const fmtM = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,month:'short'});
+const fmtHM = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,hour:'2-digit',minute:'2-digit'});
+const fmtDay = new Intl.DateTimeFormat('pt-BR',{timeZone:TZ,weekday:'long',day:'numeric',month:'long'});
+const fmtMY = new Intl.DateTimeFormat('pt-BR',{timeZone:'UTC',month:'short',year:'2-digit'});
+const fmtDM = new Intl.DateTimeFormat('pt-BR',{timeZone:'UTC',day:'2-digit',month:'short'});
 const nf = new Intl.NumberFormat('pt-BR');
-const fmtH = new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit'});
-const GAP = 3, PER_PAGE = 15;
+const nfc = new Intl.NumberFormat('pt-BR',{notation:'compact',maximumFractionDigits:1});
+const GAP = 3, PER_PAGE = 15, REPO = 'bfbujes-ops/radar-tt-brasil';
 
-let D, N, T0, H, ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
+let D, N, T0, H, HH, CTX = {}, NEWS = null, ptsCache = {}, state = {mode:'pts', shown:PER_PAGE};
+let gKey = '', gPoll = null, gState = {rel:'top'}, cKey = '';
 
 const dateOf = h => new Date(T0 + h*3600e3);
+const isoH = h => dateOf(h).toISOString().slice(0,13) + ':00Z';
 const ymd = d => d.toISOString().slice(0,10);
 const points = r => 51 - r;
+const ago = iso => { const m = Math.max(1, Math.round((Date.now() - new Date(iso)) / 60000));
+  return m < 60 ? `há ${m} min` : m < 1440 ? `há ${Math.round(m/60)} h` : `há ${Math.round(m/1440)} d`; };
+const cleanWhy = (why, term) => String(why || '').replace(/^\s*["“'][^"”']{1,80}["”']\s*/, '').replace(/^porque/i, 'Porque');
+async function getJSON(path){ const r = await fetch(path + '?t=' + Date.now()); if (!r.ok) throw new Error(r.status); return r.json(); }
+const issueURL = q => `https://github.com/${REPO}/issues/new?` + new URLSearchParams({title:'google: ' + q, body:'Pedido de análise feito pelo Radar TT. Pode enviar sem escrever nada.'}).toString();
 
+// ------------------------------------------------------------- dados do X
 function windowRange(days){ const end = H-1; return [Math.max(0, end - days*24 + 1), end]; }
-
 function termPoints(days){
   if (ptsCache[days]) return ptsCache[days];
   const [a,b] = windowRange(days), p = new Map();
   for (let h=a; h<=b; h++) D.h[h].forEach((id,i) => p.set(id, (p.get(id)||0) + points(i+1)));
   return ptsCache[days] = {map:p, sorted:[...p.values()].sort((x,y)=>x-y)};
 }
-
 function coTrends(hours, exclude){
   const own = new Set(hours), lo = Math.max(0, hours[0]-12), hi = Math.min(H-1, hours[hours.length-1]+12);
   const sets = new Map(), pts = new Map();
@@ -213,23 +304,18 @@ function coTrends(hours, exclude){
   sets.forEach((s,id) => { let inter=0; s.forEach(h => own.has(h) && inter++); if (inter) { const uni = s.size + own.size - inter; sc.push([inter/uni*Math.log(1+(pts.get(id)||0)), id]); }});
   return sc.sort((x,y)=>y[0]-x[0]).slice(0,5).map(x => D.terms[x[1]]);
 }
-
 function xLink(term, a, b){
-  const s = ymd(dateOf(a)), e = ymd(new Date(dateOf(b).getTime()+864e5));
-  return 'https://x.com/search?f=top&q=' + encodeURIComponent(`"${term}" since:${s} until:${e}`);
+  const s = a === undefined ? null : ymd(dateOf(a)), e = b === undefined ? null : ymd(new Date(dateOf(b).getTime()+864e5));
+  return 'https://x.com/search?f=top&q=' + encodeURIComponent(`"${term.replace(/^#/,'')}"` + (s ? ` since:${s} until:${e}` : ''));
 }
-
 function search(q, days, exact){
-  const qn = norm(q);
-  const ids = []; N.forEach((n,i) => { if (exact ? n===qn : n.includes(qn)) ids.push(i); });
-  const [a,b] = windowRange(days);
-  const occ = new Map(ids.map(id => [id, []]));
+  const qn = norm(q), ids = [];
+  N.forEach((n,i) => { if (exact ? n===qn : n.includes(qn)) ids.push(i); });
+  const [a,b] = windowRange(days), occ = new Map(ids.map(id => [id, []]));
   for (let h=a; h<=b; h++) D.h[h].forEach((id,i) => occ.has(id) && occ.get(id).push([h, i+1]));
-  const variants = ids.map(id => ({id, term:D.terms[id], occ:occ.get(id)})).filter(v => v.occ.length)
-    .sort((x,y) => y.occ.length - x.occ.length);
+  const variants = ids.map(id => ({id, term:D.terms[id], occ:occ.get(id)})).filter(v => v.occ.length).sort((x,y) => y.occ.length - x.occ.length);
   return {qn, days, a, b, variants};
 }
-
 function episodes(v){
   const eps = [];
   v.occ.forEach(([h,r]) => {
@@ -237,99 +323,292 @@ function episodes(v){
     if (e && h - e.end <= GAP){ e.end = h; e.hrs.push(h); e.best = Math.min(e.best,r); e.pts += points(r); }
     else eps.push({id:v.id, term:v.term, start:h, end:h, hrs:[h], best:r, pts:points(r)});
   });
-  const ctx = D.ctx[v.id] || [];
-  eps.forEach(e => { const c = ctx.find(c => c[0] >= e.start-1 && c[0] <= e.end); e.summary = c && c[1]; e.urls = c ? c[2] : []; });
   return eps;
 }
-
-function render(){
-  const q = $('#q').value.trim(), days = +$('#win').value, exact = $('#exact').checked;
-  if (!q){
-    $('#gsec').hidden = true; gKey = ''; clearInterval(gPoll);
-    const top = weekTop(), hi = top.length ? top[0][1] : 1;
-    $('#out').innerHTML = `<div class="home"><p class="lead">Digite qualquer palavra. Mostramos se ela já foi trend no X no Brasil (quando, com que força e por quê) e o interesse de busca dela no Google, com os termos relacionados.</p>
-      <h3>Top 10 dos últimos 7 dias</h3><p class="pnote">Clique para abrir a ficha do termo</p>
-      <div class="cloud">${top.map(([id,v]) => `<button type="button" class="chip" data-q="${esc(D.terms[id])}" style="font-size:${(14 + 10*Math.sqrt(v/hi)).toFixed(1)}px">${esc(D.terms[id])}<small>${nf.format(v)}</small></button>`).join('')}</div></div>`;
-    return; }
-  try { history.replaceState(null,'','#'+slug(q)); } catch(e) {}
-  const R = search(q, days, exact);
-  state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE;
-  draw();
-  google(q, days);
+function streak(id){ // horas do episódio atual (até a última leitura completa)
+  let h = HH, n = 0, miss = 0;
+  while (h >= 0 && miss <= GAP){ if (D.h[h].includes(id)){ n++; miss = 0; } else miss++; h--; }
+  return n;
+}
+function bestRank(id, from){ let b = 99; for (let h = Math.max(0, from); h <= HH; h++){ const i = D.h[h].indexOf(id); if (i >= 0 && i+1 < b) b = i+1; } return b; }
+function spark(id){
+  const W = 104, Hs = 40, n = 24, pts = [];
+  for (let k = 0; k < n; k++){ const h = HH - (n-1) + k; const i = h >= 0 ? D.h[h].indexOf(id) : -1; pts.push(i >= 0 ? i+1 : null); }
+  const x = k => k / (n-1) * (W-4) + 2, y = r => 2 + (r-1) / 49 * (Hs-4);
+  let d = '', pen = false;
+  pts.forEach((r,k) => { if (r === null){ pen = false; return; } d += (pen ? 'L' : 'M') + x(k).toFixed(1) + ' ' + y(r).toFixed(1) + ' '; pen = true; });
+  const lastR = pts[n-1];
+  return `<svg viewBox="0 0 ${W} ${Hs}" aria-label="Posição nas últimas 24 horas"><line x1="0" x2="${W}" y1="${Hs-1}" y2="${Hs-1}" stroke="var(--rule)"/>
+    <path d="${d}" fill="none" stroke="var(--acc)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    ${lastR ? `<circle cx="${x(n-1)}" cy="${y(lastR)}" r="3" fill="var(--acc)"/>` : ''}</svg><small>posição em 24h</small>`;
 }
 
-// ---------- Google Trends: dados baixados pelo robô do GitHub (gtrends.py), gráficos próprios ----------
-const REPO = 'bfbujes-ops/radar-tt-brasil';
-let gKey = '', gIndex = null, gPoll = null, gState = {rel:'top'};
-const fmtMY = new Intl.DateTimeFormat('pt-BR',{timeZone:'UTC',month:'short',year:'2-digit'});
-const fmtDM = new Intl.DateTimeFormat('pt-BR',{timeZone:'UTC',day:'2-digit',month:'short'});
-const gSlug = s => norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'termo';
-async function gGet(path){ const r = await fetch(path + '?t=' + Date.now()); if (!r.ok) throw new Error(r.status); return r.json(); }
+// ------------------------------------------------------------- capa
+function renderHome(){
+  $('#home').hidden = false; $('#dossier').hidden = true; gKey = cKey = ''; clearInterval(gPoll);
+  document.title = 'Radar TT Brasil';
+  const top = D.h[HH].slice(0,10);
+  $('#boardmeta').textContent = `Top 10 do Brasil · leitura das ${fmtHM.format(dateOf(HH))}`;
+  $('#board').innerHTML = top.map((id, i) => {
+    const term = D.terms[id], c = CTX[slug(term)], hrs = streak(id), best = bestRank(id, HH - hrs - GAP);
+    const nNews = (c && c.n_news) || (NEWS && NEWS.overlap && NEWS.overlap[term]) || 0;
+    const why = c && c.porque ? `<p class="why">${esc(cleanWhy(c.porque, term))}</p>`
+      : `<p class="why none">${c ? 'Sem explicação confirmada ainda.' : 'Explicação em preparo.'}${c && c.co && c.co.length ? ' Sobe junto com: ' + c.co.map(esc).join(', ') + '.' : ''}</p>`;
+    return `<li class="item"><span class="rk">${i+1}</span><div>
+      <div class="ihead"><button type="button" class="term" data-q="${esc(term)}">${esc(term)}</button>${c && c.categoria && c.categoria !== 'Outros' ? `<span class="cat">${esc(c.categoria)}</span>` : ''}</div>
+      ${why}
+      <p class="meta"><span><b>${hrs}h</b> na lista</span><span>pico <b>${best}º</b></span>${nNews ? `<span><b>${nNews}</b> ${nNews===1?'notícia':'notícias'}</span>` : ''}${c && c.n_tweets ? `<span><b>${c.n_tweets}</b> posts</span>` : ''}</p>
+      </div><div class="spk">${spark(id)}</div></li>`;
+  }).join('');
+  renderPauta(); renderPapers();
+  const wk = weekTop(), hi = wk.length ? wk[0][1] : 1;
+  $('#week').innerHTML = wk.map(([id,v]) => `<button type="button" class="chip" data-q="${esc(D.terms[id])}" style="font-size:${(14 + 10*Math.sqrt(v/hi)).toFixed(1)}px">${esc(D.terms[id])}<small>${nf.format(v)}</small></button>`).join('');
+}
+function weekTop(){
+  const a = Math.max(0, H - 168), pts = new Map();
+  for (let h=a; h<H; h++) D.h[h].forEach((id,i) => pts.set(id, (pts.get(id)||0) + points(i+1)));
+  return [...pts.entries()].sort((x,y) => y[1]-x[1]).slice(0,10);
+}
+function renderPauta(){
+  const A = NEWS && NEWS.analysis;
+  if (!A || !A.temas || !A.temas.length){ $('#pres').textContent = NEWS ? 'A análise das manchetes sai na próxima atualização.' : 'Manchetes indisponíveis agora.'; $('#temas').innerHTML = ''; return; }
+  const src = NEWS.sources || {};
+  $('#pautameta').textContent = `Atualizada ${ago(A.generated)}`;
+  $('#pres').textContent = A.resumo || '';
+  $('#temas').innerHTML = A.temas.map(t => `<div class="tema"><h3>${esc(t.titulo)}</h3><p>${esc(t.resumo)}</p>
+    <div class="tmeta"><span>${t.fontes.length} ${t.fontes.length===1?'veículo':'veículos'} · ${esc(t.categoria)}</span>${t.tt ? `<button type="button" class="ttag" data-q="${esc(t.tt)}">também no X: ${esc(t.tt)}</button>` : ''}</div>
+    <details><summary>Ver ${t.itens.length} ${t.itens.length===1?'manchete':'manchetes'}</summary><ul class="hl">${t.itens.map(i => NEWS.items[i]).filter(Boolean).map(([pub,s,title,link]) =>
+      `<li><span class="src">${esc(src[s]||s)}</span><a href="${esc(link)}" target="_blank" rel="noopener">${esc(title)}</a></li>`).join('')}</ul></details></div>`).join('');
+}
+function renderPapers(){
+  if (!NEWS){ $('#papers').innerHTML = '<p class="empty">Manchetes indisponíveis agora.</p>'; return; }
+  const by = {}; NEWS.items.forEach(it => (by[it[1]] ||= []).length < 5 && by[it[1]].push(it));
+  const order = Object.keys(NEWS.sources).filter(k => by[k]);
+  $('#papers').innerHTML = order.map(k => `<div class="paper"><h3>${esc(NEWS.sources[k])}</h3><ol>${by[k].map(([pub,,title,link]) =>
+    `<li><a href="${esc(link)}" target="_blank" rel="noopener">${esc(title)}</a><span class="ago">${ago(pub)}</span></li>`).join('')}</ol></div>`).join('');
+}
 
-async function google(q, days){
-  const key = q + '|' + days; if (key === gKey) return; gKey = key;
+// ------------------------------------------------------------- ficha do termo
+function termFromHash(h){
+  const s = decodeURIComponent(h);
+  if ($('#q').value && slug($('#q').value) === s) return $('#q').value;
+  const c = CTX[s]; if (c) return c.term;
+  const i = D.terms.findIndex(t => slug(t) === s); if (i >= 0) return D.terms[i];
+  return s.replace(/-/g,' ');
+}
+function route(){
+  const h = location.hash.slice(1);
+  if (!h){ $('#q').value = ''; renderHome(); return; }
+  const q = termFromHash(h); $('#q').value = q; renderDossier(q);
+}
+function renderDossier(q){
+  $('#home').hidden = true; $('#dossier').hidden = false;
+  document.title = `${q} · Radar TT Brasil`;
+  const days = +$('#win').value, exact = $('#exact').checked;
+  const R = search(q, days, exact);
+  state.R = R; state.sel = new Set(R.variants.map(v => v.id)); state.shown = PER_PAGE; state.q = q;
+  context(q); draw(); google(q, days);
+}
+
+async function context(q){
+  const key = slug(q); if (key === cKey) return; cKey = key;
+  $('#dhead').innerHTML = `<h1>“${esc(q)}”</h1><p class="dctx">Carregando a explicação…</p>`; $('#ev').innerHTML = '';
+  let rec = null; try { rec = await getJSON('context/' + key + '.json'); } catch(e) {}
+  if (cKey !== key) return;
+  const e = rec && rec.episodes && rec.episodes[0];
+  const inX = state.R.variants.length > 0;
+  if (!e){
+    $('#dhead').innerHTML = `<p class="kick">${inX ? 'Já esteve nos trending topics do Brasil' : 'Nunca entrou nos trending topics no período'}</p><h1>“${esc(q)}”</h1>
+      <p class="dctx">Ainda não temos a explicação deste termo. A análise lê as notícias e os posts sobre ele, escreve o porquê e traz os dados do Google; leva uns 2 minutos.</p>
+      <a class="cta" href="${issueURL(q)}" target="_blank" rel="noopener">Analisar “${esc(q)}” agora</a>
+      <p class="pnote" style="margin-top:10px">Abre o pedido pronto no GitHub: é só clicar em <b>Create</b>. Esta página atualiza sozinha.</p>`;
+    $('#ev').innerHTML = `<div><h3>Notícias</h3><p class="empty">Aparecem com a análise.</p></div><div><h3>No X</h3><p class="empty"><a href="${xLink(q)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p></div>`;
+    startPoll(q); return;
+  }
+  const usedN = new Set(e.news_used || []), usedT = new Set(e.tweets_used || []);
+  const conf = {alta:'Confiança alta', media:'Confiança média', baixa:'Confiança baixa'}[e.confianca] || '';
+  $('#dhead').innerHTML = `<p class="kick">${e.categoria && e.categoria !== 'Outros' ? `<span class="cat">${esc(e.categoria)}</span>` : ''}<span>Explicação de ${fmt.format(new Date(e.updated))}</span>${e.porque && conf ? `<span class="conf">${conf}</span>` : ''}</p>
+    <h1>“${esc(rec.term)}”</h1>
+    ${e.porque ? `<p class="whybig">${esc(cleanWhy(e.porque, rec.term))}</p>` : `<p class="whybig" style="color:var(--muted)">Não encontramos nas notícias e posts uma explicação segura para o termo.</p>`}
+    ${e.contexto ? `<p class="dctx">${esc(e.contexto)}</p>` : ''}
+    ${e.co && e.co.length ? `<div class="cloud" style="margin-top:10px"><span class="pnote" style="margin:0">Sobe junto com:</span>${e.co.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}`;
+  const news = (e.news || []).map((n,i) => ({...n, used: usedN.has(i)})).sort((a,b) => b.used - a.used);
+  const tw = (e.tweets || []).map((t,i) => ({...t, used: usedT.has(i)})).sort((a,b) => b.used - a.used);
+  $('#ev').innerHTML = `<div><h3>Notícias</h3>${news.length ? news.map(n => `<div class="ncard ${n.used?'used':''}"><span class="src">${esc(n.src)} · ${ago(n.pub)}</span><a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.t)}</a></div>`).join('') : '<p class="empty">Nenhuma notícia sobre o termo nos últimos 2 dias.</p>'}</div>
+    <div><h3>No X</h3>${tw.length ? tw.slice(0,5).map(tweetCard).join('') : `<p class="empty">Os posts aparecem aqui quando a coleta de tweets estiver ligada. <a href="${xLink(rec.term)}" target="_blank" rel="noopener">Ver os posts mais relevantes no X ↗</a></p>`}</div>`;
+}
+function tweetCard(t){
+  const name = t.name || t.user || '', ini = esc(name.trim().charAt(0).toUpperCase() || '@');
+  return `<article class="tw ${t.used?'used':''}"><div class="twh"><span class="av">${t.avatar ? `<img src="${esc(t.avatar)}" alt="" loading="lazy" onerror="this.remove()">` : ''}${t.avatar ? '' : ini}</span>
+    <div class="twn"><b>${esc(name)}${t.verified ? '<svg width="16" height="16" viewBox="0 0 24 24" aria-label="verificado"><path fill="#1d9bf0" d="M22 12l-2.4-2.7.3-3.6-3.5-.8L14.6 2 12 3.4 9.4 2 7.6 4.9l-3.5.8.3 3.6L2 12l2.4 2.7-.3 3.6 3.5.8 1.8 3 2.6-1.4 2.6 1.4 1.8-3 3.5-.8-.3-3.6z"/><path fill="#fff" d="M10.6 15.6l-3.2-3.2 1.4-1.4 1.8 1.8 4.6-4.6 1.4 1.4z"/></svg>' : ''}</b><span>@${esc(t.user)}${t.created ? ' · ' + esc(ago(t.created)) : ''}</span></div></div>
+    <p class="twt">${esc(t.text)}</p>${t.media ? `<img class="twm" src="${esc(t.media)}" alt="" loading="lazy" onerror="this.remove()">` : ''}
+    <div class="twf"><span>${nfc.format(t.replies||0)} respostas</span><span>${nfc.format(t.rts||0)} reposts</span><span>${nfc.format(t.likes||0)} curtidas</span>${t.views ? `<span>${nfc.format(t.views)} visualizações</span>` : ''}<a href="${esc(t.url)}" target="_blank" rel="noopener">Ver no X ↗</a></div></article>`;
+}
+function startPoll(q){
   clearInterval(gPoll);
-  const url = 'https://trends.google.com/trends/explore?' + new URLSearchParams({geo:'BR', q, hl:'pt-BR'}).toString();
-  $('#gsec').hidden = false;
-  $('#gtitle').innerHTML = `“${esc(q)}” no Google <span class="gtag">Brasil · ${esc($('#win').selectedOptions[0].text)}</span>`;
-  $('#glead').innerHTML = `Interesse de busca no Google, de 0 a 100 (100 é o pico do termo no período), o que as pessoas buscam junto e onde buscam mais. <a href="${url}" target="_blank" rel="noopener">Abrir no Google Trends ↗</a>`;
-  $('#gbody').innerHTML = '<p class="lead">Carregando…</p>';
-  let rec = null;
-  try { rec = await gGet('google/' + gSlug(q) + '.json'); } catch(e) {}
-  if (gKey !== key) return;
-  if (rec) { gState.rec = rec; gState.days = days; gDraw(); return; }
-  const issue = `https://github.com/${REPO}/issues/new?` + new URLSearchParams({title:'google: ' + q, body:'Pedido de análise feito pelo Radar TT. Pode enviar sem escrever nada.'}).toString();
-  $('#gbody').innerHTML = `<div class="gempty"><p>Ainda não analisamos “${esc(q)}” no Google. O robô busca os dados no Google Trends e desenha os gráficos aqui; leva cerca de 2 minutos.</p>
-    <a class="gbtn" href="${issue}" target="_blank" rel="noopener">Analisar “${esc(q)}” agora</a>
-    <p class="gsrc">Abre uma página do GitHub com o pedido pronto: é só clicar em <b>Create</b>. Esta página atualiza sozinha quando os dados chegarem.</p></div>`;
+  const key = slug(q);
   gPoll = setInterval(async () => {
-    try { const r = await gGet('google/' + gSlug(q) + '.json'); if (gKey === key){ clearInterval(gPoll); gState.rec = r; gState.days = days; gDraw(); } } catch(e) {}
+    if (slug(state.q || '') !== key){ clearInterval(gPoll); return; }
+    try { await getJSON('context/' + key + '.json'); cKey = ''; gKey = ''; clearInterval(gPoll); context(q); google(q, +$('#win').value); } catch(e) {}
   }, 20000);
 }
 
+function draw(){
+  const R = state.R, q = state.q, win = $('#win').selectedOptions[0].text;
+  if (!R.variants.length){
+    const pre = R.qn.slice(0,4), near = pre.length >= 3 ? D.terms.filter((t,i) => N[i].startsWith(pre)).slice(0,6) : [];
+    $('#xsec').innerHTML = `<h2>No X</h2><p class="lead">“${esc(q)}” não entrou nos trending topics do Brasil nos últimos ${esc(win)}. Nenhuma das ${nf.format(termPoints(R.days).sorted.length)} expressões do período contém esse termo.</p>
+      ${near.length ? `<div class="cloud"><span class="pnote" style="margin:0">Parecidos no histórico:</span>${near.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>` : ''}`;
+    return;
+  }
+  const vs = R.variants.filter(v => state.sel.has(v.id)), allOcc = vs.flatMap(v => v.occ);
+  const hours = allOcc.length, daysSet = new Set(allOcc.map(([h]) => ymd(dateOf(h))));
+  const best = allOcc.length ? Math.min(...allOcc.map(o => o[1])) : null;
+  const pts = allOcc.reduce((s,[,r]) => s + points(r), 0);
+  const tp = termPoints(R.days), pct = Math.round(100 * tp.sorted.filter(p => p < pts).length / tp.sorted.length);
+  const eps = vs.flatMap(episodes).sort((x,y) => y.start - x.start);
+  const last = allOcc.length ? Math.max(...allOcc.map(o => o[0])) : null;
+  const strongest = [...eps].sort((x,y) => y.pts - x.pts)[0];
+  $('#xsec').innerHTML = `<h2>No X</h2>
+    <p class="lead">${hours ? `Foi tendência em ${eps.length} ${eps.length===1?'momento':'momentos'} nos últimos ${esc(win)}. O pico foi em ${fmtD.format(dateOf(strongest.start))}, quando “${esc(strongest.term)}” chegou à ${strongest.best}ª posição e ficou ${strongest.hrs.length}h na lista.` : 'Nenhuma variante selecionada.'}</p>
+    ${R.variants.length > 1 ? `<div class="vars">${R.variants.map(v => `<label class="var"><input type="checkbox" data-v="${v.id}" ${state.sel.has(v.id)?'checked':''}> ${esc(v.term)} <small>${v.occ.length}h</small></label>`).join('')}</div>` : ''}
+    <div class="stats">
+      <div class="stat"><span class="num">${nf.format(hours)}h</span><span class="lbl">em trend, em ${daysSet.size} ${daysSet.size===1?'dia':'dias'}</span></div>
+      <div class="stat"><span class="num">${best ? best+'º' : '–'}</span><span class="lbl">melhor posição</span></div>
+      <div class="stat"><span class="num">${hours ? pct+'%' : '–'}</span><span class="lbl">mais forte que esse percentual dos termos do período</span></div>
+      <div class="stat"><span class="num">${last!==null ? fmtD.format(dateOf(last)).replace('.','') : '–'}</span><span class="lbl">última aparição</span></div>
+    </div>
+    <div class="chead"><h3 id="ctitle"></h3><div class="seg" role="group" aria-label="Medida do gráfico">
+      <button type="button" data-m="pts" aria-pressed="${state.mode==='pts'}">Pontos</button><button type="button" data-m="hrs" aria-pressed="${state.mode==='hrs'}">Horas</button></div></div>
+    <div class="fig"><svg id="chart" role="img"></svg><div class="tip" id="tip"></div></div>
+    <div class="two">
+      <div><h3>Quando costuma bombar</h3><p class="pnote">Pontos por dia da semana e hora (Brasília)${daysSet.size < 14 ? ' · ainda acumulando dados' : ''}</p>${heatmap(allOcc)}</div>
+      <div><h3>Sobe junto com</h3><p class="pnote">Assuntos em alta nas mesmas horas, em todos os episódios</p>${cloud(eps)}</div>
+    </div>
+    <h3 style="margin:30px 0 8px;font-size:18px">Cada vez que apareceu</h3>
+    <div class="scroll"><table class="stack"><thead><tr><th>Quando (Brasília)</th><th class="n">Duração</th><th class="n">Melhor</th><th>Termo</th><th>Contexto</th></tr></thead>
+    <tbody id="eprows">${eps.slice(0, state.shown).map(epRow).join('')}</tbody></table></div>
+    ${eps.length > state.shown ? `<button type="button" class="more" id="more">Mostrar mais ${Math.min(PER_PAGE, eps.length - state.shown)} de ${eps.length - state.shown}</button>` : ''}
+    <details class="tbl"><summary>Tabela do gráfico</summary><div class="scroll" id="tbl"></div></details>`;
+  state.series = series(vs, R); drawChart(); fillEpisodeContext(eps.slice(0, state.shown));
+}
+function epRow(e){
+  return `<tr><td class="when" data-l="Quando">${fmt.format(dateOf(e.start))}</td><td class="n" data-l="Duração">${e.hrs.length}h</td><td class="n" data-l="Melhor">${e.best}º</td><td data-l="Termo">${esc(e.term)}</td>
+    <td class="ctx" data-l="Contexto" data-ep="${slug(e.term)}|${isoH(e.start)}|${isoH(e.end)}"><span class="co">Subiu junto com: ${coTrends(e.hrs, state.sel).map(esc).join(', ') || '—'}</span>
+    <br><a href="${xLink(e.term, e.start, e.end)}" target="_blank" rel="noopener">Posts da época no X ↗</a></td></tr>`;
+}
+async function fillEpisodeContext(eps){
+  const byTerm = {};
+  for (const e of eps){ const s = slug(e.term); if (!(s in byTerm)) { try { byTerm[s] = await getJSON('context/' + s + '.json'); } catch(_) { byTerm[s] = null; } } }
+  document.querySelectorAll('td[data-ep]').forEach(td => {
+    const [s, a, b] = td.dataset.ep.split('|'), rec = byTerm[s]; if (!rec) return;
+    const c = rec.episodes.find(x => x.start >= a && x.start <= b);
+    if (c && c.porque) td.querySelector('.co').outerHTML = `<span>${esc(cleanWhy(c.porque))}</span>`;
+  });
+}
+function series(vs, R){
+  const days = R.b - R.a + 1, step = R.days <= 30 ? 24 : 168, n = Math.ceil(days/step);
+  const bins = Array.from({length:n}, (_,i) => ({a: R.a + i*step, pts:0, hrs:0, best:null}));
+  vs.forEach(v => v.occ.forEach(([h,r]) => { const b = bins[Math.floor((h-R.a)/step)]; b.pts += points(r); b.hrs++; b.best = b.best ? Math.min(b.best,r) : r; }));
+  return {bins, step};
+}
+function drawChart(){
+  const s = $('#chart'); if (!s || !state.series) return;
+  const {bins, step} = state.series, key = state.mode;
+  $('#ctitle').textContent = `${key==='pts'?'Pontos':'Horas em trend'} por ${step===24?'dia':'semana'}`;
+  s.setAttribute('aria-label', `Colunas: ${key==='pts'?'pontos':'horas em trend'} por ${step===24?'dia':'semana'}`);
+  const W = s.clientWidth, Hh = s.clientHeight, m = {l:44, r:8, t:12, b:28};
+  const max = Math.max(1, ...bins.map(b => b[key]));
+  const nice = (()=>{ const p = 10**Math.floor(Math.log10(max)), f = max/p; return (f<=1?1:f<=2?2:f<=5?5:10)*p; })();
+  const iw = W - m.l - m.r, ih = Hh - m.t - m.b, slot = iw / bins.length, bw = Math.min(24, Math.max(2, slot - 2));
+  const y = v => m.t + ih - v/nice*ih;
+  let g = '';
+  for (let i=0;i<=4;i++){ const v = nice*i/4, yy = y(v); g += `<line x1="${m.l}" x2="${W-m.r}" y1="${yy}" y2="${yy}" stroke="var(--rule)"/>`; if (W >= 520 || i%2===0) g += `<text x="${m.l-8}" y="${yy+4}" text-anchor="end">${nf.format(v)}</text>`; }
+  let lastM = '', nM = 0;
+  bins.forEach((b,i) => {
+    const x = m.l + i*slot + (slot-bw)/2, v = b[key], top = y(v), r = Math.min(4, bw/2, m.t+ih-top), mo = fmtM.format(dateOf(b.a));
+    if (mo !== lastM){ if (W >= 520 || nM % 2 === 0) g += `<text x="${m.l + i*slot}" y="${Hh-8}">${mo.replace('.','')}</text>`; lastM = mo; nM++; }
+    if (v > 0) g += `<path d="M${x},${m.t+ih}V${top+r}Q${x},${top} ${x+r},${top}H${x+bw-r}Q${x+bw},${top} ${x+bw},${top+r}V${m.t+ih}Z" fill="var(--acc)"/>`;
+    g += `<rect data-i="${i}" x="${m.l+i*slot}" y="${m.t}" width="${slot}" height="${ih}" fill="transparent"/>`;
+  });
+  g += `<line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ih}" y2="${m.t+ih}" stroke="var(--ink)"/>`;
+  s.innerHTML = g;
+  const tip = $('#tip');
+  s.onpointermove = ev => { const i = ev.target.dataset && ev.target.dataset.i; if (i===undefined){ tip.style.opacity=0; return; }
+    const b = bins[+i];
+    tip.innerHTML = `<b>${step===24 ? fmtD.format(dateOf(b.a)) : fmtD.format(dateOf(b.a))+' – '+fmtD.format(dateOf(b.a + step - 1))}</b>${nf.format(b.hrs)}h em trend · ${nf.format(b.pts)} pts${b.best?` · melhor ${b.best}º`:''}`;
+    const bx = m.l + (+i+.5)*slot; tip.style.left = Math.min(Math.max(bx, 90), W-90)+'px'; tip.style.top = Math.max(y(b[key]), m.t+40)+'px'; tip.style.opacity = 1; };
+  s.onpointerleave = () => tip.style.opacity = 0;
+  $('#tbl').innerHTML = `<table><thead><tr><th>${step===24?'Dia':'Semana de'}</th><th class="n">Horas</th><th class="n">Pontos</th><th class="n">Melhor</th></tr></thead><tbody>${bins.map(b => `<tr><td>${fmtD.format(dateOf(b.a))}</td><td class="n">${b.hrs}</td><td class="n">${nf.format(b.pts)}</td><td class="n">${b.best ? b.best+'º' : '–'}</td></tr>`).join('')}</tbody></table>`;
+}
+const DIAS = ['dom','seg','ter','qua','qui','sex','sáb'];
+function heatmap(occ){
+  const m = Array.from({length:7}, () => Array(24).fill(0)); let max = 0;
+  occ.forEach(([h,r]) => { const d = new Date(T0 + h*3600e3 - 3*3600e3); const v = m[d.getUTCDay()][d.getUTCHours()] += points(r); if (v > max) max = v; });
+  if (!max) return '<p class="pnote">Sem dados na janela.</p>';
+  let g = '<div class="hm" role="img" aria-label="Mapa de calor por dia da semana e hora"><span></span>';
+  for (let h=0; h<24; h++) g += `<span class="hlab">${h%6===0 ? h : ''}</span>`;
+  for (let d=0; d<7; d++){ g += `<span class="dlab">${DIAS[d]}</span>`;
+    for (let h=0; h<24; h++){ const v = m[d][h], pc = v ? 12 + Math.round(88 * Math.sqrt(v/max)) : 0;
+      g += v ? `<span class="c" style="background:color-mix(in srgb,var(--acc) ${pc}%,var(--panel))" title="${DIAS[d]} ${h}h · ${nf.format(v)} pts"></span>` : '<span class="c"></span>'; } }
+  return g + '</div>';
+}
+function cloud(eps){
+  const score = new Map();
+  eps.forEach(e => coTrends(e.hrs, state.sel).forEach((t,i) => score.set(t, (score.get(t)||0) + e.pts * (5-i))));
+  const top = [...score.entries()].sort((a,b) => b[1]-a[1]).slice(0,16);
+  if (!top.length) return '<p class="pnote">Nada recorrente ainda.</p>';
+  const hi = top[0][1];
+  return '<div class="cloud">' + top.map(([t,v]) => `<button type="button" class="chip" data-q="${esc(t)}" style="font-size:${(13 + 9*Math.sqrt(v/hi)).toFixed(1)}px">${esc(t)}</button>`).join('') + '</div>';
+}
+
+// ------------------------------------------------------------- Google (dados baixados pelo robô, gráficos próprios)
+async function google(q, days){
+  const key = slug(q) + '|' + days; if (key === gKey) return; gKey = key;
+  const url = 'https://trends.google.com/trends/explore?' + new URLSearchParams({geo:'BR', q, hl:'pt-BR'}).toString();
+  $('#gtitle').textContent = 'No Google';
+  $('#glead').innerHTML = `Interesse de busca no Brasil, de 0 a 100 (100 é o pico do termo no período), o que se busca junto e onde. <a href="${url}" target="_blank" rel="noopener">Abrir no Google Trends ↗</a>`;
+  $('#gbody').innerHTML = '<p class="pnote">Carregando…</p>';
+  let rec = null; try { rec = await getJSON('google/' + slug(q) + '.json'); } catch(e) {}
+  if (gKey !== key) return;
+  if (rec){ gState.rec = rec; gState.days = days; gDraw(); return; }
+  $('#gbody').innerHTML = `<p class="empty">Os dados do Google para “${esc(q)}” chegam com a análise. <a href="${issueURL(q)}" target="_blank" rel="noopener">Pedir agora ↗</a></p>`;
+}
 function gWin(){
-  const W = gState.rec.windows, d = gState.days;
-  const want = d <= 90 ? '3m' : d <= 180 ? '6m' : '12m';
+  const W = gState.rec.windows, d = gState.days, want = d <= 90 ? '3m' : d <= 180 ? '6m' : '12m';
   const order = {'3m':['3m','6m','12m'], '6m':['6m','12m','3m'], '12m':['12m','6m','3m']}[want];
   const k = order.find(k => W[k]) || '12m', w = W[k] || {};
   const label = {'3m':'últimos 3 meses','6m':'últimos 6 meses','12m':'últimos 12 meses'}[k];
   const cut = d < 90 ? Date.now()/1000 - d*86400 : 0;
-  const tl = (w.timeline || []).filter(p => p[0] >= cut);
-  return {w, tl, label};
+  return {w, tl:(w.timeline || []).filter(p => p[0] >= cut), label};
 }
-
 function gDraw(){
   const rec = gState.rec, {w, tl, label} = gWin();
-  const fetched = new Date(rec.fetched.replace('Z',':00Z'));
   const peak = tl.reduce((m,p) => p[1] > m[1] ? p : m, [0,-1]);
-  const avg = tl.length ? Math.round(tl.reduce((s,p) => s + p[1], 0) / tl.length) : 0;
-  const last = tl.length ? tl[tl.length-1][1] : 0;
-  const top = w.related_top || [], rising = w.related_rising || [], reg = w.regions || [];
-  $('#gbody').innerHTML = `<div class="ggrid">
-    <div class="gcard wide"><h3>Interesse ao longo do tempo</h3>
-      ${tl.length ? `<div class="gpeak"><span><b>${fmtDM.format(new Date(peak[0]*1000)).replace('.','')}</b>pico do período</span><span><b>${avg}</b>média</span><span><b>${last}</b>agora</span></div>
-      <div class="gfig" id="gfig"><svg id="gchart" role="img" aria-label="Interesse de busca no Google ao longo do tempo"></svg><div class="tip" id="gtip"></div></div>` : '<p class="pnote">O Google não tem buscas suficientes desse termo no período.</p>'}</div>
-    <div class="gcard"><h3>Pesquisas relacionadas</h3><p class="pnote">O que mais se busca junto com o termo · ${label}</p>
-      <div class="tabs" role="group"><button type="button" data-rel="top" aria-pressed="${gState.rel==='top'}">Principais</button><button type="button" data-rel="rising" aria-pressed="${gState.rel==='rising'}">Em ascensão</button></div>
-      <div class="rows" id="grel"></div></div>
-    <div class="gcard"><h3>Onde mais buscam</h3><p class="pnote">Interesse por estado (100 = estado com maior proporção de buscas) · ${label}</p>
-      <div class="rows">${reg.length ? reg.slice(0,12).map(([n,v]) => `<div class="row"><span class="t" style="cursor:default">${esc(n)}</span><span class="bar"><i style="width:${v}%"></i></span><span class="v">${v}</span></div>`).join('') : '<p class="pnote">Sem dados por estado.</p>'}</div></div>
-  </div>
-  <p class="gsrc">Fonte: Google Trends, Brasil. Dados baixados em ${fmt.format(fetched)}. Trecho tracejado: período ainda em andamento. Os termos do top 10 do X são atualizados a cada 3 horas.</p>`;
-  gRel(top, rising);
+  const avg = tl.length ? Math.round(tl.reduce((s,p) => s + p[1], 0) / tl.length) : 0, last = tl.length ? tl[tl.length-1][1] : 0;
+  const reg = w.regions || [];
+  $('#gbody').innerHTML = `${tl.length ? `<div class="gpeak"><span><b>${fmtDM.format(new Date(peak[0]*1000)).replace('.','')}</b>pico</span><span><b>${avg}</b>média</span><span><b>${last}</b>agora</span></div>
+      <div class="fig" style="height:280px"><svg id="gchart" role="img" aria-label="Interesse de busca no Google ao longo do tempo"></svg><div class="tip" id="gtip"></div></div>` : '<p class="pnote">O Google não tem buscas suficientes desse termo no período.</p>'}
+    <div class="two">
+      <div><h3>Pesquisas relacionadas</h3><p class="pnote">O que mais se busca junto · ${label}</p>
+        <div class="tabs" role="group" style="margin-bottom:10px"><button type="button" data-rel="top" aria-pressed="${gState.rel==='top'}">Principais</button><button type="button" data-rel="rising" aria-pressed="${gState.rel==='rising'}">Em ascensão</button></div>
+        <div class="rows" id="grel"></div></div>
+      <div><h3>Onde mais buscam</h3><p class="pnote">Interesse por estado · ${label}</p>
+        <div class="rows">${reg.length ? reg.slice(0,12).map(([n,v]) => `<div class="row"><span class="t">${esc(n)}</span><span class="bar"><i style="width:${v}%"></i></span><span class="v">${v}</span></div>`).join('') : '<p class="pnote">Sem dados por estado.</p>'}</div></div>
+    </div>
+    <p class="gsrc">Fonte: Google Trends, Brasil · dados de ${fmt.format(new Date(rec.fetched.replace('Z',':00Z')))} · trecho tracejado: período ainda em andamento.</p>`;
+  gRel(w.related_top || [], w.related_rising || []);
   if (tl.length) gChart(tl);
 }
-
 function gRel(top, rising){
-  const L = gState.rel === 'top' ? top : rising;
-  $('#grel').innerHTML = L.length ? L.slice(0,12).map(([t,v]) => {
-    const n = parseFloat(String(v).replace(/[^\d.]/g,'')), isTop = gState.rel === 'top';
-    const lbl = isTop ? v : (/repentino|breakout/i.test(v) ? 'explodiu' : (String(v).startsWith('+') ? v : '+' + v));
-    const width = isTop ? n : (/repentino|breakout/i.test(v) ? 100 : Math.min(100, Math.log10(1 + n) / 4 * 100));
-    return `<div class="row"><button type="button" class="t" data-q="${esc(t)}">${esc(t)}</button><span class="bar"><i style="width:${width}%"></i></span><span class="v ${isTop ? '' : 'up'}">${esc(lbl)}</span></div>`;
+  const L = gState.rel === 'top' ? top : rising, isTop = gState.rel === 'top', el = $('#grel'); if (!el) return;
+  el.innerHTML = L.length ? L.slice(0,12).map(([t,v]) => {
+    const n = parseFloat(String(v).replace(/[^\d.]/g,'')), brk = /repentino|breakout/i.test(v);
+    const lbl = isTop ? v : (brk ? 'explodiu' : (String(v).startsWith('+') ? v : '+' + v));
+    const width = isTop ? n : (brk ? 100 : Math.min(100, Math.log10(1 + n) / 4 * 100));
+    return `<div class="row"><button type="button" class="t" data-q="${esc(t)}">${esc(t)}</button><span class="bar"><i style="width:${width}%"></i></span><span class="v ${isTop?'':'up'}">${esc(lbl)}</span></div>`;
   }).join('') : '<p class="pnote">Nada aqui para este termo.</p>';
 }
-
 function gChart(tl){
   const s = $('#gchart'); if (!s) return;
   const W = s.clientWidth, Hh = s.clientHeight, m = {l:34, r:10, t:10, b:28};
@@ -337,21 +616,17 @@ function gChart(tl){
   const x = t => m.l + (t - t0) / Math.max(1, t1 - t0) * iw, y = v => m.t + ih - v/100*ih;
   let g = '';
   [0,25,50,75,100].forEach(v => { g += `<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)"/>`; if (W >= 520 || v % 50 === 0) g += `<text x="${m.l-8}" y="${y(v)+4}" text-anchor="end">${v}</text>`; });
-  const span = t1 - t0, step = span > 200*86400 ? 'm' : 'd'; let lastLbl = '', n = 0;
-  tl.forEach(([t]) => { const d = new Date(t*1000), lbl = step === 'm' ? fmtMY.format(d) : fmtDM.format(d);
-    if (step === 'm' ? lbl !== lastLbl : n % Math.max(1, Math.round(tl.length / (W < 520 ? 4 : 7))) === 0){ if (step !== 'm' || W >= 520 || n % 2 === 0) g += `<text x="${x(t)}" y="${Hh-8}" text-anchor="middle">${lbl.replace('.','')}</text>`; }
-    if (lbl !== lastLbl){ lastLbl = lbl; } n++; });
+  const monthly = t1 - t0 > 200*86400, every = Math.max(1, Math.round(tl.length / (W < 520 ? 4 : 7)));
+  let lastLbl = '';
+  tl.forEach(([t], n) => { const d = new Date(t*1000), lbl = monthly ? fmtMY.format(d) : fmtDM.format(d);
+    if (monthly ? lbl !== lastLbl : n % every === 0) g += `<text x="${x(t)}" y="${Hh-8}" text-anchor="middle">${lbl.replace('.','')}</text>`; lastLbl = lbl; });
   const P = ([t,v]) => `${x(t).toFixed(1)},${y(v).toFixed(1)}`;
-  const pts = tl.map(P).join(' ');
-  const firstPartial = tl.findIndex(p => p[2]), solid = firstPartial < 0 ? tl : tl.slice(0, firstPartial);
-  const dashed = firstPartial < 0 ? [] : tl.slice(Math.max(0, firstPartial - 1));
-  g += `<polygon points="${m.l},${y(0)} ${pts} ${x(t1)},${y(0)}" fill="var(--acc)" opacity=".14"/>`;
+  const fp = tl.findIndex(p => p[2]), solid = fp < 0 ? tl : tl.slice(0, fp), dashed = fp < 0 ? [] : tl.slice(Math.max(0, fp - 1));
+  g += `<polygon points="${m.l},${y(0)} ${tl.map(P).join(' ')} ${x(t1)},${y(0)}" fill="var(--acc)" opacity=".14"/>`;
   g += `<polyline points="${solid.map(P).join(' ')}" fill="none" stroke="var(--acc)" stroke-width="2" stroke-linejoin="round"/>`;
   if (dashed.length > 1) g += `<polyline points="${dashed.map(P).join(' ')}" fill="none" stroke="var(--acc)" stroke-width="2" stroke-dasharray="4 4"/>`;
   const pk = tl.reduce((a,p) => p[1] > a[1] ? p : a);
-  g += `<circle cx="${x(pk[0])}" cy="${y(pk[1])}" r="4" fill="var(--acc)"/>`;
-  g += `<line id="gcross" x1="0" x2="0" y1="${m.t}" y2="${m.t+ih}" stroke="var(--muted)" stroke-dasharray="3 3" opacity="0"/>`;
-  g += `<rect x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent" id="ghit"/>`;
+  g += `<circle cx="${x(pk[0])}" cy="${y(pk[1])}" r="4" fill="var(--acc)"/><line id="gcross" x1="0" x2="0" y1="${m.t}" y2="${m.t+ih}" stroke="var(--muted)" stroke-dasharray="3 3" opacity="0"/>`;
   s.innerHTML = g;
   const tip = $('#gtip'), cross = s.querySelector('#gcross');
   s.onpointermove = ev => { const r = s.getBoundingClientRect(), px = ev.clientX - r.left;
@@ -362,184 +637,34 @@ function gChart(tl){
   s.onpointerleave = () => { tip.style.opacity = 0; cross.setAttribute('opacity',0); };
 }
 
+// ------------------------------------------------------------- eventos e início
+function go(q){ $('#q').value = q; $('#exact').checked = false; const h = '#' + slug(q);
+  if (location.hash === h) route(); else location.hash = h; window.scrollTo({top:0}); }
 document.addEventListener('click', ev => {
-  const b = ev.target.closest('[data-rel]'); if (!b || !gState.rec) return;
-  gState.rel = b.dataset.rel; document.querySelectorAll('[data-rel]').forEach(x => x.setAttribute('aria-pressed', x.dataset.rel === gState.rel));
-  const {w} = gWin(); gRel(w.related_top || [], w.related_rising || []);
-});
-new ResizeObserver(() => { if (gState.rec && $('#gchart')) gChart(gWin().tl); }).observe(document.querySelector('#gsec'));
-
-function draw(){
-  const R = state.R, q = $('#q').value.trim(), win = $('#win').selectedOptions[0].text;
-  if (!R.variants.length){
-    const pre = R.qn.slice(0,4), near = pre.length >= 3 ? D.terms.filter((t,i) => N[i].startsWith(pre)).slice(0,6) : [];
-    $('#out').innerHTML = `<div class="empty"><p class="xhead">No X</p><h2>“${esc(q)}” não entrou nos trending topics do Brasil nos últimos ${esc(win)}</h2>
-      <p>Nenhuma das ${nf.format(termPoints(R.days).sorted.length)} expressões que passaram pelos TTs nesse período contém esse termo. O interesse dele no Google aparece logo abaixo.</p>
-      ${near.length ? `<p>Parecidos no histórico: ${near.map(t => `<button class="chip" style="color:var(--ink);border-color:var(--rule)" data-q="${esc(t)}">${esc(t)}</button>`).join(' ')}</p>` : ''}</div>`;
-    return;
-  }
-  const vs = R.variants.filter(v => state.sel.has(v.id));
-  const allOcc = vs.flatMap(v => v.occ);
-  const hours = allOcc.length, daysSet = new Set(allOcc.map(([h]) => ymd(dateOf(h))));
-  const best = allOcc.length ? Math.min(...allOcc.map(o => o[1])) : null;
-  const pts = allOcc.reduce((s,[,r]) => s + points(r), 0);
-  const tp = termPoints(R.days), below = tp.sorted.filter(p => p < pts).length;
-  const pct = Math.round(100 * below / tp.sorted.length);
-  const eps = vs.flatMap(episodes).sort((x,y) => y.start - x.start);
-  const last = allOcc.length ? Math.max(...allOcc.map(o => o[0])) : null;
-  const strongest = [...eps].sort((x,y) => y.pts - x.pts)[0];
-
-  const title = hours
-    ? `“${esc(q)}” foi tendência em ${eps.length} ${eps.length===1?'momento':'momentos'} nos últimos ${esc(win)}`
-    : `Nenhuma variante selecionada`;
-  const lead = strongest ? `O pico foi em ${fmtD.format(dateOf(strongest.start))}, quando “${esc(strongest.term)}” chegou à ${strongest.best}ª posição e ficou ${strongest.hrs.length}h na lista.` : '';
-
-  $('#out').innerHTML = `
-    <p class="xhead">No X</p><h2>${title}</h2><p class="lead">${lead}</p>
-    ${R.variants.length > 1 ? `<div class="vars" aria-label="Variantes encontradas">${R.variants.map(v => `<label class="var"><input type="checkbox" data-v="${v.id}" ${state.sel.has(v.id)?'checked':''}> ${esc(v.term)} <small>${v.occ.length}h</small></label>`).join('')}</div>` : ''}
-    <div class="stats">
-      <div class="stat"><span class="num">${nf.format(hours)}h</span><span class="lbl">em trend, em ${daysSet.size} ${daysSet.size===1?'dia':'dias'}</span></div>
-      <div class="stat"><span class="num">${best ? best+'º' : '–'}</span><span class="lbl">melhor posição</span></div>
-      <div class="stat"><span class="num">${hours ? pct+'%' : '–'}</span><span class="lbl">mais forte que esse percentual dos termos do período</span></div>
-      <div class="stat"><span class="num">${nf.format(pts)}</span><span class="lbl">pontos de atenção</span></div>
-      <div class="stat"><span class="num">${last!==null ? fmtD.format(dateOf(last)) : '–'}</span><span class="lbl">última aparição</span></div>
-    </div>
-    <div class="chead"><h3 id="ctitle"></h3>
-      <div class="seg" role="group" aria-label="Medida do gráfico">
-        <button type="button" data-m="pts" aria-pressed="${state.mode==='pts'}">Pontos</button>
-        <button type="button" data-m="hrs" aria-pressed="${state.mode==='hrs'}">Horas</button>
-      </div></div>
-    <div class="fig" id="fig"><svg id="chart" role="img"></svg><div class="tip" id="tip"></div></div>
-    <div class="panels">
-      <div class="panel"><h3>Quando costuma bombar</h3>
-        <p class="pnote">Pontos de atenção por dia da semana e hora (horário de Brasília)${daysSet.size < 14 ? ' · ainda acumulando dados' : ''}</p>
-        ${heatmap(allOcc)}</div>
-      <div class="panel"><h3>Sobe junto com</h3>
-        <p class="pnote">Assuntos que estiveram em alta nas mesmas horas, em todos os episódios</p>
-        ${cloud(eps)}</div>
-    </div>
-    <h3 style="margin:32px 0 8px;font-size:18px">Cada vez que apareceu</h3>
-    <div class="scroll"><table class="stack"><thead><tr><th>Quando (Brasília)</th><th class="n">Duração</th><th class="n">Melhor</th><th>Termo</th><th>Contexto</th></tr></thead>
-    <tbody>${eps.slice(0, state.shown).map(e => `<tr>
-      <td class="when" data-l="Quando">${fmt.format(dateOf(e.start))}</td>
-      <td class="n" data-l="Duração">${e.hrs.length}h</td>
-      <td class="n" data-l="Melhor">${e.best}º</td>
-      <td data-l="Termo">${esc(e.term)}</td>
-      <td class="ctx" data-l="Contexto">${e.summary ? esc(e.summary) : `<span class="co">Subiu junto com: ${coTrends(e.hrs, state.sel).map(esc).join(', ') || '—'}</span>`}
-        <br><a href="${xLink(e.term, e.start, e.end)}" target="_blank" rel="noopener">Posts da época no X ↗</a>${(e.urls||[]).map((u,i) => ` · <a href="${esc(u)}" target="_blank" rel="noopener">post ${i+1} ↗</a>`).join('')}</td></tr>`).join('')}</tbody></table></div>
-    ${eps.length > state.shown ? `<button type="button" class="more" id="more">Mostrar mais ${Math.min(PER_PAGE, eps.length - state.shown)} de ${eps.length - state.shown} restantes</button>` : ''}
-    <details><summary>Tabela do gráfico</summary><div class="scroll" id="tbl"></div></details>`;
-  state.series = series(vs, R);
-  drawChart();
-}
-
-function series(vs, R){
-  const days = R.b - R.a + 1, step = R.days <= 30 ? 24 : 168, n = Math.ceil(days/step);
-  const bins = Array.from({length:n}, (_,i) => ({a: R.a + i*step, pts:0, hrs:0, best:null}));
-  vs.forEach(v => v.occ.forEach(([h,r]) => { const b = bins[Math.floor((h-R.a)/step)]; b.pts += points(r); b.hrs++; b.best = b.best ? Math.min(b.best,r) : r; }));
-  return {bins, step};
-}
-
-function drawChart(){
-  const s = $('#chart'); if (!s) return;
-  const {bins, step} = state.series, key = state.mode, unit = key==='pts' ? 'pontos' : 'horas em trend';
-  $('#ctitle').textContent = `${key==='pts'?'Pontos':'Horas em trend'} por ${step===24?'dia':'semana'}`;
-  s.setAttribute('aria-label', `Gráfico de colunas: ${unit} por ${step===24?'dia':'semana'}`);
-  const W = s.clientWidth, Hh = s.clientHeight, m = {l:44, r:8, t:12, b:28};
-  const max = Math.max(1, ...bins.map(b => b[key]));
-  const nice = (()=>{ const p = 10**Math.floor(Math.log10(max)), f = max/p; return (f<=1?1:f<=2?2:f<=5?5:10)*p; })();
-  const iw = W - m.l - m.r, ih = Hh - m.t - m.b, slot = iw / bins.length, bw = Math.min(24, Math.max(2, slot - 2));
-  const y = v => m.t + ih - v/nice*ih;
-  let g = '';
-  for (let i=0;i<=4;i++){ const v = nice*i/4, yy = y(v);
-    g += `<line x1="${m.l}" x2="${W-m.r}" y1="${yy}" y2="${yy}" stroke="var(--rule)" stroke-width="1"/>`;
-    if (W >= 520 || i%2===0) g += `<text x="${m.l-8}" y="${yy+4}" text-anchor="end">${nf.format(v)}</text>`; }
-  let lastM = '', nM = 0;
-  bins.forEach((b,i) => {
-    const x = m.l + i*slot + (slot-bw)/2, v = b[key], top = y(v), hgt = m.t+ih-top, r = Math.min(4, bw/2, hgt);
-    const mo = fmtM.format(dateOf(b.a));
-    if (mo !== lastM){ if (W >= 520 || nM % 2 === 0) g += `<text x="${m.l + i*slot}" y="${Hh-8}">${mo.replace('.','')}</text>`; lastM = mo; nM++; }
-    if (v > 0) g += `<path class="bar" d="M${x},${m.t+ih}V${top+r}Q${x},${top} ${x+r},${top}H${x+bw-r}Q${x+bw},${top} ${x+bw},${top+r}V${m.t+ih}Z" fill="var(--acc)"/>`;
-    g += `<rect data-i="${i}" x="${m.l+i*slot}" y="${m.t}" width="${slot}" height="${ih}" fill="transparent"/>`;
-  });
-  g += `<line x1="${m.l}" x2="${W-m.r}" y1="${m.t+ih}" y2="${m.t+ih}" stroke="var(--ink)" stroke-width="1"/>`;
-  s.innerHTML = g;
-  const tip = $('#tip');
-  s.onpointermove = ev => { const i = ev.target.dataset && ev.target.dataset.i; if (i===undefined){ tip.style.opacity=0; return; }
-    const b = bins[+i], end = dateOf(b.a + step - 1);
-    tip.innerHTML = `<b>${step===24 ? fmtD.format(dateOf(b.a)) : fmtD.format(dateOf(b.a))+' – '+fmtD.format(end)}</b>${nf.format(b.hrs)}h em trend · ${nf.format(b.pts)} pts${b.best?` · melhor ${b.best}º`:''}`;
-    const bx = m.l + (+i+.5)*slot; tip.style.left = Math.min(Math.max(bx, 90), W-90)+'px'; tip.style.top = Math.max(y(b[key]), m.t+40)+'px'; tip.style.opacity = 1; };
-  s.onpointerleave = () => tip.style.opacity = 0;
-  $('#tbl').innerHTML = `<table><thead><tr><th>${step===24?'Dia':'Semana de'}</th><th class="n">Horas</th><th class="n">Pontos</th><th class="n">Melhor</th></tr></thead><tbody>${bins.map(b => `<tr><td>${fmtD.format(dateOf(b.a))}</td><td class="n">${b.hrs}</td><td class="n">${nf.format(b.pts)}</td><td class="n">${b.best ? b.best+'º' : '–'}</td></tr>`).join('')}</tbody></table>`;
-}
-
-const DIAS = ['dom','seg','ter','qua','qui','sex','sáb'];
-
-function heatmap(occ){
-  const m = Array.from({length:7}, () => Array(24).fill(0));
-  let max = 0;
-  occ.forEach(([h,r]) => {
-    const d = new Date(T0 + h*3600e3 - 3*3600e3);   // Brasília = UTC-3 (sem horário de verão)
-    const v = m[d.getUTCDay()][d.getUTCHours()] += points(r);
-    if (v > max) max = v;
-  });
-  if (!max) return '<p class="pnote">Sem dados na janela.</p>';
-  let g = '<div class="hm" role="img" aria-label="Mapa de calor por dia da semana e hora"><span></span>';
-  for (let h=0; h<24; h++) g += `<span class="hlab">${h%6===0 ? h : ''}</span>`;
-  for (let d=0; d<7; d++){
-    g += `<span class="dlab">${DIAS[d]}</span>`;
-    for (let h=0; h<24; h++){
-      const v = m[d][h], pc = v ? 12 + Math.round(88 * Math.sqrt(v/max)) : 0;
-      g += v ? `<span class="c" style="background:color-mix(in srgb,var(--acc) ${pc}%,var(--panel))" title="${DIAS[d]} ${h}h · ${nf.format(v)} pts"></span>` : '<span class="c"></span>';
-    }
-  }
-  return g + '</div>';
-}
-
-function cloud(eps){
-  const score = new Map();
-  eps.forEach(e => coTrends(e.hrs, state.sel).forEach((t,i) => score.set(t, (score.get(t)||0) + e.pts * (5-i))));
-  const top = [...score.entries()].sort((a,b) => b[1]-a[1]).slice(0,18);
-  if (!top.length) return '<p class="pnote">Nada recorrente ainda.</p>';
-  const hi = top[0][1];
-  return '<div class="cloud">' + top.map(([t,v]) =>
-    `<button type="button" class="chip" data-q="${esc(t)}" style="font-size:${(13 + 9*Math.sqrt(v/hi)).toFixed(1)}px">${esc(t)}</button>`).join('') + '</div>';
-}
-
-function weekTop(){
-  const a = Math.max(0, H - 168), pts = new Map();
-  for (let h=a; h<H; h++) D.h[h].forEach((id,i) => pts.set(id, (pts.get(id)||0) + points(i+1)));
-  return [...pts.entries()].sort((x,y) => y[1]-x[1]).slice(0,10);
-}
-
-function boot(data){
-  D = data; N = D.terms.map(norm); T0 = Date.parse(D.start.replace('Z',':00Z')); H = D.h.length;
-  const lastH = H - 1;
-  $('#sub').textContent = `Histórico dos trending topics do X no Brasil, hora a hora · ${nf.format(D.terms.length)} termos desde ${fmtD.format(dateOf(0))} · última leitura ${fmt.format(dateOf(lastH))}`;
-  $('#demo').hidden = !D.demo;
-  let hh = lastH; while (hh > 0 && D.h[hh].length < 10) hh--;   // última hora com a lista completa
-  const ex = D.demo ? ['shampoo','Enem','Apagão','Flamengo'] : D.h[hh].slice(0,10).map(id => D.terms[id]);
-  $('#now').innerHTML = `<span>${D.demo ? 'Exemplos:' : `Top 10 em alta (${fmtH.format(dateOf(hh))}h):`}</span>` + ex.map(t => `<button type="button" class="chip" data-q="${esc(t)}">${esc(t)}</button>`).join('');
-  const hq = decodeURIComponent(location.hash.slice(1)).replace(/-/g,' ');
-  $('#q').value = hq || (D.demo ? 'shampoo' : '');
-  render();
-}
-
-document.addEventListener('click', ev => {
-  const t = ev.target.closest('[data-q],[data-m],#more'); if (!t) return;
-  if (t.dataset.q){ $('#q').value = t.dataset.q; $('#exact').checked = false; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+  const t = ev.target.closest('[data-q],[data-m],[data-home],[data-rel],#more'); if (!t) return;
+  if (t.dataset.q){ ev.preventDefault(); go(t.dataset.q); }
+  else if ('home' in t.dataset){ ev.preventDefault(); if (location.hash) location.hash = ''; else renderHome(); window.scrollTo({top:0}); }
   else if (t.dataset.m){ state.mode = t.dataset.m; document.querySelectorAll('[data-m]').forEach(b => b.setAttribute('aria-pressed', b.dataset.m===state.mode)); drawChart(); }
-  else if (t.id==='more'){ state.shown += PER_PAGE; draw(); }
+  else if (t.dataset.rel && gState.rec){ gState.rel = t.dataset.rel; document.querySelectorAll('[data-rel]').forEach(x => x.setAttribute('aria-pressed', x.dataset.rel === gState.rel)); const {w} = gWin(); gRel(w.related_top || [], w.related_rising || []); }
+  else if (t.id === 'more'){ state.shown += PER_PAGE; draw(); }
 });
 document.addEventListener('change', ev => {
   if (ev.target.dataset.v){ const id = +ev.target.dataset.v; ev.target.checked ? state.sel.add(id) : state.sel.delete(id); draw(); }
-  else if (ev.target.id==='win' || ev.target.id==='exact') render();
+  else if ((ev.target.id === 'win' || ev.target.id === 'exact') && location.hash){ gKey = ''; renderDossier(state.q || $('#q').value); }
 });
-$('#f').addEventListener('submit', ev => { ev.preventDefault(); render(); });
-new ResizeObserver(() => state.series && drawChart()).observe($('#out'));
+$('#f').addEventListener('submit', ev => { ev.preventDefault(); const q = $('#q').value.trim(); if (q) go(q); else { location.hash = ''; } });
+window.addEventListener('hashchange', route);
+new ResizeObserver(() => { if (!$('#dossier').hidden){ drawChart(); if (gState.rec && $('#gchart')) gChart(gWin().tl); } }).observe(document.body);
 
-fetch('data/index.json').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(boot)
-  .catch(e => { $('#out').innerHTML = `<div class="empty"><h2>Ainda não há histórico</h2><p>Não encontrei data/index.json (${esc(e.message)}). Rode a coleta (ou o backfill) e depois <code>python radar.py export</code>.</p></div>`; });
+Promise.all([getJSON('data/index.json'), getJSON('context/index.json').catch(() => ({})), getJSON('news/latest.json').catch(() => null)])
+  .then(([data, ctx, news]) => {
+    D = data; CTX = ctx || {}; NEWS = news; N = D.terms.map(norm); T0 = Date.parse(D.start.replace('Z',':00Z')); H = D.h.length;
+    HH = H - 1; while (HH > 0 && D.h[HH].length < 10) HH--;
+    const day = fmtDay.format(dateOf(HH));
+    $('#edition').textContent = `${day.charAt(0).toUpperCase() + day.slice(1)} · trends das ${fmtHM.format(dateOf(HH))}${NEWS ? ' · manchetes ' + ago(NEWS.generated) : ''}`;
+    route();
+  })
+  .catch(e => { $('#board').innerHTML = `<li class="item"><span></span><p class="why none">Não consegui carregar os dados (${esc(e.message)}).</p></li>`; });
 }
 </script>
 </body>
