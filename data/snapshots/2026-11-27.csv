@@ -1,0 +1,439 @@
+ts,rank,term,tweet_count,source
+2026-11-27T08:00Z,1,#EliminacaoAFazenda,,getdaytrends
+2026-11-27T08:00Z,2,Trabuco,65400,getdaytrends
+2026-11-27T08:00Z,3,Chiefs,90000,getdaytrends
+2026-11-27T08:00Z,4,Bradesco,21800,getdaytrends
+2026-11-27T08:00Z,5,Serginho,26900,getdaytrends
+2026-11-27T08:00Z,6,Bills,138200,getdaytrends
+2026-11-27T08:00Z,7,#LoungeDasBlogueiras,18100,getdaytrends
+2026-11-27T08:00Z,8,Rafinha,,getdaytrends
+2026-11-27T08:00Z,9,Josh Allen,30200,getdaytrends
+2026-11-27T08:00Z,10,Banqueiro,35200,getdaytrends
+2026-11-27T08:00Z,11,Faria Lima,,getdaytrends
+2026-11-27T08:00Z,12,Glauber,,getdaytrends
+2026-11-27T08:00Z,13,Thaíde,,getdaytrends
+2026-11-27T08:00Z,14,Dorival,,getdaytrends
+2026-11-27T08:00Z,15,Mahomes,22800,getdaytrends
+2026-11-27T08:00Z,16,Kitty,96200,getdaytrends
+2026-11-27T08:00Z,17,Lula 1,14000,getdaytrends
+2026-11-27T08:00Z,18,Cowboys,178000,getdaytrends
+2026-11-27T08:00Z,19,Calleri,,getdaytrends
+2026-11-27T08:00Z,20,Camilo Santana,,getdaytrends
+2026-11-27T08:00Z,21,#BlackFriday,16800,getdaytrends
+2026-11-27T08:00Z,22,Galisteu,,getdaytrends
+2026-11-27T08:00Z,23,Levy,15200,getdaytrends
+2026-11-27T08:00Z,24,Alckmin,,getdaytrends
+2026-11-27T08:00Z,25,Meirelles,,getdaytrends
+2026-11-27T08:00Z,26,Eagles,163300,getdaytrends
+2026-11-27T08:00Z,27,Joe Milton,80100,getdaytrends
+2026-11-27T08:00Z,28,bagi,21300,getdaytrends
+2026-11-27T08:00Z,29,Ryan Francisco,,getdaytrends
+2026-11-27T08:00Z,30,Dilma 2,,getdaytrends
+2026-11-27T08:00Z,31,pilar,38600,getdaytrends
+2026-11-27T08:00Z,32,R$300 OFF,,getdaytrends
+2026-11-27T08:00Z,33,Top 5,49300,getdaytrends
+2026-11-27T08:00Z,34,Casa Civil,,getdaytrends
+2026-11-27T08:00Z,35,Nathan Fielder,,getdaytrends
+2026-11-27T08:00Z,36,#IlhadosComASogra,,getdaytrends
+2026-11-27T08:00Z,37,Afeganistão,25200,getdaytrends
+2026-11-27T08:00Z,38,Lula IV,,getdaytrends
+2026-11-27T07:00Z,1,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T07:00Z,2,Trabuco,64300,getdaytrends-catchup
+2026-11-27T07:00Z,3,Chiefs,88700,getdaytrends-catchup
+2026-11-27T07:00Z,4,Bradesco,21300,getdaytrends-catchup
+2026-11-27T07:00Z,5,Serginho,26900,getdaytrends-catchup
+2026-11-27T07:00Z,6,Josh Allen,29400,getdaytrends-catchup
+2026-11-27T07:00Z,7,#LoungeDasBlogueiras,17900,getdaytrends-catchup
+2026-11-27T07:00Z,8,Bills,137500,getdaytrends-catchup
+2026-11-27T07:00Z,9,Rafinha,,getdaytrends-catchup
+2026-11-27T07:00Z,10,Banqueiro,34500,getdaytrends-catchup
+2026-11-27T07:00Z,11,Glauber,,getdaytrends-catchup
+2026-11-27T07:00Z,12,Faria Lima,,getdaytrends-catchup
+2026-11-27T07:00Z,13,Thaíde,,getdaytrends-catchup
+2026-11-27T07:00Z,14,Andy Reid,,getdaytrends-catchup
+2026-11-27T07:00Z,15,Dorival,,getdaytrends-catchup
+2026-11-27T07:00Z,16,Mahomes,22400,getdaytrends-catchup
+2026-11-27T07:00Z,17,Moka,28400,getdaytrends-catchup
+2026-11-27T07:00Z,18,Lula 1,14000,getdaytrends-catchup
+2026-11-27T07:00Z,19,Sergio,97600,getdaytrends-catchup
+2026-11-27T07:00Z,20,Levy,15300,getdaytrends-catchup
+2026-11-27T07:00Z,21,Kitty,96300,getdaytrends-catchup
+2026-11-27T07:00Z,22,Calleri,,getdaytrends-catchup
+2026-11-27T07:00Z,23,Cowboys,175000,getdaytrends-catchup
+2026-11-27T07:00Z,24,Camilo Santana,,getdaytrends-catchup
+2026-11-27T07:00Z,25,#RegulaBigTechsJa,,getdaytrends-catchup
+2026-11-27T07:00Z,26,Galisteu,,getdaytrends-catchup
+2026-11-27T07:00Z,27,Talitah,20400,getdaytrends-catchup
+2026-11-27T07:00Z,28,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T07:00Z,29,Buffalo,31500,getdaytrends-catchup
+2026-11-27T07:00Z,30,Bobadilla,,getdaytrends-catchup
+2026-11-27T07:00Z,31,#BlackFriday,15800,getdaytrends-catchup
+2026-11-27T07:00Z,32,Alckmin,,getdaytrends-catchup
+2026-11-27T07:00Z,33,Meirelles,,getdaytrends-catchup
+2026-11-27T07:00Z,34,Eagles,160400,getdaytrends-catchup
+2026-11-27T07:00Z,35,Joe Milton,78000,getdaytrends-catchup
+2026-11-27T07:00Z,36,bagi,21300,getdaytrends-catchup
+2026-11-27T07:00Z,37,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T07:00Z,38,Dilma 2,,getdaytrends-catchup
+2026-11-27T07:00Z,39,pilar,38400,getdaytrends-catchup
+2026-11-27T07:00Z,40,R$300 OFF,,getdaytrends-catchup
+2026-11-27T07:00Z,41,Top 5,49100,getdaytrends-catchup
+2026-11-27T07:00Z,42,R$79,,getdaytrends-catchup
+2026-11-27T07:00Z,43,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T07:00Z,44,Nathan Fielder,,getdaytrends-catchup
+2026-11-27T07:00Z,45,Arboleda,,getdaytrends-catchup
+2026-11-27T07:00Z,46,Casa Civil,,getdaytrends-catchup
+2026-11-27T07:00Z,47,You Can See Everything,,getdaytrends-catchup
+2026-11-27T07:00Z,48,Ingrid,15700,getdaytrends-catchup
+2026-11-27T07:00Z,49,Afeganistão,24300,getdaytrends-catchup
+2026-11-27T07:00Z,50,resgate aqui,,getdaytrends-catchup
+2026-11-27T06:00Z,1,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T06:00Z,2,Trabuco,63300,getdaytrends-catchup
+2026-11-27T06:00Z,3,Chiefs,86200,getdaytrends-catchup
+2026-11-27T06:00Z,4,Bradesco,21000,getdaytrends-catchup
+2026-11-27T06:00Z,5,Serginho,26900,getdaytrends-catchup
+2026-11-27T06:00Z,6,Josh Allen,28100,getdaytrends-catchup
+2026-11-27T06:00Z,7,Bills,134800,getdaytrends-catchup
+2026-11-27T06:00Z,8,#LoungeDasBlogueiras,17600,getdaytrends-catchup
+2026-11-27T06:00Z,9,Butker,15200,getdaytrends-catchup
+2026-11-27T06:00Z,10,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T06:00Z,11,Rafinha,,getdaytrends-catchup
+2026-11-27T06:00Z,12,Banqueiro,33700,getdaytrends-catchup
+2026-11-27T06:00Z,13,Mahomes,21400,getdaytrends-catchup
+2026-11-27T06:00Z,14,Glauber,,getdaytrends-catchup
+2026-11-27T06:00Z,15,Dorival,,getdaytrends-catchup
+2026-11-27T06:00Z,16,Faria Lima,,getdaytrends-catchup
+2026-11-27T06:00Z,17,Thaíde,,getdaytrends-catchup
+2026-11-27T06:00Z,18,Andy Reid,,getdaytrends-catchup
+2026-11-27T06:00Z,19,Kelce,,getdaytrends-catchup
+2026-11-27T06:00Z,20,Moka,25000,getdaytrends-catchup
+2026-11-27T06:00Z,21,Lula 1,14000,getdaytrends-catchup
+2026-11-27T06:00Z,22,Calleri,,getdaytrends-catchup
+2026-11-27T06:00Z,23,Eagles,156000,getdaytrends-catchup
+2026-11-27T06:00Z,24,Sergio,97600,getdaytrends-catchup
+2026-11-27T06:00Z,25,Levy,15300,getdaytrends-catchup
+2026-11-27T06:00Z,26,Cowboys,170900,getdaytrends-catchup
+2026-11-27T06:00Z,27,Kitty,96500,getdaytrends-catchup
+2026-11-27T06:00Z,28,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T06:00Z,29,Camilo Santana,,getdaytrends-catchup
+2026-11-27T06:00Z,30,R$300 OFF,,getdaytrends-catchup
+2026-11-27T06:00Z,31,#RegulaBigTechsJa,,getdaytrends-catchup
+2026-11-27T06:00Z,32,Meirelles,,getdaytrends-catchup
+2026-11-27T06:00Z,33,Galisteu,,getdaytrends-catchup
+2026-11-27T06:00Z,34,Talitah,20200,getdaytrends-catchup
+2026-11-27T06:00Z,35,Joe Milton,75500,getdaytrends-catchup
+2026-11-27T06:00Z,36,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T06:00Z,37,Bobadilla,,getdaytrends-catchup
+2026-11-27T06:00Z,38,Alckmin,,getdaytrends-catchup
+2026-11-27T06:00Z,39,pilar,38000,getdaytrends-catchup
+2026-11-27T06:00Z,40,Casa Civil,,getdaytrends-catchup
+2026-11-27T06:00Z,41,Dilma 2,,getdaytrends-catchup
+2026-11-27T06:00Z,42,R$79,,getdaytrends-catchup
+2026-11-27T06:00Z,43,bagi,21400,getdaytrends-catchup
+2026-11-27T06:00Z,44,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T06:00Z,45,Arboleda,,getdaytrends-catchup
+2026-11-27T06:00Z,46,Cotia,,getdaytrends-catchup
+2026-11-27T06:00Z,47,You Can See Everything,,getdaytrends-catchup
+2026-11-27T06:00Z,48,Top 5,48700,getdaytrends-catchup
+2026-11-27T06:00Z,49,Desiree,,getdaytrends-catchup
+2026-11-27T06:00Z,50,Nathan Fielder,,getdaytrends-catchup
+2026-11-27T05:00Z,1,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T05:00Z,2,Trabuco,61700,getdaytrends-catchup
+2026-11-27T05:00Z,3,Chiefs,77600,getdaytrends-catchup
+2026-11-27T05:00Z,4,Bradesco,20400,getdaytrends-catchup
+2026-11-27T05:00Z,5,Josh Allen,24700,getdaytrends-catchup
+2026-11-27T05:00Z,6,#LoungeDasBlogueiras,17100,getdaytrends-catchup
+2026-11-27T05:00Z,7,Bills,124800,getdaytrends-catchup
+2026-11-27T05:00Z,8,Serginho,26800,getdaytrends-catchup
+2026-11-27T05:00Z,9,Butker,12600,getdaytrends-catchup
+2026-11-27T05:00Z,10,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T05:00Z,11,Rafinha,,getdaytrends-catchup
+2026-11-27T05:00Z,12,Banqueiro,32500,getdaytrends-catchup
+2026-11-27T05:00Z,13,Mahomes,19200,getdaytrends-catchup
+2026-11-27T05:00Z,14,Dorival,,getdaytrends-catchup
+2026-11-27T05:00Z,15,Faria Lima,,getdaytrends-catchup
+2026-11-27T05:00Z,16,Glauber,,getdaytrends-catchup
+2026-11-27T05:00Z,17,Andy Reid,,getdaytrends-catchup
+2026-11-27T05:00Z,18,Thaíde,,getdaytrends-catchup
+2026-11-27T05:00Z,19,Kelce,,getdaytrends-catchup
+2026-11-27T05:00Z,20,Dallas Cowboys,20800,getdaytrends-catchup
+2026-11-27T05:00Z,21,Moka,20100,getdaytrends-catchup
+2026-11-27T05:00Z,22,Kitty,96200,getdaytrends-catchup
+2026-11-27T05:00Z,23,Calleri,,getdaytrends-catchup
+2026-11-27T05:00Z,24,Joe Milton,70100,getdaytrends-catchup
+2026-11-27T05:00Z,25,Eagles,147400,getdaytrends-catchup
+2026-11-27T05:00Z,26,Levy,15300,getdaytrends-catchup
+2026-11-27T05:00Z,27,Lula 1,13900,getdaytrends-catchup
+2026-11-27T05:00Z,28,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T05:00Z,29,Camilo Santana,,getdaytrends-catchup
+2026-11-27T05:00Z,30,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T05:00Z,31,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T05:00Z,32,Sergio,97600,getdaytrends-catchup
+2026-11-27T05:00Z,33,pilar,37800,getdaytrends-catchup
+2026-11-27T05:00Z,34,R$300 OFF,,getdaytrends-catchup
+2026-11-27T05:00Z,35,Galisteu,,getdaytrends-catchup
+2026-11-27T05:00Z,36,Talitah,19800,getdaytrends-catchup
+2026-11-27T05:00Z,37,Juary,,getdaytrends-catchup
+2026-11-27T05:00Z,38,Bobadilla,,getdaytrends-catchup
+2026-11-27T05:00Z,39,R$79,,getdaytrends-catchup
+2026-11-27T05:00Z,40,Meirelles,,getdaytrends-catchup
+2026-11-27T05:00Z,41,Cleitinho,24100,getdaytrends-catchup
+2026-11-27T05:00Z,42,R$1.999,,getdaytrends-catchup
+2026-11-27T05:00Z,43,Black Friday,335800,getdaytrends-catchup
+2026-11-27T05:00Z,44,Aysha,19600,getdaytrends-catchup
+2026-11-27T05:00Z,45,Alckmin,,getdaytrends-catchup
+2026-11-27T05:00Z,46,Dilma 2,,getdaytrends-catchup
+2026-11-27T05:00Z,47,Arboleda,,getdaytrends-catchup
+2026-11-27T05:00Z,48,Casa Civil,,getdaytrends-catchup
+2026-11-27T05:00Z,49,Remo,,getdaytrends-catchup
+2026-11-27T05:00Z,50,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T04:00Z,1,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T04:00Z,2,Trabuco,59000,getdaytrends-catchup
+2026-11-27T04:00Z,3,Bradesco,19200,getdaytrends-catchup
+2026-11-27T04:00Z,4,#LoungeDasBlogueiras,16200,getdaytrends-catchup
+2026-11-27T04:00Z,5,Chiefs,55400,getdaytrends-catchup
+2026-11-27T04:00Z,6,Rafinha,,getdaytrends-catchup
+2026-11-27T04:00Z,7,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T04:00Z,8,Serginho,26300,getdaytrends-catchup
+2026-11-27T04:00Z,9,Dorival,,getdaytrends-catchup
+2026-11-27T04:00Z,10,Banqueiro,30500,getdaytrends-catchup
+2026-11-27T04:00Z,11,Faria Lima,,getdaytrends-catchup
+2026-11-27T04:00Z,12,Josh Allen,18300,getdaytrends-catchup
+2026-11-27T04:00Z,13,Glauber,,getdaytrends-catchup
+2026-11-27T04:00Z,14,Thaíde,,getdaytrends-catchup
+2026-11-27T04:00Z,15,Cowboys,149600,getdaytrends-catchup
+2026-11-27T04:00Z,16,MILENA COM FRIBOI,,getdaytrends-catchup
+2026-11-27T04:00Z,17,Calleri,,getdaytrends-catchup
+2026-11-27T04:00Z,18,Kitty,95400,getdaytrends-catchup
+2026-11-27T04:00Z,19,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T04:00Z,20,Eagles,134700,getdaytrends-catchup
+2026-11-27T04:00Z,21,Bills,104000,getdaytrends-catchup
+2026-11-27T04:00Z,22,Bobadilla,,getdaytrends-catchup
+2026-11-27T04:00Z,23,Mahomes,14500,getdaytrends-catchup
+2026-11-27T04:00Z,24,Levy,15200,getdaytrends-catchup
+2026-11-27T04:00Z,25,Joe Milton,62700,getdaytrends-catchup
+2026-11-27T04:00Z,26,#RegulaBigTechsJa,,getdaytrends-catchup
+2026-11-27T04:00Z,27,Lula 1,13800,getdaytrends-catchup
+2026-11-27T04:00Z,28,Camilo Santana,,getdaytrends-catchup
+2026-11-27T04:00Z,29,pilar,37600,getdaytrends-catchup
+2026-11-27T04:00Z,30,R$300 OFF,,getdaytrends-catchup
+2026-11-27T04:00Z,31,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T04:00Z,32,Talitah,19100,getdaytrends-catchup
+2026-11-27T04:00Z,33,Juary,,getdaytrends-catchup
+2026-11-27T04:00Z,34,Meirelles,,getdaytrends-catchup
+2026-11-27T04:00Z,35,R$79,,getdaytrends-catchup
+2026-11-27T04:00Z,36,Galisteu,,getdaytrends-catchup
+2026-11-27T04:00Z,37,Cleitinho,23800,getdaytrends-catchup
+2026-11-27T04:00Z,38,R$1.999,,getdaytrends-catchup
+2026-11-27T04:00Z,39,Arboleda,,getdaytrends-catchup
+2026-11-27T04:00Z,40,Aysha,18900,getdaytrends-catchup
+2026-11-27T04:00Z,41,Thanksgiving,2900000,getdaytrends-catchup
+2026-11-27T04:00Z,42,Casa Civil,,getdaytrends-catchup
+2026-11-27T04:00Z,43,Black Friday,329700,getdaytrends-catchup
+2026-11-27T04:00Z,44,Alckmin,,getdaytrends-catchup
+2026-11-27T04:00Z,45,Remo,,getdaytrends-catchup
+2026-11-27T04:00Z,46,Jerry Jones,15800,getdaytrends-catchup
+2026-11-27T04:00Z,47,Buffalo,19900,getdaytrends-catchup
+2026-11-27T04:00Z,48,manaus,30800,getdaytrends-catchup
+2026-11-27T04:00Z,49,Dilma 2,,getdaytrends-catchup
+2026-11-27T04:00Z,50,Cotia,,getdaytrends-catchup
+2026-11-27T03:00Z,1,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T03:00Z,2,Trabuco,53000,getdaytrends-catchup
+2026-11-27T03:00Z,3,#LoungeDasBlogueiras,14400,getdaytrends-catchup
+2026-11-27T03:00Z,4,Bradesco,17300,getdaytrends-catchup
+2026-11-27T03:00Z,5,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T03:00Z,6,Dorival,,getdaytrends-catchup
+2026-11-27T03:00Z,7,Banqueiro,26700,getdaytrends-catchup
+2026-11-27T03:00Z,8,Chiefs,48000,getdaytrends-catchup
+2026-11-27T03:00Z,9,Rafinha,,getdaytrends-catchup
+2026-11-27T03:00Z,10,Dallas Cowboys,17100,getdaytrends-catchup
+2026-11-27T03:00Z,11,Faria Lima,,getdaytrends-catchup
+2026-11-27T03:00Z,12,Eagles,121300,getdaytrends-catchup
+2026-11-27T03:00Z,13,Calleri,,getdaytrends-catchup
+2026-11-27T03:00Z,14,Glauber,,getdaytrends-catchup
+2026-11-27T03:00Z,15,Josh Allen,13200,getdaytrends-catchup
+2026-11-27T03:00Z,16,MILENA COM FRIBOI,,getdaytrends-catchup
+2026-11-27T03:00Z,17,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T03:00Z,18,pilar,37200,getdaytrends-catchup
+2026-11-27T03:00Z,19,Bobadilla,,getdaytrends-catchup
+2026-11-27T03:00Z,20,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T03:00Z,21,Bills,100100,getdaytrends-catchup
+2026-11-27T03:00Z,22,Joe Milton,50300,getdaytrends-catchup
+2026-11-27T03:00Z,23,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T03:00Z,24,Levy,15100,getdaytrends-catchup
+2026-11-27T03:00Z,25,Lula 1,13700,getdaytrends-catchup
+2026-11-27T03:00Z,26,Arboleda,,getdaytrends-catchup
+2026-11-27T03:00Z,27,Camilo Santana,,getdaytrends-catchup
+2026-11-27T03:00Z,28,Cleitinho,23300,getdaytrends-catchup
+2026-11-27T03:00Z,29,Talitah,17900,getdaytrends-catchup
+2026-11-27T03:00Z,30,Juary,,getdaytrends-catchup
+2026-11-27T03:00Z,31,Meirelles,,getdaytrends-catchup
+2026-11-27T03:00Z,32,Remo,,getdaytrends-catchup
+2026-11-27T03:00Z,33,Jerry Jones,12500,getdaytrends-catchup
+2026-11-27T03:00Z,34,Cotia,,getdaytrends-catchup
+2026-11-27T03:00Z,35,Thanksgiving,2800000,getdaytrends-catchup
+2026-11-27T03:00Z,36,Ingrid,15200,getdaytrends-catchup
+2026-11-27T03:00Z,37,Casa Civil,,getdaytrends-catchup
+2026-11-27T03:00Z,38,Buffalo,17900,getdaytrends-catchup
+2026-11-27T03:00Z,39,Thaíde,,getdaytrends-catchup
+2026-11-27T03:00Z,40,Aysha,17700,getdaytrends-catchup
+2026-11-27T03:00Z,41,Tchamba,,getdaytrends-catchup
+2026-11-27T03:00Z,42,Desiree,,getdaytrends-catchup
+2026-11-27T03:00Z,43,Alckmin,,getdaytrends-catchup
+2026-11-27T03:00Z,44,manaus,30000,getdaytrends-catchup
+2026-11-27T03:00Z,45,40% off,17500,getdaytrends-catchup
+2026-11-27T03:00Z,46,Dilma 2,,getdaytrends-catchup
+2026-11-27T03:00Z,47,Top 5,48200,getdaytrends-catchup
+2026-11-27T03:00Z,48,Mahomes,11900,getdaytrends-catchup
+2026-11-27T03:00Z,49,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T03:00Z,50,Poveda,,getdaytrends-catchup
+2026-11-27T02:00Z,1,Trabuco,44800,getdaytrends-catchup
+2026-11-27T02:00Z,2,#LoungeDasBlogueiras,11700,getdaytrends-catchup
+2026-11-27T02:00Z,3,#EliminacaoAFazenda,,getdaytrends-catchup
+2026-11-27T02:00Z,4,Bradesco,12900,getdaytrends-catchup
+2026-11-27T02:00Z,5,Dallas Cowboys,12600,getdaytrends-catchup
+2026-11-27T02:00Z,6,Calleri,,getdaytrends-catchup
+2026-11-27T02:00Z,7,Banqueiro,19800,getdaytrends-catchup
+2026-11-27T02:00Z,8,Eagles,93700,getdaytrends-catchup
+2026-11-27T02:00Z,9,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T02:00Z,10,Faria Lima,,getdaytrends-catchup
+2026-11-27T02:00Z,11,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T02:00Z,12,Bobadilla,,getdaytrends-catchup
+2026-11-27T02:00Z,13,MILENA COM FRIBOI,,getdaytrends-catchup
+2026-11-27T02:00Z,14,Joe Milton,34900,getdaytrends-catchup
+2026-11-27T02:00Z,15,pilar,36400,getdaytrends-catchup
+2026-11-27T02:00Z,16,Chiefs,40500,getdaytrends-catchup
+2026-11-27T02:00Z,17,Glauber,,getdaytrends-catchup
+2026-11-27T02:00Z,18,Dorival,,getdaytrends-catchup
+2026-11-27T02:00Z,19,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T02:00Z,20,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T02:00Z,21,Remo,,getdaytrends-catchup
+2026-11-27T02:00Z,22,Arboleda,,getdaytrends-catchup
+2026-11-27T02:00Z,23,Bills,94700,getdaytrends-catchup
+2026-11-27T02:00Z,24,Cleitinho,22300,getdaytrends-catchup
+2026-11-27T02:00Z,25,Levy,14900,getdaytrends-catchup
+2026-11-27T02:00Z,26,Lula 1,13600,getdaytrends-catchup
+2026-11-27T02:00Z,27,Juary,,getdaytrends-catchup
+2026-11-27T02:00Z,28,Cotia,,getdaytrends-catchup
+2026-11-27T02:00Z,29,Talitah,16500,getdaytrends-catchup
+2026-11-27T02:00Z,30,Aysha,16100,getdaytrends-catchup
+2026-11-27T02:00Z,31,Ingrid,15100,getdaytrends-catchup
+2026-11-27T02:00Z,32,Jerry Jones,,getdaytrends-catchup
+2026-11-27T02:00Z,33,Thanksgiving,2700000,getdaytrends-catchup
+2026-11-27T02:00Z,34,Tchamba,,getdaytrends-catchup
+2026-11-27T02:00Z,35,Alckmin,,getdaytrends-catchup
+2026-11-27T02:00Z,36,manaus,28500,getdaytrends-catchup
+2026-11-27T02:00Z,37,Meirelles,,getdaytrends-catchup
+2026-11-27T02:00Z,38,Dilma 2,,getdaytrends-catchup
+2026-11-27T02:00Z,39,Poveda,,getdaytrends-catchup
+2026-11-27T02:00Z,40,Camilo Santana,,getdaytrends-catchup
+2026-11-27T02:00Z,41,Barbara,56900,getdaytrends-catchup
+2026-11-27T02:00Z,42,Top 5,47700,getdaytrends-catchup
+2026-11-27T02:00Z,43,Desiree,,getdaytrends-catchup
+2026-11-27T02:00Z,44,Isabel Teixeira,,getdaytrends-catchup
+2026-11-27T02:00Z,45,Carmita,,getdaytrends-catchup
+2026-11-27T02:00Z,46,Silvana,,getdaytrends-catchup
+2026-11-27T02:00Z,47,Estelionato,,getdaytrends-catchup
+2026-11-27T02:00Z,48,40% off,17300,getdaytrends-catchup
+2026-11-27T02:00Z,49,Palocci,,getdaytrends-catchup
+2026-11-27T02:00Z,50,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T01:00Z,1,Trabuco,33200,getdaytrends-catchup
+2026-11-27T01:00Z,2,#LoungeDasBlogueiras,,getdaytrends-catchup
+2026-11-27T01:00Z,3,Bradesco,,getdaytrends-catchup
+2026-11-27T01:00Z,4,Ryan Francisco,,getdaytrends-catchup
+2026-11-27T01:00Z,5,Fazenda,26800,getdaytrends-catchup
+2026-11-27T01:00Z,6,MILENA COM FRIBOI,,getdaytrends-catchup
+2026-11-27T01:00Z,7,Banqueiro,13500,getdaytrends-catchup
+2026-11-27T01:00Z,8,Calleri,,getdaytrends-catchup
+2026-11-27T01:00Z,9,Dorival,,getdaytrends-catchup
+2026-11-27T01:00Z,10,#RegulaBigTechsJa,,getdaytrends-catchup
+2026-11-27T01:00Z,11,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T01:00Z,12,#ONorteEstaSufocando,,getdaytrends-catchup
+2026-11-27T01:00Z,13,Arboleda,,getdaytrends-catchup
+2026-11-27T01:00Z,14,Cleitinho,21000,getdaytrends-catchup
+2026-11-27T01:00Z,15,#SOSRegiaoNorte,,getdaytrends-catchup
+2026-11-27T01:00Z,16,Remo,,getdaytrends-catchup
+2026-11-27T01:00Z,17,Lula 1,13400,getdaytrends-catchup
+2026-11-27T01:00Z,18,manaus,27000,getdaytrends-catchup
+2026-11-27T01:00Z,19,Glauber,,getdaytrends-catchup
+2026-11-27T01:00Z,20,Levy,14700,getdaytrends-catchup
+2026-11-27T01:00Z,21,Joe Milton,11900,getdaytrends-catchup
+2026-11-27T01:00Z,22,Poveda,,getdaytrends-catchup
+2026-11-27T01:00Z,23,Cotia,,getdaytrends-catchup
+2026-11-27T01:00Z,24,Thanksgiving,2600000,getdaytrends-catchup
+2026-11-27T01:00Z,25,Tchamba,,getdaytrends-catchup
+2026-11-27T01:00Z,26,Faria Lima,,getdaytrends-catchup
+2026-11-27T01:00Z,27,Talitah,13300,getdaytrends-catchup
+2026-11-27T01:00Z,28,Dilma 2,,getdaytrends-catchup
+2026-11-27T01:00Z,29,aroldo,,getdaytrends-catchup
+2026-11-27T01:00Z,30,Eagles,50500,getdaytrends-catchup
+2026-11-27T01:00Z,31,Aysha,14000,getdaytrends-catchup
+2026-11-27T01:00Z,32,Meirelles,,getdaytrends-catchup
+2026-11-27T01:00Z,33,Desiree,,getdaytrends-catchup
+2026-11-27T01:00Z,34,Top 5,47600,getdaytrends-catchup
+2026-11-27T01:00Z,35,Barbara,56000,getdaytrends-catchup
+2026-11-27T01:00Z,36,Cowboys,39700,getdaytrends-catchup
+2026-11-27T01:00Z,37,Palocci,,getdaytrends-catchup
+2026-11-27T01:00Z,38,Conselho de Administração,,getdaytrends-catchup
+2026-11-27T01:00Z,39,Pablo Maia,,getdaytrends-catchup
+2026-11-27T01:00Z,40,Novorizontino,,getdaytrends-catchup
+2026-11-27T01:00Z,41,150 Off,,getdaytrends-catchup
+2026-11-27T01:00Z,42,R$79,,getdaytrends-catchup
+2026-11-27T01:00Z,43,Filosofia,,getdaytrends-catchup
+2026-11-27T01:00Z,44,Juárez,15500,getdaytrends-catchup
+2026-11-27T01:00Z,45,Glorinha,,getdaytrends-catchup
+2026-11-27T01:00Z,46,Minas Gerais,11700,getdaytrends-catchup
+2026-11-27T01:00Z,47,R$599,,getdaytrends-catchup
+2026-11-27T01:00Z,48,Macron,54000,getdaytrends-catchup
+2026-11-27T01:00Z,49,Piquerez,,getdaytrends-catchup
+2026-11-27T01:00Z,50,Paulo Guedes,,getdaytrends-catchup
+2026-11-27T00:00Z,1,#LoungeDasBlogueiras,,getdaytrends-catchup
+2026-11-27T00:00Z,2,Trabuco,23800,getdaytrends-catchup
+2026-11-27T00:00Z,3,Bradesco,,getdaytrends-catchup
+2026-11-27T00:00Z,4,Fazenda,21100,getdaytrends-catchup
+2026-11-27T00:00Z,5,manaus,24800,getdaytrends-catchup
+2026-11-27T00:00Z,6,Banqueiro,,getdaytrends-catchup
+2026-11-27T00:00Z,7,Cleitinho,19500,getdaytrends-catchup
+2026-11-27T00:00Z,8,#PorVocê,,getdaytrends-catchup
+2026-11-27T00:00Z,9,Lula 1,13300,getdaytrends-catchup
+2026-11-27T00:00Z,10,#RegulaBigTechsJa,,getdaytrends-catchup
+2026-11-27T00:00Z,11,Thanksgiving,2400000,getdaytrends-catchup
+2026-11-27T00:00Z,12,MILENA COM FRIBOI,,getdaytrends-catchup
+2026-11-27T00:00Z,13,#NFLnoSportv,,getdaytrends-catchup
+2026-11-27T00:00Z,14,#ONorteQuerRespirar,,getdaytrends-catchup
+2026-11-27T00:00Z,15,Levy,14400,getdaytrends-catchup
+2026-11-27T00:00Z,16,aroldo,,getdaytrends-catchup
+2026-11-27T00:00Z,17,Tolok,,getdaytrends-catchup
+2026-11-27T00:00Z,18,Dilma 2,,getdaytrends-catchup
+2026-11-27T00:00Z,19,40% off,17100,getdaytrends-catchup
+2026-11-27T00:00Z,20,Caleb Williams,30900,getdaytrends-catchup
+2026-11-27T00:00Z,21,Eagles,41600,getdaytrends-catchup
+2026-11-27T00:00Z,22,Glorinha,,getdaytrends-catchup
+2026-11-27T00:00Z,23,Novorizontino,,getdaytrends-catchup
+2026-11-27T00:00Z,24,Macron,53400,getdaytrends-catchup
+2026-11-27T00:00Z,25,Palocci,,getdaytrends-catchup
+2026-11-27T00:00Z,26,Juárez,15100,getdaytrends-catchup
+2026-11-27T00:00Z,27,Minas Gerais,11300,getdaytrends-catchup
+2026-11-27T00:00Z,28,Anistia,,getdaytrends-catchup
+2026-11-27T00:00Z,29,Remo,,getdaytrends-catchup
+2026-11-27T00:00Z,30,Top 5,47900,getdaytrends-catchup
+2026-11-27T00:00Z,31,Conselho de Administração,,getdaytrends-catchup
+2026-11-27T00:00Z,32,Haak,,getdaytrends-catchup
+2026-11-27T00:00Z,33,Zema,,getdaytrends-catchup
+2026-11-27T00:00Z,34,Piquerez,,getdaytrends-catchup
+2026-11-27T00:00Z,35,Cowboys,32500,getdaytrends-catchup
+2026-11-27T00:00Z,36,Meirelles,,getdaytrends-catchup
+2026-11-27T00:00Z,37,PROMOEXTRA,,getdaytrends-catchup
+2026-11-27T00:00Z,38,Estela Aranha,,getdaytrends-catchup
+2026-11-27T00:00Z,39,Bears,117500,getdaytrends-catchup
+2026-11-27T00:00Z,40,Bershka,,getdaytrends-catchup
+2026-11-27T00:00Z,41,Roraima,,getdaytrends-catchup
+2026-11-27T00:00Z,42,Rayane,,getdaytrends-catchup
+2026-11-27T00:00Z,43,Jahmyr Gibbs,16200,getdaytrends-catchup
+2026-11-27T00:00Z,44,Afeganistão,13000,getdaytrends-catchup
+2026-11-27T00:00Z,45,CUPOM MERCADO LIVRE,11300,getdaytrends-catchup
+2026-11-27T00:00Z,46,Lula IV,,getdaytrends-catchup
+2026-11-27T00:00Z,47,Lions,112500,getdaytrends-catchup
+2026-11-27T00:00Z,48,R$599,,getdaytrends-catchup
+2026-11-27T00:00Z,49,R$79,,getdaytrends-catchup
+2026-11-27T00:00Z,50,Black Friday,304100,getdaytrends-catchup
